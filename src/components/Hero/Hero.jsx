@@ -1,13 +1,14 @@
 import React from 'react';
 import { Scale } from 'lucide-react';
-import { colors, gradients } from '../utils/colors';
-import Button from '../components/Button';
+import { colors, gradients } from '../../utils/colors';
+import Button from '../Button';
+import './Hero.css';
 
 export default function Hero({ language }) {
   const content = {
     sr: {
       hero: {
-        title: 'Advokatska kancelarija Suzana Ilić',
+        title: 'Advokatska kancelarija Ilić Lj. Suzana',
         subtitle: 'Pružamo profesionalne pravne usluge i zastupanje u svim oblastima prava',
         description: 'Naša kancelarija pruža klijentima sve vrste pravnih usluga i pravne pomoći. Uspešno zastupamo klijente u krivičnim, parničnim, vanparničnim, prekršajnim i izvršnim postupcima.',
         cta: 'Zakažite konsultacije',
@@ -16,7 +17,7 @@ export default function Hero({ language }) {
     },
     en: {
       hero: {
-        title: 'Suzana Ilić Law Office',
+        title: 'Ilić Lj. Suzana Law Office',
         subtitle: 'Professional legal services and representation in all areas of law',
         description: 'Our office provides clients with all types of legal services and legal assistance. We successfully represent clients in criminal, litigation, non-litigation, misdemeanor and enforcement proceedings.',
         cta: 'Schedule Consultation',
@@ -33,6 +34,8 @@ export default function Hero({ language }) {
     <>
       {/* Hero Section */}
       <section
+        id="home"
+        className="hero-section"
         style={{
           background: gradients.primary,
           color: colors.textLight,
@@ -40,11 +43,12 @@ export default function Hero({ language }) {
           overflow: 'hidden',
           minHeight: '100vh',
           display: 'flex',
-          alignItems: 'flex-start'
+          alignItems: 'center'
         }}
       >
         {/* Background Pattern */}
         <div
+          className="hero-pattern"
           style={{
             position: 'absolute',
             top: 0,
@@ -58,54 +62,24 @@ export default function Hero({ language }) {
         />
 
         {/* Main Content */}
-        <div className="container position-relative" style={{ 
+        <div className="container position-relative hero-container" style={{ 
           zIndex: 2, 
-          width: '100%', 
-          padding: 'clamp(80px, 10vw, 120px) 15px clamp(100px, 12vw, 160px) 15px'
+          width: '100%'
         }}>
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-lg-7 mb-5 mb-lg-0">
-              <div style={{ 
-                marginBottom: 'clamp(30px, 5vw, 45px)',
-                animation: 'slideInLeft 0.8s ease-out forwards'
-              }}>
-                <h1 style={{ 
-                  fontSize: 'clamp(32px, 5.5vw, 60px)', 
-                  fontWeight: '800', 
-                  marginBottom: 'clamp(20px, 3vw, 30px)', 
-                  lineHeight: '1.15',
-                  letterSpacing: '-0.02em'
-                }}>
+          <div className="row align-items-center justify-content-center hero-row">
+            <div className="col-12 col-lg-7 hero-content">
+              <div className="hero-text-wrapper">
+                <h1 className="hero-title">
                   {t.hero.title}
                 </h1>
-                <p style={{ 
-                  fontSize: 'clamp(18px, 2.5vw, 26px)', 
-                  fontWeight: '500', 
-                  marginBottom: '0', 
-                  color: colors.accent,
-                  lineHeight: '1.45',
-                  maxWidth: '700px'
-                }}>
+                <p className="hero-subtitle">
                   {t.hero.subtitle}
                 </p>
               </div>
-              <p style={{ 
-                fontSize: 'clamp(16px, 2vw, 19px)', 
-                lineHeight: '1.75', 
-                marginBottom: 'clamp(35px, 5vw, 50px)', 
-                maxWidth: '650px', 
-                opacity: 0.95,
-                animation: 'fadeInUp 0.8s ease-out 0.2s forwards'
-              }}>
+              <p className="hero-description">
                 {t.hero.description}
               </p>
-              <div 
-                className="d-flex flex-column flex-sm-row gap-3" 
-                style={{ 
-                  animation: 'fadeInUp 0.8s ease-out 0.4s forwards',
-                  opacity: 1
-                }}
-              >
+              <div className="hero-buttons d-flex flex-column flex-sm-row gap-3">
                 <Button
                   variant="primary"
                   size="large"
@@ -122,14 +96,10 @@ export default function Hero({ language }) {
                 </Button>
               </div>
             </div>
-            <div className="col-12 col-lg-5 d-none d-lg-flex justify-content-center align-items-center">
-              <div style={{ 
-                textAlign: 'center',
-                animation: 'float 6s ease-in-out infinite',
-                padding: '20px'
-              }}>
+            <div className="col-12 col-lg-5 d-none d-lg-flex justify-content-center align-items-center hero-icon">
+              <div className="hero-scale-wrapper">
                 <Scale 
-                  size={280} 
+                  className="hero-scale-icon"
                   style={{ 
                     color: colors.accent, 
                     opacity: 0.25,
@@ -143,48 +113,40 @@ export default function Hero({ language }) {
           </div>
         </div>
 
-        {/* Divider */}
-        <div style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          overflow: 'hidden',
-          lineHeight: 0,
-          zIndex: 3
-        }}>
+        {/* Thunder/Lightning Style Divider  */}
+        <div className="hero-divider">
           <svg
             viewBox="0 0 1200 150"
             preserveAspectRatio="none"
-            style={{
-              width: '100%',
-              height: 'clamp(80px, 12vw, 120px)',
-              display: 'block'
-            }}
+            className="hero-svg"
           >
+            {/* Deep background accent layer  */}
             <polygon
-              points="0,150 0,120 300,30 700,100 1200,40 1200,150"
+              points="-10,160 -10,120 300,30 700,100 1210,40 1210,160"
               style={{
                 fill: colors.accent,
                 opacity: 0.15
               }}
             />
+            {/* Middle dramatic layer  */}
             <polygon
-              points="0,150 0,130 350,50 750,115 1200,55 1200,150"
+              points="-10,160 -10,130 350,50 750,115 1210,55 1210,160"
               style={{
                 fill: colors.accent,
                 opacity: 0.25
               }}
             />
+            {/* Main sharp thunder shape  */}
             <polygon
-              points="0,150 0,140 400,70 800,130 1200,70 1200,150"
+              points="-10,160 -10,140 400,70 800,130 1210,70 1210,160"
               style={{
                 fill: '#f8f9fa',
                 opacity: 1
               }}
             />
+            {/* Bold accent line  */}
             <polyline
-              points="0,140 400,70 800,130 1200,70"
+              points="-10,140 400,70 800,130 1210,70"
               style={{
                 fill: 'none',
                 stroke: colors.accent,
@@ -194,8 +156,9 @@ export default function Hero({ language }) {
                 strokeLinejoin: 'bevel'
               }}
             />
+            {/* Additional highlight line  */}
             <polyline
-              points="0,143 400,73 800,133 1200,73"
+              points="-10,143 400,73 800,133 1210,73"
               style={{
                 fill: 'none',
                 stroke: colors.accent,
@@ -206,53 +169,6 @@ export default function Hero({ language }) {
             />
           </svg>
         </div>
-
-        {/* Animations */}
-        <style>{`
-          @keyframes float {
-            0%, 100% {
-              transform: translateY(0px);
-            }
-            50% {
-              transform: translateY(-20px);
-            }
-          }
-          
-          @keyframes slideInLeft {
-            from {
-              opacity: 0;
-              transform: translateX(-30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-          
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          
-          @media (max-width: 991px) {
-            section {
-              min-height: auto !important;
-            }
-          }
-          
-          @media (max-width: 576px) {
-            section {
-              padding-top: 60px !important;
-              padding-bottom: 100px !important;
-            }
-          }
-        `}</style>
       </section>
     </>
   );

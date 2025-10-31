@@ -1,0 +1,104 @@
+/* About Component Styles */
+
+/* CSS Variables */
+.about-component {
+  --section-padding: clamp(80px, 12vw, 120px);
+  --container-padding: clamp(40px, 6vw, 60px);
+  --text-spacing: clamp(24px, 4vw, 36px);
+  --card-padding: clamp(20px, 3vw, 35px);
+  --image-height: clamp(450px, 55vw, 700px);
+  --quote-height: clamp(280px, 35vw, 420px);
+  --main-title-size: clamp(26px, 4.5vw, 48px);
+  --subtitle-size: clamp(11px, 1.5vw, 13px);
+  --body-text-size: clamp(14px, 2vw, 18px);
+  --benefit-text-size: clamp(15px, 2vw, 17px);
+}
+
+/* Animations */
+@keyframes slideInLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(-60px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes slideInRight {
+  from { 
+    opacity: 0; 
+    transform: translateX(60px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .about-component {
+    --image-height: clamp(620px, 62vw, 720px);
+    --quote-height: clamp(320px, 40vw, 380px);
+    --card-padding: clamp(35px, 5vw, 50px);
+    --container-padding: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-component {
+    --section-padding: clamp(60px, 10vw, 80px);
+    --container-padding: 0;
+    --image-height: clamp(350px, 50vw, 450px);
+    --quote-height: clamp(260px, 35vw, 320px);
+    --card-padding: clamp(30px, 5vw, 40px);
+    --main-title-size: clamp(22px, 4vw, 28px);
+    --benefit-text-size: clamp(14px, 2vw, 16px);
+  }
+
+  .quote-card-mobile { 
+    border-radius: 20px 20px 0 0; 
+  }
+  
+  .promise-container-mobile { 
+    border-radius: 0 0 20px 20px; 
+  }
+}
+
+@media (max-width: 575px) {
+  .about-component {
+    --section-padding: clamp(40px, 8vw, 60px);
+    --image-height: clamp(300px, 45vw, 350px);
+    --quote-height: clamp(220px, 32vw, 280px);
+    --card-padding: clamp(25px, 4vw, 35px);
+    --main-title-size: clamp(20px, 3.5vw, 24px);
+    --benefit-text-size: 14px;
+  }
+
+  .quote-mark-mobile { 
+    font-size: 80px; 
+    top: 20px; 
+    left: 20px; 
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
+  .about-component {
+    --quote-height: clamp(340px, 42vw, 380px);
+    --image-height: clamp(580px, 60vw, 680px);
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
+  .about-component {
+    --quote-height: clamp(380px, 45vw, 420px);
+    --image-height: clamp(680px, 70vw, 780px);
+  }
+}
+
+/* Global transitions */
+.about-component * {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}

@@ -1,0 +1,384 @@
+/* Desktop Styles (1201px+) */
+#services {
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(194, 157, 89, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(26, 26, 46, 0.03) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.services-container {
+  position: relative;
+  z-index: 2;
+}
+
+.services-header-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.services-accent-line {
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(135deg, #c29d59 0%, #b38a48 100%);
+  border-radius: 2px;
+}
+
+.services-subtitle {
+  color: #c29d59;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.services-title {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 32px;
+  line-height: 1.15;
+  font-family: 'Inter', -apple-system, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.services-title-underline {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(135deg, #c29d59 0%, #b38a48 100%);
+  border-radius: 2px;
+  margin: 0 auto 36px;
+}
+
+.services-description {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  margin: 0;
+}
+
+.service-button {
+  background-color: #ffffff;
+  border: 1px solid rgba(224, 224, 224, 0.4);
+  border-radius: 0;
+  padding: 80px 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transform: translateY(0);
+}
+
+.service-button:hover {
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.12), 
+    0 8px 25px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  z-index: 10;
+}
+
+.service-button:hover .icon-container {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, rgba(194, 157, 89, 0.15) 0%, rgba(194, 157, 89, 0.08) 100%);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid rgba(194, 157, 89, 0.15);
+  box-shadow: 0 4px 12px rgba(194, 157, 89, 0.1);
+}
+
+.service-icon {
+  color: #c29d59;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  stroke-width: 2;
+}
+
+.service-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+  line-height: 1.3;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Large Desktop (1200px and below) */
+@media (max-width: 1200px) {
+  #services {
+    padding: 100px 0;
+  }
+  
+  .service-button {
+    padding: 70px 35px;
+    min-height: 260px;
+  }
+  
+  .icon-container {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 24px;
+  }
+  
+  .service-icon {
+    font-size: 24px;
+  }
+  
+  .service-title {
+    font-size: 20px;
+  }
+}
+
+/* Tablet (991px and below) */
+@media (max-width: 991px) {
+  .service-button {
+    border: 1px solid rgba(224, 224, 224, 0.4);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    min-height: 240px;
+    padding: 60px 30px;
+  }
+  
+  .services-grid {
+    margin: 0 -15px;
+  }
+  
+  .services-grid .col-12, 
+  .services-grid .col-sm-6, 
+  .services-grid .col-lg-3 {
+    padding: 0 15px;
+  }
+  
+  .icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+  }
+  
+  .service-icon {
+    font-size: 22px;
+  }
+  
+  .service-title {
+    font-size: 19px;
+  }
+}
+
+/* Mobile Large (768px and below) */
+@media (max-width: 768px) {
+  #services {
+    padding: 80px 0;
+  }
+  
+  .service-button {
+    min-height: 220px;
+    padding: 50px 25px;
+  }
+  
+  .icon-container {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+  }
+  
+  .service-icon {
+    font-size: 20px;
+  }
+  
+  .service-title {
+    font-size: 18px;
+  }
+}
+
+/* Mobile (576px and below) */
+@media (max-width: 576px) {
+  #services {
+    padding: 60px 0;
+  }
+  
+  .service-button {
+    min-height: 200px;
+    padding: 40px 20px;
+  }
+  
+  .icon-container {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+  }
+  
+  .service-icon {
+    font-size: 18px;
+    stroke-width: 2.5;
+  }
+  
+  .service-title {
+    font-size: 17px;
+  }
+}
+
+/* Extra Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  #services {
+    padding: 50px 0;
+  }
+  
+  .service-button {
+    min-height: 180px;
+    padding: 35px 15px;
+  }
+  
+  .icon-container {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+  }
+  
+  .service-icon {
+    font-size: 16px;
+  }
+  
+  .service-title {
+    font-size: 16px;
+  }
+  
+  .services-title {
+    font-size: clamp(28px, 4vw, 36px);
+  }
+  
+  .services-description {
+    font-size: 16px;
+  }
+}
+
+/* Very Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  .service-button {
+    min-height: 160px;
+    padding: 30px 12px;
+  }
+  
+  .icon-container {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+  }
+  
+  .service-icon {
+    font-size: 14px;
+  }
+  
+  .service-title {
+    font-size: 15px;
+    line-height: 1.2;
+  }
+  
+  .services-subtitle {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+  
+  .services-description {
+    font-size: 14px;
+  }
+}
+
+/* Accessibility and Animation Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .service-button,
+  .icon-container,
+  .service-icon,
+  .service-title {
+    transition: none !important;
+  }
+  
+  .service-button:hover {
+    transform: none !important;
+  }
+  
+  .service-button:hover .icon-container {
+    transform: none !important;
+  }
+}
+
+/* Focus states for accessibility */
+.service-button:focus-visible {
+  outline: 2px solid #c29d59;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .service-button {
+    border: 2px solid #000;
+  }
+  
+  .service-icon {
+    color: #000;
+  }
+  
+  .service-title {
+    color: #000;
+  }
+}
+
+/* Print styles */
+@media print {
+  #services {
+    background: white !important;
+    padding: 20px 0 !important;
+  }
+  
+  .service-button {
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+    break-inside: avoid;
+  }
+  
+  .services-background-pattern {
+    display: none !important;
+  }
+}
