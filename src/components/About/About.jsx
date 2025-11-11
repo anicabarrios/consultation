@@ -165,15 +165,11 @@ export default function About({ language }) {
       textAlign: 'justify'
     },
 
-    mainImage: {
+    // Image Containers and Images
+    mainImageContainer: {
       width: '100%',
       height: 'var(--image-height)',
-      background: `linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)`,
       borderRadius: 'clamp(16px, 3vw, 24px)',
-      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23${colors.accent.slice(1)}'%3E%3Cpath d='M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9M19 21H5V3H13V9H19V21Z'/%3E%3C/svg%3E")`,
-      backgroundSize: 'clamp(120px, 15vw, 140px)',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
       border: `1px solid ${colors.borderDark}`,
       boxShadow: `
         0 25px 50px ${colors.shadowMedium},
@@ -183,6 +179,14 @@ export default function About({ language }) {
       overflow: 'hidden',
       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       animation: 'slideInRight 0.8s ease-out 0.2s forwards'
+    },
+
+    mainImage: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center',
+      display: 'block'
     },
 
     // Quote Section
@@ -388,15 +392,10 @@ export default function About({ language }) {
       overflow: 'hidden'
     },
 
-    trustImage: {
+    trustImageContainer: {
       width: '100%',
       height: 'var(--image-height)',
-      background: `linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)`,
       borderRadius: 'clamp(16px, 3vw, 24px)',
-      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23${colors.accent.slice(1)}'%3E%3Cpath d='M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9M19 21H5V3H13V9H19V21Z'/%3E%3C/svg%3E")`,
-      backgroundSize: '160px 160px',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
       border: `1px solid ${colors.borderDark}`,
       boxShadow: `
         0 25px 50px ${colors.shadowMedium},
@@ -406,6 +405,14 @@ export default function About({ language }) {
       overflow: 'hidden',
       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       animation: 'slideInLeft 0.8s ease-out 0.3s forwards'
+    },
+
+    trustImage: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center',
+      display: 'block'
     },
 
     trustContent: {
@@ -658,10 +665,16 @@ export default function About({ language }) {
               {/* Image Column */}
               <div className="col-12 col-lg-6">
                 <div 
-                  style={styles.mainImage}
+                  style={styles.mainImageContainer}
                   onMouseEnter={(e) => handleImageHover(e, true)}
                   onMouseLeave={(e) => handleImageHover(e, false)}
-                />
+                >
+                  <img
+                    src="./images/about-2.webp"
+                    alt={language === 'sr' ? 'Advokatska kancelarija' : 'Law Office'}
+                    style={styles.mainImage}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -780,10 +793,16 @@ export default function About({ language }) {
               {/* Image Column */}
               <div className="col-12 col-lg-6">
                 <div 
-                  style={styles.trustImage}
+                  style={styles.trustImageContainer}
                   onMouseEnter={(e) => handleImageHover(e, true)}
                   onMouseLeave={(e) => handleImageHover(e, false)}
-                />
+                >
+                  <img
+                    src="./images/about-1.webp"
+                    alt={language === 'sr' ? 'Profesionalno savetovanje' : 'Professional Consultation'}
+                    style={styles.trustImage}
+                  />
+                </div>
               </div>
 
               {/* Text Column */}

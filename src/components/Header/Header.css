@@ -1,6 +1,30 @@
 /* Base styles for desktop */
 .header-top-bar {
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+}
+
+.main-header {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-header.transparent {
+  background-color: rgba(255, 255, 255, 0);
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.main-header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(224, 224, 224, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .header-top-content {
@@ -79,21 +103,22 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .lawyer-name {
   margin: 0;
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a2e;
   line-height: 1.2;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .lawyer-title {
   margin: 0;
   font-size: 14px;
-  color: #666;
   line-height: 1.2;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobile-menu-btn {
@@ -103,6 +128,19 @@
 .menu-icon {
   width: 30px;
   height: 30px;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Desktop Navigation Links */
+.nav-link {
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #b8ad8d !important;
 }
 
 /* Mobile Menu Improvements */
@@ -150,6 +188,11 @@
   padding: 16px 20px 4px 20px;
   margin-top: 6px;
   border-top: 1px solid #e0e0e0;
+}
+
+/* Add padding to body to compensate for fixed header */
+body {
+  padding-top: 0 !important;
 }
 
 /* Tablet responsiveness (768px - 991px) */
@@ -523,6 +566,14 @@
   .mobile-nav-link:hover {
     transform: none !important;
   }
+  
+  .main-header {
+    transition: none !important;
+  }
+  
+  .header-top-bar {
+    transition: none !important;
+  }
 }
 
 /* Focus states for accessibility */
@@ -533,5 +584,10 @@
 
 .language-option:focus-visible {
   outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid #b8ad8d;
   outline-offset: 2px;
 }

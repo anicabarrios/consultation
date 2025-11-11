@@ -1,6 +1,6 @@
 export const colors = {
   primary: '#1a1a2e',        
-  secondary: '#c29d59',      
+  secondary: '#b8ad8d',      
   
   // Background colors
   primaryBg: '#1a1a2e',     
@@ -15,9 +15,14 @@ export const colors = {
   textMuted: 'rgba(255,255,255,0.9)', 
   
   // Interactive states
-  accent: '#c29d59',         
-  accentHover: '#b38a48',    
-  accentDark: '#9a7640',     
+  accent: '#afa27f',         
+  accentHover: '#958966',    
+  accentDark: '#958966',     
+  accentMuted: '#b8ad8d',    
+  // Extended color palette
+  accentLight: '#cac1aa',    
+  accentLighter: '#dbd6c6',  
+  accentLightest: '#edeae3', 
   
   // Borders and dividers
   border: 'rgba(255,255,255,0.2)', 
@@ -28,13 +33,7 @@ export const colors = {
   shadowMedium: 'rgba(0,0,0,0.15)',
   
   // Pattern/decoration colors
-  patternAccent: 'rgba(194,157,89,0.05)', 
-};
-
- // Typography 
-export const fonts = {
-  heading: "'Playfair Display', Georgia, serif",
-  body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  patternAccent: 'rgba(175,162,127,0.05)', 
 };
 
 // Gradient combinations

@@ -1,6 +1,3 @@
-/* About Component Styles */
-
-/* CSS Variables */
 .about-component {
   --section-padding: clamp(80px, 12vw, 120px);
   --container-padding: clamp(40px, 6vw, 60px);
@@ -16,28 +13,80 @@
 
 /* Animations */
 @keyframes slideInLeft {
-  from { 
-    opacity: 0; 
-    transform: translateX(-60px); 
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
   }
-  to { 
-    opacity: 1; 
-    transform: translateX(0); 
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 @keyframes slideInRight {
-  from { 
-    opacity: 0; 
-    transform: translateX(60px); 
+  from {
+    opacity: 0;
+    transform: translateX(60px);
   }
-  to { 
-    opacity: 1; 
-    transform: translateX(0); 
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-/* Responsive Breakpoints */
+/* Base Image Styles */
+.about-component img {
+  max-width: 100%;
+  height: auto;
+  border: none;
+  outline: none;
+}
+
+/* Image Container Hover Effects */
+.about-component [style*="mainImageContainer"]:hover,
+.about-component [style*="trustImageContainer"]:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.15),
+    0 15px 35px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Benefit Items Hover Effects */
+.about-component .benefit-dot {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button Hover Effects */
+.about-component button:hover {
+  transform: translateY(-4px) !important;
+}
+
+/* Quote Section Mobile Adjustments */
+@media (max-width: 767px) {
+  .quote-card-mobile {
+    border-radius: 20px 20px 0 0 !important;
+  }
+  
+  .promise-container-mobile {
+    border-radius: 0 0 20px 20px !important;
+  }
+  
+  .about-component [style*="textContent"],
+  .about-component [style*="trustContent"] {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .quote-mark-mobile {
+    font-size: 80px !important;
+    top: 20px !important;
+    left: 20px !important;
+  }
+}
+
+/* Responsive Image Heights */
 @media (max-width: 1199px) and (min-width: 768px) {
   .about-component {
     --image-height: clamp(620px, 62vw, 720px);
@@ -57,14 +106,6 @@
     --main-title-size: clamp(22px, 4vw, 28px);
     --benefit-text-size: clamp(14px, 2vw, 16px);
   }
-
-  .quote-card-mobile { 
-    border-radius: 20px 20px 0 0; 
-  }
-  
-  .promise-container-mobile { 
-    border-radius: 0 0 20px 20px; 
-  }
 }
 
 @media (max-width: 575px) {
@@ -76,14 +117,9 @@
     --main-title-size: clamp(20px, 3.5vw, 24px);
     --benefit-text-size: 14px;
   }
-
-  .quote-mark-mobile { 
-    font-size: 80px; 
-    top: 20px; 
-    left: 20px; 
-  }
 }
 
+/* Tablet Landscape Adjustments */
 @media (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
   .about-component {
     --quote-height: clamp(340px, 42vw, 380px);
@@ -91,6 +127,7 @@
   }
 }
 
+/* Tablet Portrait Adjustments */
 @media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
   .about-component {
     --quote-height: clamp(380px, 45vw, 420px);
@@ -98,7 +135,141 @@
   }
 }
 
-/* Global transitions */
+/* Global Transitions */
 .about-component * {
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+/* Image Loading States */
+.about-component img {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  transition: opacity 0.3s ease;
+}
+
+.about-component img[src]:not([src=""]) {
+  opacity: 1;
+}
+
+.about-component img:not([src]),
+.about-component img[src=""] {
+  opacity: 0.7;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Focus States for Accessibility */
+.about-component button:focus-visible {
+  outline: 2px solid #c29d59;
+  outline-offset: 2px;
+}
+
+.about-component img:focus-visible {
+  outline: 2px solid #c29d59;
+  outline-offset: 4px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .about-component img {
+    border: 2px solid #000;
+  }
+  
+  .about-component button {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .about-component *,
+  .about-component::before,
+  .about-component::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .about-component {
+    background: white !important;
+  }
+  
+  .about-component img {
+    max-width: 100%;
+    height: auto;
+    break-inside: avoid;
+  }
+  
+  .about-component button {
+    display: none !important;
+  }
+  
+  .about-component [style*="boxShadow"],
+  .about-component [style*="box-shadow"] {
+    box-shadow: none !important;
+  }
+}
+
+/* Image Error Handling */
+.about-component img[alt]:after {
+  content: "🖼️ " attr(alt);
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(248, 249, 250, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  border: 2px dashed #ddd;
+}
+
+/* Loading Animation for Images */
+@keyframes imageLoading {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.3; }
+}
+
+.about-component img:not([complete]) {
+  animation: imageLoading 1.5s ease-in-out infinite;
+}
+
+/* Ensure images maintain aspect ratio */
+.about-component img {
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Ultra-wide screen adjustments */
+@media (min-width: 1920px) {
+  .about-component {
+    --image-height: clamp(600px, 40vw, 800px);
+  }
+}
+
+/* Very small mobile adjustments */
+@media (max-width: 320px) {
+  .about-component {
+    --image-height: clamp(250px, 80vw, 300px);
+    --quote-height: clamp(180px, 60vw, 220px);
+  }
+}
+
+/* Specific fixes for image containers */
+.about-component [style*="mainImageContainer"],
+.about-component [style*="trustImageContainer"] {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.about-component [style*="mainImageContainer"] img,
+.about-component [style*="trustImageContainer"] img {
+  position: relative;
+  z-index: 1;
 }
