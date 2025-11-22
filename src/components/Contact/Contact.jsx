@@ -39,8 +39,8 @@ export default function Contact({ language }) {
       info: {
         contact: {
           title: 'Kontakt informacije',
-          address: 'Bulevar Kralja Aleksandra 73, 11000 Beograd',
-          phone: '+381 11 234 5678',
+          address: 'Sokolska 1/21, Niš',
+          phone: '+381 63 108 9990',
           email: 'suzana.ilic@legal.rs'
         },
         hours: {
@@ -89,8 +89,8 @@ export default function Contact({ language }) {
       info: {
         contact: {
           title: 'Contact Information',
-          address: 'Bulevar Kralja Aleksandra 73, 11000 Belgrade',
-          phone: '+381 11 234 5678',
+          address: 'Sokolska 1/21, Niš',
+          phone: '+381 63 108 9990',
           email: 'suzana.ilic@legal.rs'
         },
         hours: {

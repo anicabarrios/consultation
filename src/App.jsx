@@ -5,6 +5,7 @@ import About from './components/About/About';
 import Services from './components/Services/Services';
 import Reviews from './components/Reviews/Reviews';
 import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
 
 export default function App() {
   const [language, setLanguage] = useState('sr');
@@ -17,6 +18,7 @@ export default function App() {
       <Services language={language}/>
       <Reviews language={language} />
       <Contact language={language} />
+      <Footer language={language} />
     </div>
   );
 }

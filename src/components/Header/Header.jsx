@@ -6,13 +6,12 @@ import './Header.css';
 
 export default function Header({ language, setLanguage }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(0);
 
   // Scroll detection with smooth progression
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const scrollProgress = Math.min(scrollTop / 150, 1); 
+      const scrollProgress = Math.min(window.scrollY / 150, 1); 
       setIsScrolled(scrollProgress);
     };
 
@@ -29,7 +28,7 @@ export default function Header({ language, setLanguage }) {
         contact: 'Kontakt'
       },
       cta: 'Zakažite konsultacije',
-      lawyer: 'Advokat'
+      lawyer: 'Advokatska kancelarija'
     },
     en: {
       nav: {
@@ -39,87 +38,98 @@ export default function Header({ language, setLanguage }) {
         contact: 'Contact'
       },
       cta: 'Schedule Consultation',
-      lawyer: 'Attorney at Law'
+      lawyer: 'Law Office'
     }
   };
 
   const t = content[language];
-  
-  const headerStyles = {
-    topBar: {
-      backgroundColor: colors.primary,
-      color: colors.textLight,
-      padding: '8px 0',
-      fontSize: '14px',
-      minHeight: '40px',
-      display: 'flex',
-      alignItems: 'center',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 1001,
-      transform: `translateY(-${isScrolled * 100}%)`,
-      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+
+  const colorScheme = {
+    logoTextStyle: {
+      color: isScrolled > 0.5 ? colors.accentDark : colors.textLight
     },
-    mainHeader: {
-      backgroundColor: `rgba(255, 255, 255, ${isScrolled * 0.95})`,
-      boxShadow: isScrolled > 0.3 ? `0 8px 32px rgba(0, 0, 0, ${isScrolled * 0.1})` : 'none',
-      position: 'fixed',
-      top: `${40 - (isScrolled * 40)}px`,
-      left: 0,
-      right: 0,
-      zIndex: 1000,
-      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-      borderBottom: isScrolled > 0.5 ? `1px solid rgba(224, 224, 224, ${isScrolled * 0.6})` : 'none'
-    },
-    logoText: {
-      color: isScrolled > 0.5 ? 
-        colors.textPrimary : 
-        colors.accent, 
-      transition: 'color 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-    },
-    lawyerTitle: {
-      color: isScrolled > 0.5 ? 
-        colors.textSecondary : 
-        'rgba(194, 157, 89, 0.8)', 
-      transition: 'color 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-    },
-    navLink: {
-      ...commonStyles.navLink,
-      fontSize: '16px',
-      color: `rgb(${26 + (255 - 26) * (1 - isScrolled)}, ${26 + (255 - 26) * (1 - isScrolled)}, ${46 + (255 - 46) * (1 - isScrolled)})`,
-      fontWeight: '500',
-      transition: 'color 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+    lawyerTitleStyle: {
+      color: isScrolled > 0.5 ? colors.textSecondary : colors.accent
     }
   };
 
-  const handleNavLinkHover = (e, isHover) => {
-    if (isHover) {
-      e.target.style.color = '#b8ad8d';
-    } else {
-      e.target.style.color = `rgb(${26 + (255 - 26) * (1 - isScrolled)}, ${26 + (255 - 26) * (1 - isScrolled)}, ${46 + (255 - 46) * (1 - isScrolled)})`;
-    }
+
+  const activeColorScheme = colorScheme; 
+
+  // Dynamic styles based on scroll position
+  const topBarStyle = {
+    backgroundColor: colors.primary,
+    color: colors.textLight,
+    padding: '8px 0',
+    fontSize: '14px',
+    minHeight: '40px',
+    display: 'flex',
+    alignItems: 'center',
+    transform: `translateY(-${isScrolled * 100}%)`
   };
+
+  const mainHeaderStyle = {
+    backgroundColor: `rgba(255, 255, 255, ${isScrolled * 0.95})`,
+    boxShadow: isScrolled > 0.3 ? `0 8px 32px rgba(0, 0, 0, ${isScrolled * 0.1})` : 'none',
+    top: `${40 - (isScrolled * 40)}px`,
+    borderBottom: isScrolled > 0.5 ? `1px solid rgba(224, 224, 224, ${isScrolled * 0.6})` : 'none'
+  };
+
+  const textColor = `rgb(${26 + (255 - 26) * (1 - isScrolled)}, ${26 + (255 - 26) * (1 - isScrolled)}, ${46 + (255 - 46) * (1 - isScrolled)})`;
+
+  const navLinkStyle = {
+    ...commonStyles.navLink,
+    fontSize: '16px',
+    color: textColor,
+    fontWeight: '500'
+  };
+
+  // Icon hover handler
+  const handleIconHover = (e, isHover) => {
+    e.target.style.color = isHover ? colors.accentHover : colors.accent;
+    e.target.style.transform = isHover ? 'scale(1.1)' : 'scale(1)';
+  };
+
+  // Nav link hover handler
+  const handleNavLinkHover = (e, isHover) => {
+    e.target.style.color = isHover ? colors.accentHover : textColor;
+  };
+
+  const iconColor = isScrolled > 0.5 ? colors.primary : colors.textLight;
 
   return (
     <>
       {/* Top Bar */}
-      <div className="header-top-bar" style={headerStyles.topBar}>
+      <div className="header-top-bar" style={topBarStyle}>
         <div className="container">
           <div className="d-flex justify-content-between align-items-center header-top-content">
             <div className="d-flex align-items-center header-contact-info">
               <div className="d-flex align-items-center contact-item">
-                <Phone className="contact-icon" />
-                <span className="contact-text">+381 11 234 5678</span>
+                <Phone 
+                  className="contact-icon"
+                  style={{ color: colors.accent }}
+                  onMouseEnter={(e) => handleIconHover(e, true)}
+                  onMouseLeave={(e) => handleIconHover(e, false)}
+                />
+                <span className="contact-text">+381 63 108 9990</span>
               </div>
               <div className="d-flex align-items-center contact-item contact-email">
-                <Mail className="contact-icon" />
+                <Mail 
+                  className="contact-icon"
+                  style={{ color: colors.accent }}
+                  onMouseEnter={(e) => handleIconHover(e, true)}
+                  onMouseLeave={(e) => handleIconHover(e, false)}
+                />
                 <span className="contact-text">suzana.ilic@legal.rs</span>
               </div>
             </div>
             <div className="d-flex align-items-center language-selector">
-              <Globe className="globe-icon" />
+              <Globe 
+                className="globe-icon"
+                style={{ color: colors.accent }}
+                onMouseEnter={(e) => handleIconHover(e, true)}
+                onMouseLeave={(e) => handleIconHover(e, false)}
+              />
               <div className="language-options">
                 <span
                   className={`language-option ${language === 'sr' ? 'active' : ''}`}
@@ -141,22 +151,22 @@ export default function Header({ language, setLanguage }) {
       </div>
 
       {/* Main Header */}
-      <header className={`main-header ${isScrolled > 0.5 ? 'scrolled' : 'transparent'}`} style={headerStyles.mainHeader}>
+      <header 
+        className={`main-header ${isScrolled > 0.5 ? 'scrolled' : 'transparent'}`} 
+        style={mainHeaderStyle}
+      >
         <div className="container">
           <nav className="d-flex justify-content-between align-items-center header-nav">
             <div className="d-flex align-items-center header-logo">
               <Scale 
                 className="logo-icon" 
-                style={{ 
-                  color: colors.accent, 
-                  transition: 'color 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                }} 
+                style={{ color: colors.accent }} 
               />
               <div className="logo-text">
-                <h1 className="lawyer-name" style={headerStyles.logoText}>
+                <h1 className="lawyer-name" style={activeColorScheme.logoTextStyle}>
                   Ilić Lj. Suzana
                 </h1>
-                <p className="lawyer-title" style={headerStyles.lawyerTitle}>
+                <p className="lawyer-title" style={activeColorScheme.lawyerTitleStyle}>
                   {t.lawyer}
                 </p>
               </div>
@@ -164,42 +174,18 @@ export default function Header({ language, setLanguage }) {
 
             {/* Desktop Menu */}
             <div className="d-none d-lg-flex gap-4 align-items-center desktop-menu">
-              <a 
-                href="#home" 
-                className="nav-link"
-                style={headerStyles.navLink}
-                onMouseOver={(e) => handleNavLinkHover(e, true)}
-                onMouseOut={(e) => handleNavLinkHover(e, false)}
-              >
-                {t.nav.home}
-              </a>
-              <a 
-                href="#services" 
-                className="nav-link"
-                style={headerStyles.navLink}
-                onMouseOver={(e) => handleNavLinkHover(e, true)}
-                onMouseOut={(e) => handleNavLinkHover(e, false)}
-              >
-                {t.nav.services}
-              </a>
-              <a 
-                href="#about" 
-                className="nav-link"
-                style={headerStyles.navLink}
-                onMouseOver={(e) => handleNavLinkHover(e, true)}
-                onMouseOut={(e) => handleNavLinkHover(e, false)}
-              >
-                {t.nav.about}
-              </a>
-              <a 
-                href="#contact" 
-                className="nav-link"
-                style={headerStyles.navLink}
-                onMouseOver={(e) => handleNavLinkHover(e, true)}
-                onMouseOut={(e) => handleNavLinkHover(e, false)}
-              >
-                {t.nav.contact}
-              </a>
+              {Object.entries(t.nav).map(([key, value]) => (
+                <a 
+                  key={key}
+                  href={`#${key === 'home' ? 'home' : key}`}
+                  className="nav-link"
+                  style={navLinkStyle}
+                  onMouseOver={(e) => handleNavLinkHover(e, true)}
+                  onMouseOut={(e) => handleNavLinkHover(e, false)}
+                >
+                  {value}
+                </a>
+              ))}
               <Button
                 variant="primary"
                 size="medium"
@@ -210,16 +196,35 @@ export default function Header({ language, setLanguage }) {
             </div>
 
             {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="small"
+            <button
               className="d-lg-none mobile-menu-btn"
+              style={{
+                background: 'transparent',
+                border: 'none',
+                padding: '8px',
+                cursor: 'pointer',
+                borderRadius: '4px',
+                transition: 'background-color 0.2s ease'
+              }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              icon={mobileMenuOpen ? 
-                <X className="menu-icon" color={isScrolled > 0.5 ? colors.primary : colors.textLight} style={{ transition: 'color 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }} /> : 
-                <Menu className="menu-icon" color={isScrolled > 0.5 ? colors.primary : colors.textLight} style={{ transition: 'color 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }} />
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'transparent';
+              }}
+              onFocus={(e) => {
+                e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+              }}
+              onBlur={(e) => {
+                e.target.style.backgroundColor = 'transparent';
+              }}
+            >
+              {mobileMenuOpen ? 
+                <X className="menu-icon" color={iconColor} style={{ transition: 'color 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }} /> : 
+                <Menu className="menu-icon" color={iconColor} style={{ transition: 'color 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }} />
               }
-            />
+            </button>
           </nav>
 
           {/* Mobile Menu */}
@@ -227,38 +232,16 @@ export default function Header({ language, setLanguage }) {
             <div className="d-lg-none mobile-menu">
               <div className="mobile-menu-container">
                 <div className="d-flex flex-column mobile-menu-items">
-                  <a 
-                    href="#home" 
-                    className="mobile-nav-link"
-                    style={{ ...commonStyles.navLink }}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {t.nav.home}
-                  </a>
-                  <a 
-                    href="#services" 
-                    className="mobile-nav-link"
-                    style={{ ...commonStyles.navLink }}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {t.nav.services}
-                  </a>
-                  <a 
-                    href="#about" 
-                    className="mobile-nav-link"
-                    style={{ ...commonStyles.navLink }}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {t.nav.about}
-                  </a>
-                  <a 
-                    href="#contact" 
-                    className="mobile-nav-link"
-                    style={{ ...commonStyles.navLink }}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {t.nav.contact}
-                  </a>
+                  {Object.entries(t.nav).map(([key, value]) => (
+                    <a 
+                      key={key}
+                      href={`#${key === 'home' ? 'home' : key}`}
+                      className="mobile-nav-link"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {value}
+                    </a>
+                  ))}
                   <div className="mobile-cta-container">
                     <Button
                       variant="primary"
