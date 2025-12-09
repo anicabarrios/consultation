@@ -1,0 +1,36 @@
+.services-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.services-page-wrapper #services {
+  flex: 1 0 auto;
+  padding-top: 45px!important; 
+}
+
+/* Responsive adjustments for services section spacing */
+@media (max-width: 991px) {
+  .services-page-wrapper #services {
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-page-wrapper #services {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-page-wrapper #services {
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-page-wrapper #services {
+    padding-top: 25px;
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Scale, Phone, Mail, Globe, Menu, X } from 'lucide-react';
 import { colors, commonStyles } from '../../utils/colors';
 import Button from '../Button';
@@ -7,6 +8,7 @@ import './Header.css';
 export default function Header({ language, setLanguage }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(0);
+  const location = useLocation();
 
   // Scroll detection with smooth progression
   useEffect(() => {
@@ -18,6 +20,11 @@ export default function Header({ language, setLanguage }) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const content = {
     sr: {
@@ -44,6 +51,13 @@ export default function Header({ language, setLanguage }) {
 
   const t = content[language];
 
+  const pageRoutes = {
+    home: '/',
+    services: '/services',
+    about: '/about',
+    contact: '/contact'
+  };
+
   const colorScheme = {
     logoTextStyle: {
       color: isScrolled > 0.5 ? colors.accentDark : colors.textLight
@@ -52,7 +66,6 @@ export default function Header({ language, setLanguage }) {
       color: isScrolled > 0.5 ? colors.textSecondary : colors.accent
     }
   };
-
 
   const activeColorScheme = colorScheme; 
 
@@ -81,7 +94,9 @@ export default function Header({ language, setLanguage }) {
     ...commonStyles.navLink,
     fontSize: '16px',
     color: textColor,
-    fontWeight: '500'
+    fontWeight: '500',
+    textDecoration: 'none',
+    cursor: 'pointer'
   };
 
   // Icon hover handler
@@ -157,7 +172,12 @@ export default function Header({ language, setLanguage }) {
       >
         <div className="container">
           <nav className="d-flex justify-content-between align-items-center header-nav">
-            <div className="d-flex align-items-center header-logo">
+            {/* Logo - Links to home page */}
+            <Link 
+              to="/" 
+              className="d-flex align-items-center header-logo" 
+              style={{ textDecoration: 'none' }}
+            >
               <Scale 
                 className="logo-icon" 
                 style={{ color: colors.accent }} 
@@ -170,29 +190,30 @@ export default function Header({ language, setLanguage }) {
                   {t.lawyer}
                 </p>
               </div>
-            </div>
+            </Link>
 
-            {/* Desktop Menu */}
+            {/* Desktop Menu  */}
             <div className="d-none d-lg-flex gap-4 align-items-center desktop-menu">
               {Object.entries(t.nav).map(([key, value]) => (
-                <a 
+                <Link
                   key={key}
-                  href={`#${key === 'home' ? 'home' : key}`}
+                  to={pageRoutes[key]}
                   className="nav-link"
                   style={navLinkStyle}
                   onMouseOver={(e) => handleNavLinkHover(e, true)}
                   onMouseOut={(e) => handleNavLinkHover(e, false)}
                 >
                   {value}
-                </a>
+                </Link>
               ))}
-              <Button
-                variant="primary"
-                size="medium"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                {t.cta}
-              </Button>
+              <Link to="/contact" style={{ textDecoration: 'none' }}>
+                <Button
+                  variant="primary"
+                  size="medium"
+                >
+                  {t.cta}
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -227,33 +248,35 @@ export default function Header({ language, setLanguage }) {
             </button>
           </nav>
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu  */}
           {mobileMenuOpen && (
             <div className="d-lg-none mobile-menu">
               <div className="mobile-menu-container">
                 <div className="d-flex flex-column mobile-menu-items">
                   {Object.entries(t.nav).map(([key, value]) => (
-                    <a 
+                    <Link 
                       key={key}
-                      href={`#${key === 'home' ? 'home' : key}`}
+                      to={pageRoutes[key]}
                       className="mobile-nav-link"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {value}
-                    </a>
+                    </Link>
                   ))}
                   <div className="mobile-cta-container">
-                    <Button
-                      variant="primary"
-                      size="medium"
-                      fullWidth={true}
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
+                    <Link 
+                      to="/contact" 
+                      style={{ textDecoration: 'none' }}
+                      onClick={() => setMobileMenuOpen(false)}
                     >
-                      {t.cta}
-                    </Button>
+                      <Button
+                        variant="primary"
+                        size="medium"
+                        fullWidth={true}
+                      >
+                        {t.cta}
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>

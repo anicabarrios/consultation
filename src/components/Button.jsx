@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { colors, gradients, commonStyles } from '../utils/colors';
+import { colors, gradients } from '../utils/colors';
 
 export function Button({ 
   children, 
@@ -12,22 +12,25 @@ export function Button({
   icon,
   as = 'button',
   href,
+  type = 'button',
   ...props 
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
-  // Detect touch device
   useEffect(() => {
-    const checkTouchDevice = () => {
-      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    const checkTouch = () => {
+      setIsTouchDevice(!window.matchMedia('(hover: hover)').matches);
     };
-    
-    checkTouchDevice();
-    window.addEventListener('resize', checkTouchDevice);
-    
-    return () => window.removeEventListener('resize', checkTouchDevice);
+    checkTouch();
+    const mq = window.matchMedia('(hover: hover)');
+    mq.addEventListener?.('change', checkTouch) || mq.addListener?.(checkTouch);
+    return () => mq.removeEventListener?.('change', checkTouch) || mq.removeListener?.(checkTouch);
   }, []);
+
+  const isHovering = isHovered && !isTouchDevice && !disabled;
+  const isPressing = isPressed && !disabled;
 
   const baseStyles = {
     display: 'inline-flex',
@@ -45,14 +48,10 @@ export function Button({
     overflow: 'hidden',
     opacity: disabled ? 0.6 : 1,
     width: fullWidth ? '100%' : 'auto',
-    minWidth: isTouchDevice ? '44px' : 'auto',
     WebkitTapHighlightColor: 'transparent',
     userSelect: 'none',
-    WebkitFontSmoothing: 'antialiased',
-    MozOsxFontSmoothing: 'grayscale',
   };
 
-  // Responsive size styles with clamp for better scaling
   const sizeStyles = {
     small: { 
       padding: 'clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 16px)', 
@@ -71,146 +70,89 @@ export function Button({
     },
   };
 
+  const getTransform = () => {
+    if (isPressing) return 'translateY(1px) scale(0.98)';
+    if (isHovering) return 'translateY(-3px)';
+    return 'translateY(0)';
+  };
+
   const variantStyles = {
     primary: {
       background: gradients.accent,
       color: colors.textLight,
-      boxShadow: isHovered && !isTouchDevice 
-        ? `0 8px 25px 0 ${colors.shadowMedium}` 
+      boxShadow: isHovering 
+        ? `0 12px 35px 0 ${colors.shadowMedium}` 
         : `0 4px 14px 0 ${colors.shadowLight}`,
-      transform: isHovered && !isTouchDevice ? 'translateY(-2px)' : 'translateY(0)',
+      transform: getTransform(),
+      filter: isHovering ? 'brightness(1.08)' : 'brightness(1)',
     },
     secondary: {
-      backgroundColor: isHovered && !isTouchDevice ? colors.accent : 'transparent',
-      color: isHovered && !isTouchDevice ? colors.textLight : colors.accent,
-      border: `clamp(1px, 0.3vw, 2px) solid ${colors.accent}`,
-      transform: isHovered && !isTouchDevice ? 'translateY(-1px)' : 'translateY(0)',
+      backgroundColor: isHovering || isPressing ? colors.accent : 'transparent',
+      color: isHovering || isPressing ? colors.textLight : colors.accent,
+      border: `2px solid ${colors.accent}`,
+      boxShadow: isHovering ? `0 10px 30px -5px ${colors.accent}40` : 'none',
+      transform: getTransform(),
     },
     outline: {
-      backgroundColor: isHovered && !isTouchDevice ? colors.textPrimary : 'transparent',
-      color: isHovered && !isTouchDevice ? colors.textLight : colors.textPrimary,
-      border: `clamp(1px, 0.3vw, 2px) solid ${colors.borderDark}`,
+      backgroundColor: isHovering || isPressing ? colors.textPrimary : 'transparent',
+      color: isHovering || isPressing ? colors.textLight : colors.textPrimary,
+      border: `2px solid ${isHovering || isPressing ? colors.textPrimary : colors.borderDark}`,
+      boxShadow: isHovering ? `0 10px 30px -5px ${colors.primary}35` : 'none',
+      transform: getTransform(),
     },
     ghost: {
-      backgroundColor: isHovered && !isTouchDevice ? colors.lightBg : 'transparent',
-      color: colors.textSecondary,
+      backgroundColor: isHovering || isPressing ? colors.lightBg : 'transparent',
+      color: isHovering || isPressing ? colors.accent : colors.textSecondary,
+      transform: isPressing ? 'translateY(1px) scale(0.98)' : isHovering ? 'translateY(-2px)' : 'translateY(0)',
     },
     white: {
-      backgroundColor: isHovered && !isTouchDevice ? colors.textLight : 'transparent',
-      color: isHovered && !isTouchDevice ? colors.primary : colors.textLight,
-      border: `clamp(1px, 0.3vw, 2px) solid ${colors.textLight}`,
-      transform: isHovered && !isTouchDevice ? 'translateY(-1px)' : 'translateY(0)',
+      backgroundColor: isHovering || isPressing ? colors.textLight : 'transparent',
+      color: isHovering || isPressing ? colors.primary : colors.textLight,
+      border: `2px solid ${colors.textLight}`,
+      boxShadow: isHovering ? `0 12px 35px -5px rgba(255,255,255,0.4)` : 'none',
+      transform: getTransform(),
     }
   };
 
-  const combinedStyles = {
-    ...baseStyles,
-    ...sizeStyles[size],
-    ...variantStyles[variant],
-  };
-
+  const combinedStyles = { ...baseStyles, ...sizeStyles[size], ...variantStyles[variant] };
   const Component = as;
 
-  // Handle touch device interactions differently
-  const handleMouseEnter = () => {
-    if (!isTouchDevice) {
-      setIsHovered(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!isTouchDevice) {
-      setIsHovered(false);
-    }
-  };
-
-  // Handle touch interactions with active state feedback
-  const handleTouchStart = (e) => {
-    if (isTouchDevice && !disabled) {
-      e.currentTarget.style.transform = 'scale(0.98)';
-      e.currentTarget.style.opacity = '0.9';
-    }
-  };
-
-  const handleTouchEnd = (e) => {
-    if (isTouchDevice && !disabled) {
-      e.currentTarget.style.transform = 'scale(1)';
-      e.currentTarget.style.opacity = '1';
-    }
+  const handlers = isTouchDevice ? {
+    onTouchStart: () => !disabled && setIsPressed(true),
+    onTouchEnd: () => setIsPressed(false),
+    onTouchCancel: () => setIsPressed(false),
+  } : {
+    onMouseEnter: () => !disabled && setIsHovered(true),
+    onMouseLeave: () => { setIsHovered(false); setIsPressed(false); },
+    onMouseDown: () => !disabled && setIsPressed(true),
+    onMouseUp: () => setIsPressed(false),
   };
 
   return (
-    <>
-      {/* Add responsive CSS for better mobile/tablet support */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            .responsive-button {
-              font-size: 16px !important; /* Prevent iOS zoom on focus */
-              line-height: 1.4 !important;
-            }
-          }
-          
-          @media (max-width: 576px) {
-            .responsive-button {
-              font-size: 16px !important;
-              min-height: 48px !important; /* Ensure touch-friendly size */
-            }
-          }
-          
-          @media (hover: none) and (pointer: coarse) {
-            .responsive-button:hover {
-              transform: none !important;
-              box-shadow: 0 4px 14px 0 ${colors.shadowLight} !important;
-            }
-          }
-          
-          /* Better focus states for accessibility */
-          .responsive-button:focus-visible {
-            outline: 2px solid ${colors.accent};
-            outline-offset: 2px;
-          }
-          
-          /* Active state for touch devices */
-          @media (hover: none) and (pointer: coarse) {
-            .responsive-button:active {
-              transform: scale(0.98) !important;
-              transition: transform 0.1s ease !important;
-            }
-          }
-        `}
-      </style>
-      
-      <Component
-        style={combinedStyles}
-        onClick={!disabled ? onClick : undefined}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        disabled={disabled}
-        className={`${className} responsive-button`}
-        href={href}
-        role={as === 'a' ? 'button' : undefined}
-        aria-disabled={disabled}
-        {...props}
-      >
-        {icon && (
-          <span 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center',
-              fontSize: 'clamp(14px, 2.5vw, 16px)'
-            }}
-          >
-            {icon}
-          </span>
-        )}
-        <span style={{ lineHeight: '1.4' }}>
-          {children}
+    <Component
+      style={combinedStyles}
+      onClick={!disabled ? onClick : undefined}
+      {...handlers}
+      disabled={as === 'button' ? disabled : undefined}
+      type={as === 'button' ? type : undefined}
+      className={className}
+      href={as === 'a' ? href : undefined}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : 0}
+      {...props}
+    >
+      {icon && (
+        <span style={{ 
+          display: 'inline-flex', 
+          alignItems: 'center',
+          transform: isHovering ? 'scale(1.1)' : 'scale(1)',
+          transition: 'transform 0.3s ease',
+        }}>
+          {icon}
         </span>
-      </Component>
-    </>
+      )}
+      <span style={{ lineHeight: '1.4' }}>{children}</span>
+    </Component>
   );
 }
 

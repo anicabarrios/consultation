@@ -1,24 +1,64 @@
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header/Header';
-import React, { useState } from 'react';
-import Hero from './components/Hero/Hero';
-import About from './components/About/About';
-import Services from './components/Services/Services';
-import Reviews from './components/Reviews/Reviews';
-import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import BackToTop from './components/Backtotop/Backtotop';
+import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage/ServicesPage';
+import ServicePage from './pages/ServicePage/ServicePage';
+import './App.css';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 export default function App() {
   const [language, setLanguage] = useState('sr');
 
   return (
-    <div className="min-vh-100" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-      <Header language={language} setLanguage={setLanguage} />
-      <Hero language={language} />
-      <About language={language} />
-      <Services language={language}/>
-      <Reviews language={language} />
-      <Contact language={language} />
-      <Footer language={language} />
-    </div>
+    <Router>
+      <ScrollToTop />
+      <div className="app-wrapper">
+        
+        <Header 
+          language={language} 
+          setLanguage={setLanguage}
+        />
+        
+        <main className="main-content">
+          <Routes>
+            <Route 
+              path="/" 
+              element={<HomePage language={language} />} 
+            />
+            
+            <Route 
+              path="/services" 
+              element={<ServicesPage language={language} />} 
+            />
+            
+            <Route 
+              path="/services/:serviceSlug" 
+              element={<ServicePage language={language} />} 
+            />
+            
+            <Route 
+              path="*" 
+              element={<HomePage language={language} />} 
+            />
+          </Routes>
+        </main>
+
+        <Footer language={language} />
+        <BackToTop language={language} />
+
+      </div>
+    </Router>
   );
 }

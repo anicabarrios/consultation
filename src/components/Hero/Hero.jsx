@@ -13,7 +13,7 @@ export default function Hero({ language }) {
       slides: [
         {
           title: 'Advokatska kancelarija Ilić Lj. Suzana',
-          subtitle: 'Profesionalne pravne usluge ',
+          subtitle: 'Profesionalne pravne usluge',
           description: 'Pružamo sve vrste pravnih usluga i pravne pomoći. Uspešno zastupamo klijente u krivičnim, parničnim, vanparničnim, prekršajnim i izvršnim postupcima.',
           cta: 'Zakažite konsultacije',
           contact: 'Kontakt',
@@ -120,14 +120,24 @@ export default function Hero({ language }) {
                     <Button
                       variant="primary"
                       size="large"
-                      onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => {
+                        const contactElement = document.getElementById('contact');
+                        if (contactElement) {
+                          contactElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
                     >
                       {slide.cta}
                     </Button>
                     <Button
                       variant="white"
                       size="large"
-                      onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => {
+                        const contactElement = document.getElementById('contact');
+                        if (contactElement) {
+                          contactElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
                     >
                       {slide.contact}
                     </Button>
