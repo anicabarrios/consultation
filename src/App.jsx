@@ -6,6 +6,8 @@ import BackToTop from './components/Backtotop/Backtotop';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage/ServicesPage';
 import ServicePage from './pages/ServicePage/ServicePage';
+import AboutPage from './pages/AboutPage/AboutPage';
+import ContactPage from './pages/ContactPage/ContactPage';
 import './App.css';
 
 function ScrollToTop() {
@@ -46,6 +48,16 @@ export default function App() {
             <Route 
               path="/services/:serviceSlug" 
               element={<ServicePage language={language} />} 
+            />
+            
+            <Route 
+              path="/about" 
+              element={<AboutPage language={language} />} 
+            />
+            
+            <Route 
+              path="/contact" 
+              element={<ContactPage language={language} />} 
             />
             
             <Route 

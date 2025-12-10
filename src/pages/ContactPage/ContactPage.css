@@ -1,0 +1,368 @@
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  /* CSS Custom Properties for responsive values */
+  --section-pt: 45px;
+  --section-pb: clamp(60px, 10vw, 100px);
+  --map-py: clamp(50px, 7vw, 90px);
+  --map-iframe-h: clamp(350px, 50vw, 500px);
+  --overlay-pt: clamp(60px, 8vw, 80px);
+  --overlay-px: clamp(20px, 4vw, 40px);
+  --overlay-pb: clamp(20px, 3vw, 30px);
+}
+
+.contact-page .contact-section {
+  padding-top: var(--section-pt) !important;
+  padding-bottom: var(--section-pb) !important;
+}
+
+/* Map Section */
+.contact-map-section {
+  position: relative;
+  padding: var(--map-py) 0;
+  background: linear-gradient(180deg, var(--light-bg) 0%, #ffffff 50%, var(--light-bg) 100%);
+  overflow: hidden;
+}
+
+.contact-map-pattern {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(175, 162, 127, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(26, 26, 46, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-map-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.contact-map-subtitle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 16px);
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+  justify-content: center;
+}
+
+.contact-map-accent-line {
+  width: 4px;
+  height: clamp(20px, 3vw, 24px);
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+  border-radius: 2px;
+}
+
+.contact-map-subtitle {
+  color: var(--accent-color);
+  font-size: clamp(11px, 1.5vw, 14px);
+  font-weight: 700;
+  letter-spacing: clamp(2px, 0.5vw, 4px);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.contact-map-description {
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto clamp(28px, 4vw, 45px);
+}
+
+/* Map Container */
+.contact-map-container {
+  position: relative;
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+  border-radius: clamp(12px, 3vw, 24px);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 8px 25px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(224, 224, 224, 0.5);
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.contact-map-container:hover {
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12), 0 12px 30px rgba(0, 0, 0, 0.06);
+  border-color: rgba(175, 162, 127, 0.3);
+}
+
+.contact-map-iframe {
+  width: 100%;
+  height: var(--map-iframe-h);
+  border: none;
+  display: block;
+}
+
+/* Map Overlay */
+.contact-map-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(26, 26, 46, 0.95) 0%, rgba(26, 26, 46, 0.85) 70%, transparent 100%);
+  padding: var(--overlay-pt) var(--overlay-px) var(--overlay-pb);
+  z-index: 2;
+}
+
+.contact-map-overlay-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 24px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-map-address {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 16px);
+  font-size: clamp(13px, 2.2vw, 20px);
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.contact-map-address-icon {
+  width: clamp(30px, 6vw, 48px);
+  height: clamp(30px, 6vw, 48px);
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+  border-radius: clamp(8px, 1.5vw, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(175, 162, 127, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-map-address:hover .contact-map-address-icon {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(175, 162, 127, 0.4);
+}
+
+/* Directions Button */
+.contact-directions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(10px, 2vw, 18px) clamp(18px, 3.5vw, 32px);
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+  color: var(--text-light);
+  border: none;
+  border-radius: clamp(8px, 1.5vw, 12px);
+  font-size: clamp(11px, 1.6vw, 16px);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  box-shadow: 0 6px 20px rgba(175, 162, 127, 0.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-directions-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(175, 162, 127, 0.4);
+  color: var(--text-light);
+  filter: brightness(1.05);
+}
+
+.contact-directions-btn:active {
+  transform: translateY(-1px);
+}
+
+.contact-directions-btn svg {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.contact-directions-btn:hover svg:first-child {
+  transform: translateX(-2px);
+}
+
+.contact-directions-btn:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 991px) {
+  .contact-page {
+    --section-pt: 50px;
+    --section-pb: clamp(50px, 8vw, 80px);
+    --map-py: clamp(40px, 6vw, 70px);
+    --map-iframe-h: clamp(320px, 45vw, 420px);
+    --overlay-pt: clamp(50px, 7vw, 70px);
+    --overlay-px: clamp(20px, 3vw, 30px);
+    --overlay-pb: clamp(18px, 2.5vw, 24px);
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 767px) {
+  .contact-page {
+    --section-pt: 40px;
+    --section-pb: clamp(40px, 7vw, 60px);
+    --map-py: clamp(35px, 5vw, 60px);
+    --map-iframe-h: clamp(280px, 55vw, 350px);
+    --overlay-pt: clamp(45px, 6vw, 60px);
+    --overlay-px: clamp(16px, 3vw, 24px);
+    --overlay-pb: clamp(16px, 2.5vw, 24px);
+  }
+  
+  .contact-map-overlay-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact-map-address {
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .contact-directions-btn {
+    width: 100%;
+    justify-content: center;
+    max-width: 300px;
+  }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 575px) {
+  .contact-page {
+    --section-pt: 30px;
+    --section-pb: clamp(35px, 6vw, 50px);
+    --map-py: clamp(30px, 5vw, 50px);
+    --map-iframe-h: clamp(250px, 65vw, 300px);
+    --overlay-pt: 40px;
+    --overlay-px: 16px;
+    --overlay-pb: 16px;
+  }
+  
+  .contact-map-subtitle-wrapper {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-map-accent-line {
+    width: 3px;
+    height: 18px;
+  }
+}
+
+/* Responsive - Extra Small */
+@media (max-width: 375px) {
+  .contact-page {
+    --map-iframe-h: 220px;
+    --overlay-pt: 35px;
+    --overlay-px: 12px;
+    --overlay-pb: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .contact-page {
+    --map-iframe-h: 200px;
+    --overlay-pt: 30px;
+    --overlay-px: 10px;
+    --overlay-pb: 12px;
+  }
+  
+  .contact-map-subtitle-wrapper {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .contact-map-accent-line {
+    width: 3px;
+    height: 16px;
+  }
+  
+  .contact-map-subtitle {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .contact-map-container,
+  .contact-map-address-icon,
+  .contact-directions-btn,
+  .contact-directions-btn svg {
+    transition: none !important;
+  }
+  
+  .contact-map-container:hover,
+  .contact-directions-btn:hover,
+  .contact-map-address:hover .contact-map-address-icon,
+  .contact-directions-btn:hover svg {
+    transform: none !important;
+  }
+}
+
+.contact-directions-btn:focus-visible {
+  outline: 2px solid var(--text-light);
+  outline-offset: 3px;
+}
+
+@media (prefers-contrast: high) {
+  .contact-map-container {
+    border: 2px solid #000;
+  }
+  
+  .contact-directions-btn {
+    border: 2px solid #fff;
+  }
+  
+  .contact-map-overlay {
+    background: rgba(0, 0, 0, 0.95);
+  }
+}
+
+/* Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+  .contact-map-container:hover,
+  .contact-directions-btn:hover,
+  .contact-map-address:hover .contact-map-address-icon {
+    transform: none;
+  }
+  
+  .contact-directions-btn:active {
+    transform: scale(0.98);
+  }
+}
+
+@media print {
+  .contact-map-section {
+    background: #fff !important;
+    padding: 20px 0 !important;
+  }
+  
+  .contact-map-pattern,
+  .contact-map-iframe,
+  .contact-directions-btn {
+    display: none !important;
+  }
+  
+  .contact-map-container {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .contact-map-overlay {
+    position: static;
+    background: none;
+    padding: 20px 0;
+  }
+  
+  .contact-map-address {
+    color: #000 !important;
+  }
+}
