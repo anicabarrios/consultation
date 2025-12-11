@@ -4,8 +4,119 @@ import {
   Users, Shield, Building, Briefcase, Home, Scale, 
   FileSignature, Calculator, Clipboard, Gavel, Building2, MessageCircle 
 } from 'lucide-react';
-import { colors } from '../../utils/colors.js';
+import { colors } from '../../utils/colors';
+import { useScrollAnimation } from '../../utils/Usescrollanimation';
 import './Services.css';
+
+// Individual Service Card Component with scroll animation
+function ServiceCard({ service, index, language, onServiceClick, onServiceHover }) {
+  const IconComponent = service.icon;
+  
+  // Add scroll animation with staggered delay
+  const { ref, isVisible } = useScrollAnimation({
+    threshold: 0.1,
+    rootMargin: '0px 0px -80px 0px',
+    triggerOnce: true
+  });
+
+  // Calculate staggered delay (100ms per card)
+  const animationDelay = `${index * 100}ms`;
+  
+  // Base animation styles
+  const cardAnimationStyle = {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+    transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${animationDelay}`,
+  };
+
+  return (
+    <div 
+      ref={ref}
+      className="col-12 col-sm-6 col-lg-3" 
+      style={{ padding: '0', ...cardAnimationStyle }}
+    >
+      <div
+        className="service-button"
+        style={{
+          backgroundColor: colors.textLight,
+          border: '1px solid rgba(224, 224, 224, 0.4)',
+          borderRadius: '0',
+          padding: '80px 40px',
+          textAlign: 'center',
+          cursor: 'pointer',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '280px',
+          position: 'relative',
+          overflow: 'hidden',
+          zIndex: 1,
+          transform: 'translateY(0)',
+          boxShadow: `0 2px 8px ${colors.shadowLight}`,
+          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+        }}
+        onMouseEnter={(e) => onServiceHover(e, true)}
+        onMouseLeave={(e) => onServiceHover(e, false)}
+        onClick={() => onServiceClick(service.name)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onServiceClick(service.name);
+          }
+        }}
+        aria-label={`${language === 'sr' ? 'Saznajte više o' : 'Learn more about'} ${service.name}`}
+      >
+        {/* Icon Container */}
+        <div 
+          className="icon-container"
+          style={{
+            width: '72px',
+            height: '72px',
+            background: `linear-gradient(135deg, ${colors.accent}15 0%, ${colors.accent}08 100%)`,
+            borderRadius: '18px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '28px',
+            position: 'relative',
+            border: `1px solid ${colors.accent}15`,
+            boxShadow: `0 4px 12px ${colors.accent}10`,
+            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+          }}
+        >
+          <IconComponent 
+            size={28}
+            style={{ 
+              color: colors.accent,
+              strokeWidth: 2,
+              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+            }} 
+          />
+        </div>
+
+        {/* Service Title */}
+        <h3 
+          style={{
+            fontSize: '22px',
+            fontWeight: '700',
+            color: colors.primary,
+            margin: '0',
+            lineHeight: '1.3',
+            textAlign: 'center',
+            fontFamily: "'Inter', sans-serif",
+            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+          }}
+        >
+          {service.name}
+        </h3>
+      </div>
+    </div>
+  );
+}
 
 export default function Services({ language }) {
   const navigate = useNavigate();
@@ -172,95 +283,18 @@ export default function Services({ language }) {
           </div>
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid with Staggered Card Animations */}
         <div className="row services-grid">
-          {t.services.map((service, index) => {
-            const IconComponent = service.icon;
-            
-            return (
-              <div key={index} className="col-12 col-sm-6 col-lg-3" style={{ padding: '0' }}>
-                <div
-                  className="service-button"
-                  style={{
-                    backgroundColor: colors.textLight,
-                    border: '1px solid rgba(224, 224, 224, 0.4)',
-                    borderRadius: '0',
-                    padding: '80px 40px',
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minHeight: '280px',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    zIndex: 1,
-                    transform: 'translateY(0)',
-                    boxShadow: `0 2px 8px ${colors.shadowLight}`,
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                  }}
-                  onMouseEnter={(e) => handleServiceHover(e, true)}
-                  onMouseLeave={(e) => handleServiceHover(e, false)}
-                  onClick={() => handleServiceClick(service.name)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      handleServiceClick(service.name);
-                    }
-                  }}
-                  aria-label={`${language === 'sr' ? 'Saznajte više o' : 'Learn more about'} ${service.name}`}
-                >
-                  {/* Icon Container */}
-                  <div 
-                    className="icon-container"
-                    style={{
-                      width: '72px',
-                      height: '72px',
-                      background: `linear-gradient(135deg, ${colors.accent}15 0%, ${colors.accent}08 100%)`,
-                      borderRadius: '18px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: '28px',
-                      position: 'relative',
-                      border: `1px solid ${colors.accent}15`,
-                      boxShadow: `0 4px 12px ${colors.accent}10`,
-                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}
-                  >
-                    <IconComponent 
-                      size={28}
-                      style={{ 
-                        color: colors.accent,
-                        strokeWidth: 2,
-                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                      }} 
-                    />
-                  </div>
-
-                  {/* Service Title */}
-                  <h3 
-                    style={{
-                      fontSize: '22px',
-                      fontWeight: '700',
-                      color: colors.primary,
-                      margin: '0',
-                      lineHeight: '1.3',
-                      textAlign: 'center',
-                      fontFamily: "'Inter', sans-serif",
-                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}
-                  >
-                    {service.name}
-                  </h3>
-                </div>
-              </div>
-            );
-          })}
+          {t.services.map((service, index) => (
+            <ServiceCard
+              key={index}
+              service={service}
+              index={index}
+              language={language}
+              onServiceClick={handleServiceClick}
+              onServiceHover={handleServiceHover}
+            />
+          ))}
         </div>
       </div>
     </section>

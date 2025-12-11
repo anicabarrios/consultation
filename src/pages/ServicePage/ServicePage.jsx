@@ -8,6 +8,7 @@ import { colors } from '../../utils/colors.js';
 import { getServiceBySlug, getAllServices } from '../../utils/serviceData.js';
 import Button from '../../components/Button.jsx';
 import Card from '../../components/Card.jsx';
+import AnimatedSection from '../../components/AnimatedSection/AnimatedSection';
 import './ServicePage.css';
 
 export default function ServicePage({ language }) {
@@ -82,49 +83,62 @@ export default function ServicePage({ language }) {
   return (
     <div className="service-page-wrapper" style={cssVars}>
       <main className="service-page-main">
-        {/* Hero Section */}
-        <section className="service-hero-section">
-          <div className="service-hero-pattern" />
-          <div className="container service-hero-container">
-            <button 
-              className="service-back-button"
-              onClick={() => navigate('/services')}
-              aria-label={t.backToServices}
-            >
-              <span className="back-button-icon">
-                <ArrowLeft size={16} strokeWidth={2.5} />
-              </span>
-              <span className="back-button-text">{t.backToServices}</span>
-            </button>
+        {/* Hero Section - Scale in animation */}
+        <AnimatedSection 
+          animation="scale-in" 
+          threshold={0.1}
+          rootMargin="0px 0px -50px 0px"
+          duration="normal"
+        >
+          <section className="service-hero-section">
+            <div className="service-hero-pattern" />
+            <div className="container service-hero-container">
+              <button 
+                className="service-back-button"
+                onClick={() => navigate('/services')}
+                aria-label={t.backToServices}
+              >
+                <span className="back-button-icon">
+                  <ArrowLeft size={16} strokeWidth={2.5} />
+                </span>
+                <span className="back-button-text">{t.backToServices}</span>
+              </button>
 
-            <div className="row align-items-center">
-              <div className="col-12 col-lg-8">
-                <div className="service-category-label">
-                  <div className="service-category-line" />
-                  <span className="service-category-text">{t.practiceArea}</span>
+              <div className="row align-items-center">
+                <div className="col-12 col-lg-8">
+                  <div className="service-category-label">
+                    <div className="service-category-line" />
+                    <span className="service-category-text">{t.practiceArea}</span>
+                  </div>
+                  <h1 className="service-hero-title">{content.name}</h1>
+                  <p className="service-hero-subtitle">{content.subtitle}</p>
+                  <p className="service-hero-description">{content.description}</p>
                 </div>
-                <h1 className="service-hero-title">{content.name}</h1>
-                <p className="service-hero-subtitle">{content.subtitle}</p>
-                <p className="service-hero-description">{content.description}</p>
-              </div>
 
-              <div className="col-12 col-lg-4 d-none d-lg-block">
-                <div className="service-hero-icon-wrapper">
-                  <div className="service-hero-icon-circle">
-                    <IconComponent size={80} color={colors.accent} strokeWidth={1.5} />
+                <div className="col-12 col-lg-4 d-none d-lg-block">
+                  <div className="service-hero-icon-wrapper">
+                    <div className="service-hero-icon-circle">
+                      <IconComponent size={80} color={colors.accent} strokeWidth={1.5} />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </AnimatedSection>
 
         {/* Content Section */}
         <section className="service-content-section">
           <div className="container">
             <div className="row g-4 g-lg-5">
-              {/* Main Content */}
-              <div className="col-12 col-lg-8 order-1">
+              {/* Main Content - Fade from left */}
+              <AnimatedSection 
+                animation="fade-left" 
+                threshold={0.1}
+                rootMargin="0px 0px -80px 0px"
+                duration="normal"
+                className="col-12 col-lg-8 order-1"
+              >
                 <Card variant="elevated" padding="large" className="service-overview-card">
                   <div className="service-overview-header">
                     <div className="service-overview-icon">
@@ -170,10 +184,16 @@ export default function ServicePage({ language }) {
                     ))}
                   </div>
                 </Card>
-              </div>
+              </AnimatedSection>
 
-              {/* Sidebar */}
-              <div className="col-12 col-lg-4 order-2">
+              {/* Sidebar - Fade from right */}
+              <AnimatedSection 
+                animation="fade-right" 
+                threshold={0.1}
+                rootMargin="0px 0px -80px 0px"
+                duration="normal"
+                className="col-12 col-lg-4 order-2"
+              >
                 <div className="service-sidebar">
                   <Card variant="elevated" padding="large" className="service-contact-card">
                     <div className="sidebar-card-header">
@@ -242,7 +262,7 @@ export default function ServicePage({ language }) {
                     </div>
                   </Card>
                 </div>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>

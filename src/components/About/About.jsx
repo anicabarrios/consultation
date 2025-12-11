@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { colors } from '../../utils/colors.js';
 import Card from '../Card.jsx';
 
@@ -32,6 +32,38 @@ export default function About({ language }) {
   };
 
   const t = content[language];
+
+  // Animation refs for entrance effects
+  const mainSectionRef = useRef(null);
+  const quoteSectionRef = useRef(null);
+  const trustSectionRef = useRef(null);
+
+  // Animation logic
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections when they mount
+    const sections = [mainSectionRef.current, quoteSectionRef.current, trustSectionRef.current];
+    sections.forEach(section => {
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
   const styles = {
     getCSSVars: () => ({
       '--section-padding': 'clamp(80px, 12vw, 120px)',
@@ -559,6 +591,46 @@ export default function About({ language }) {
           to { opacity: 1; transform: translateX(0); }
         }
 
+
+        /* Entrance Animations */
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Animation Classes */
+        .about-component section {
+          opacity: 0;
+          transform: translateY(40px);
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about-component section.animate-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* Staggered animation delays for child elements */
+        .about-component section.animate-in .col-12:first-child {
+          animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .about-component section.animate-in .col-12:last-child {
+          animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        /* Respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+          .about-component section,
+          .about-component section.animate-in,
+          .about-component section.animate-in .col-12:first-child,
+          .about-component section.animate-in .col-12:last-child {
+            animation: none !important;
+            transition: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        }
         /* Responsive Breakpoints */
         @media (max-width: 1199px) and (min-width: 768px) {
           .about-component {
@@ -619,7 +691,7 @@ export default function About({ language }) {
 
       <div className="about-component">
         {/* Main About Section */}
-        <section id="about" style={styles.mainSection}>
+        <section id="about" ref={mainSectionRef} style={styles.mainSection}>
           <div style={styles.bgGradient} />
           
           <div className="container" style={styles.container}>
@@ -681,7 +753,7 @@ export default function About({ language }) {
         </section>
 
         {/* Quote Section */}
-        <section style={styles.quoteSection}>
+        <section ref={quoteSectionRef} style={styles.quoteSection}>
           <div style={styles.quoteBgTexture} />
           
           <div className="container">
@@ -787,7 +859,7 @@ export default function About({ language }) {
         </section>
 
         {/* Trust Section */}
-        <section style={styles.trustSection}>
+        <section ref={trustSectionRef} style={styles.trustSection}>
           <div className="container">
             <div className="row align-items-center g-5">
               {/* Image Column */}

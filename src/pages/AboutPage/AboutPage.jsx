@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { colors } from '../../utils/colors.js';
 import HeroPages from '../../components/HeroPages/HeroPages';
+import AnimatedSection from '../../components/AnimatedSection/AnimatedSection';
 import './AboutPage.css';
 
 export default function AboutPage({ language }) {
@@ -133,132 +134,153 @@ export default function AboutPage({ language }) {
         iconSize={48}
       />
 
-      {/* Lawyer Profile Section */}
-      <section className="about-lawyer-section">
-        <div className="about-lawyer-pattern" aria-hidden="true" />
-        <div className="container">
-          <div className="about-lawyer-wrapper">
-            <div className="about-lawyer-visual">
-              <div className="about-lawyer-frame">
-                <div className="about-lawyer-photo">
-                  <User className="about-photo-icon" color={colors.accent} strokeWidth={0.5} />
-                  <span className="about-photo-text">
-                    {language === 'sr' ? 'Fotografija' : 'Photo'}
-                  </span>
-                </div>
-                <div className="about-lawyer-frame-badge">
-                  <Scale size={16} color={colors.textLight} strokeWidth={2} />
-                </div>
-              </div>
-            </div>
-
-            <div className="about-lawyer-content">
-              <div className="about-lawyer-badge">
-                <Award size={14} color={colors.accent} strokeWidth={2} />
-                <span>{t.lawyer.badge}</span>
-              </div>
-
-              <h2 className="about-lawyer-name">{t.lawyer.name}</h2>
-              <p className="about-lawyer-title">{t.lawyer.title}</p>
-              <p className="about-lawyer-description">{t.lawyer.description}</p>
-
-              <div className="about-credentials">
-                <div className="about-credential-group">
-                  <div className="about-credential-header">
-                    <GraduationCap size={18} color={colors.accent} strokeWidth={2} />
-                    <h4>{t.lawyer.qualifications}</h4>
+      {/* Lawyer Profile Section - Fade up animation */}
+      <AnimatedSection 
+        animation="fade-up" 
+        threshold={0.1}
+        rootMargin="0px 0px -80px 0px"
+        duration="normal"
+      >
+        <section className="about-lawyer-section">
+          <div className="about-lawyer-pattern" aria-hidden="true" />
+          <div className="container">
+            <div className="about-lawyer-wrapper">
+              <div className="about-lawyer-visual">
+                <div className="about-lawyer-frame">
+                  <div className="about-lawyer-photo">
+                    <User className="about-photo-icon" color={colors.accent} strokeWidth={0.5} />
+                    <span className="about-photo-text">
+                      {language === 'sr' ? 'Fotografija' : 'Photo'}
+                    </span>
                   </div>
-                  <div className="about-credential-tags">
-                    {t.lawyer.qualificationsList.map((item, idx) => (
-                      <span key={idx} className="about-credential-tag">
-                        <CheckCircle size={12} color={colors.accent} strokeWidth={2} />
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="about-credential-group">
-                  <div className="about-credential-header">
-                    <Briefcase size={18} color={colors.accent} strokeWidth={2} />
-                    <h4>{t.lawyer.expertise}</h4>
-                  </div>
-                  <div className="about-credential-tags about-credential-tags--accent">
-                    {t.lawyer.expertiseList.map((item, idx) => (
-                      <span key={idx} className="about-credential-tag about-credential-tag--accent">
-                        {item}
-                      </span>
-                    ))}
+                  <div className="about-lawyer-frame-badge">
+                    <Scale size={16} color={colors.textLight} strokeWidth={2} />
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Values Section */}
-      <section className="about-values-section">
-        <div className="about-values-pattern" aria-hidden="true" />
-        <div className="container">
-          <div className="row justify-content-center mb-5">
-            <div className="col-12 col-lg-8 text-center">
-              <div className="about-values-badge">
-                <Star size={14} color={colors.accent} strokeWidth={2} />
-                <span>{t.values.badge}</span>
-              </div>
-              <h2 className="about-values-title">{t.values.title}</h2>
-              <p className="about-values-description">{t.values.description}</p>
-            </div>
-          </div>
+              <div className="about-lawyer-content">
+                <div className="about-lawyer-badge">
+                  <Award size={14} color={colors.accent} strokeWidth={2} />
+                  <span>{t.lawyer.badge}</span>
+                </div>
 
-          <div className="row g-4">
-            {t.values.items.map((item, index) => {
-              const IconComponent = item.icon;
-              return (
-                <div key={index} className="col-12 col-sm-6 col-lg-3">
-                  <div className="about-value-card">
-                    <div className="about-value-icon">
-                      <IconComponent size={28} color={colors.accent} strokeWidth={1.5} />
+                <h2 className="about-lawyer-name">{t.lawyer.name}</h2>
+                <p className="about-lawyer-title">{t.lawyer.title}</p>
+                <p className="about-lawyer-description">{t.lawyer.description}</p>
+
+                <div className="about-credentials">
+                  <div className="about-credential-group">
+                    <div className="about-credential-header">
+                      <GraduationCap size={18} color={colors.accent} strokeWidth={2} />
+                      <h4>{t.lawyer.qualifications}</h4>
                     </div>
-                    <h3 className="about-value-title">{item.title}</h3>
-                    <p className="about-value-description">{item.description}</p>
+                    <div className="about-credential-tags">
+                      {t.lawyer.qualificationsList.map((item, idx) => (
+                        <span key={idx} className="about-credential-tag">
+                          <CheckCircle size={12} color={colors.accent} strokeWidth={2} />
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Promise Section */}
-      <section className="about-promise-section">
-        <div className="about-promise-pattern" aria-hidden="true" />
-        <div className="container">
-          <div className="row align-items-center g-4 g-lg-5">
-            <div className="col-12 col-lg-5">
-              <div className="about-promise-content">
-                <div className="about-promise-badge">
-                  <Shield size={14} color={colors.accent} strokeWidth={2} />
-                  <span>{t.promise.badge}</span>
-                </div>
-                <h2 className="about-promise-title">{t.promise.title}</h2>
-                <p className="about-promise-description">{t.promise.description}</p>
-              </div>
-            </div>
-            <div className="col-12 col-lg-7">
-              <div className="about-promise-grid">
-                {t.promise.points.map((point, index) => (
-                  <div key={index} className="about-promise-item">
-                    <div className="about-promise-number">{index + 1}</div>
-                    <span>{point}</span>
+                  <div className="about-credential-group">
+                    <div className="about-credential-header">
+                      <Briefcase size={18} color={colors.accent} strokeWidth={2} />
+                      <h4>{t.lawyer.expertise}</h4>
+                    </div>
+                    <div className="about-credential-tags about-credential-tags--accent">
+                      {t.lawyer.expertiseList.map((item, idx) => (
+                        <span key={idx} className="about-credential-tag about-credential-tag--accent">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimatedSection>
+
+      {/* Values Section - Fade in animation */}
+      <AnimatedSection 
+        animation="fade-in" 
+        threshold={0.15}
+        rootMargin="0px 0px -60px 0px"
+        duration="slow"
+      >
+        <section className="about-values-section">
+          <div className="about-values-pattern" aria-hidden="true" />
+          <div className="container">
+            <div className="row justify-content-center mb-5">
+              <div className="col-12 col-lg-8 text-center">
+                <div className="about-values-badge">
+                  <Star size={14} color={colors.accent} strokeWidth={2} />
+                  <span>{t.values.badge}</span>
+                </div>
+                <h2 className="about-values-title">{t.values.title}</h2>
+                <p className="about-values-description">{t.values.description}</p>
+              </div>
+            </div>
+
+            <div className="row g-4">
+              {t.values.items.map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <div key={index} className="col-12 col-sm-6 col-lg-3">
+                    <div className="about-value-card">
+                      <div className="about-value-icon">
+                        <IconComponent size={28} color={colors.accent} strokeWidth={1.5} />
+                      </div>
+                      <h3 className="about-value-title">{item.title}</h3>
+                      <p className="about-value-description">{item.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Promise Section - Fade up animation */}
+      <AnimatedSection 
+        animation="fade-up" 
+        threshold={0.1}
+        rootMargin="0px 0px -80px 0px"
+        duration="normal"
+      >
+        <section className="about-promise-section">
+          <div className="about-promise-pattern" aria-hidden="true" />
+          <div className="container">
+            <div className="row align-items-center g-4 g-lg-5">
+              <div className="col-12 col-lg-5">
+                <div className="about-promise-content">
+                  <div className="about-promise-badge">
+                    <Shield size={14} color={colors.accent} strokeWidth={2} />
+                    <span>{t.promise.badge}</span>
+                  </div>
+                  <h2 className="about-promise-title">{t.promise.title}</h2>
+                  <p className="about-promise-description">{t.promise.description}</p>
+                </div>
+              </div>
+              <div className="col-12 col-lg-7">
+                <div className="about-promise-grid">
+                  {t.promise.points.map((point, index) => (
+                    <div key={index} className="about-promise-item">
+                      <div className="about-promise-number">{index + 1}</div>
+                      <span>{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
     </div>
   );
 }

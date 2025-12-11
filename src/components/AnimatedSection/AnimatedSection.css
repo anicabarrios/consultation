@@ -1,0 +1,244 @@
+.scroll-reveal {
+  opacity: 0;
+  transition: 
+    opacity var(--scroll-reveal-duration, 700ms) cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--scroll-reveal-delay, 0ms),
+    transform var(--scroll-reveal-duration, 700ms) cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--scroll-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* Visible state */
+.scroll-reveal--visible {
+  opacity: 1;
+  will-change: auto;
+}
+
+/* Fade Up   */
+.scroll-reveal--fadeUp {
+  transform: translateY(25px);
+}
+
+.scroll-reveal--fadeUp.scroll-reveal--visible {
+  transform: translateY(0);
+}
+
+/* Fade Up Slight  */
+.scroll-reveal--fadeUpSlight {
+  transform: translateY(18px);
+}
+
+.scroll-reveal--fadeUpSlight.scroll-reveal--visible {
+  transform: translateY(0);
+}
+
+/* Fade In */
+.scroll-reveal--fadeIn {
+  transform: none;
+}
+
+.scroll-reveal--fadeIn.scroll-reveal--visible {
+  transform: none;
+}
+
+/* Fade Left */
+.scroll-reveal--fadeLeft {
+  transform: translateX(-25px);
+}
+
+.scroll-reveal--fadeLeft.scroll-reveal--visible {
+  transform: translateX(0);
+}
+
+/* Fade Right */
+.scroll-reveal--fadeRight {
+  transform: translateX(25px);
+}
+
+.scroll-reveal--fadeRight.scroll-reveal--visible {
+  transform: translateX(0);
+}
+
+/* Scale In  */
+.scroll-reveal--scaleIn {
+  transform: scale(0.97);
+}
+
+.scroll-reveal--scaleIn.scroll-reveal--visible {
+  transform: scale(1);
+}
+
+/* Zoom In  */
+.scroll-reveal--zoomIn {
+  transform: scale(0.98);
+}
+
+.scroll-reveal--zoomIn.scroll-reveal--visible {
+  transform: scale(1);
+}
+
+.scroll-reveal--gentle {
+  transform: translateY(12px);
+}
+
+.scroll-reveal--gentle.scroll-reveal--visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 991px) {
+  .scroll-reveal--fadeUp {
+    transform: translateY(20px);
+  }
+  
+  .scroll-reveal--fadeUpSlight {
+    transform: translateY(15px);
+  }
+  
+  .scroll-reveal--fadeLeft {
+    transform: translateX(-20px);
+  }
+  
+  .scroll-reveal--fadeRight {
+    transform: translateX(20px);
+  }
+  
+  .scroll-reveal--gentle {
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 767px) {
+  .scroll-reveal {
+    transition-duration: calc(var(--scroll-reveal-duration, 700ms) * 0.85);
+  }
+  
+  .scroll-reveal--fadeUp {
+    transform: translateY(18px);
+  }
+  
+  .scroll-reveal--fadeUpSlight {
+    transform: translateY(12px);
+  }
+  
+  .scroll-reveal--fadeLeft {
+    transform: translateX(-15px);
+  }
+  
+  .scroll-reveal--fadeRight {
+    transform: translateX(15px);
+  }
+  
+  .scroll-reveal--gentle {
+    transform: translateY(8px);
+  }
+}
+
+@media (max-width: 575px) {
+  .scroll-reveal {
+    transition-duration: calc(var(--scroll-reveal-duration, 700ms) * 0.75);
+  }
+  
+  .scroll-reveal--fadeUp {
+    transform: translateY(15px);
+  }
+  
+  .scroll-reveal--fadeUpSlight {
+    transform: translateY(10px);
+  }
+  
+  .scroll-reveal--fadeLeft {
+    transform: translateX(-12px);
+  }
+  
+  .scroll-reveal--fadeRight {
+    transform: translateX(12px);
+  }
+  
+  .scroll-reveal--gentle {
+    transform: translateY(6px);
+  }
+}
+
+
+@media (max-width: 375px) {
+  .scroll-reveal {
+    transition-duration: calc(var(--scroll-reveal-duration, 700ms) * 0.7);
+  }
+  
+  .scroll-reveal--fadeUp,
+  .scroll-reveal--fadeUpSlight {
+    transform: translateY(12px);
+  }
+  
+  .scroll-reveal--fadeLeft,
+  .scroll-reveal--fadeRight {
+    transform: translateX(-10px);
+  }
+  
+  .scroll-reveal--gentle {
+    transform: translateY(5px);
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal--fadeUp,
+  .scroll-reveal--fadeUpSlight,
+  .scroll-reveal--fadeIn,
+  .scroll-reveal--fadeLeft,
+  .scroll-reveal--fadeRight,
+  .scroll-reveal--scaleIn,
+  .scroll-reveal--zoomIn,
+  .scroll-reveal--gentle {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+@media (prefers-contrast: high) {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+@media print {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+.section-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 
+    opacity 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.section-reveal[data-delay="1"] { transition-delay: 50ms; }
+.section-reveal[data-delay="2"] { transition-delay: 100ms; }
+.section-reveal[data-delay="3"] { transition-delay: 150ms; }
+.section-reveal[data-delay="4"] { transition-delay: 200ms; }
+.section-reveal[data-delay="5"] { transition-delay: 250ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .section-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

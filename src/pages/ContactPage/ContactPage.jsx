@@ -3,6 +3,7 @@ import { Mail, MapPin, Navigation, ExternalLink } from 'lucide-react';
 import { colors } from '../../utils/colors.js';
 import HeroPages from '../../components/HeroPages/HeroPages';
 import Contact from '../../components/Contact/Contact';
+import AnimatedSection from '../../components/AnimatedSection/AnimatedSection';
 import './ContactPage.css';
 
 export default function ContactPage({ language }) {
@@ -54,57 +55,73 @@ export default function ContactPage({ language }) {
         iconSize={48}
       />
 
-      <Contact language={language} />
+      {/* Contact Form  */}
+      <AnimatedSection 
+        animation="fade-up" 
+        threshold={0.1}
+        rootMargin="0px 0px -80px 0px"
+        duration="normal"
+      >
+        <Contact language={language} />
+      </AnimatedSection>
 
-      <section className="contact-map-section">
-        <div className="contact-map-pattern" aria-hidden="true" />
-        
-        <div className="container">
-          <div className="row justify-content-center mb-4">
-            <div className="col-12 text-center">
-              <div className="contact-map-subtitle-wrapper">
-                <div className="contact-map-accent-line" />
-                <p className="contact-map-subtitle">{t.map.subtitle}</p>
-                <div className="contact-map-accent-line" />
-              </div>
-              <p className="contact-map-description">{t.map.description}</p>
-            </div>
-          </div>
-
-          <div className="contact-map-container">
-            <iframe
-              className="contact-map-iframe"
-              src={mapEmbedUrl}
-              title={t.map.mapTitle}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-            
-            <div className="contact-map-overlay">
-              <div className="contact-map-overlay-content">
-                <div className="contact-map-address">
-                  <div className="contact-map-address-icon">
-                    <MapPin size={20} color={colors.textLight} strokeWidth={2} />
-                  </div>
-                  <span>{t.map.address}</span>
+      {/* Map Section - Scale in animation */}
+      <AnimatedSection 
+        animation="scale-in" 
+        threshold={0.15}
+        rootMargin="0px 0px -60px 0px"
+        duration="slow"
+      >
+        <section className="contact-map-section">
+          <div className="contact-map-pattern" aria-hidden="true" />
+          
+          <div className="container">
+            <div className="row justify-content-center mb-4">
+              <div className="col-12 text-center">
+                <div className="contact-map-subtitle-wrapper">
+                  <div className="contact-map-accent-line" />
+                  <p className="contact-map-subtitle">{t.map.subtitle}</p>
+                  <div className="contact-map-accent-line" />
                 </div>
-                <a
-                  href={googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact-directions-btn"
-                  aria-label={t.map.directionsAria}
-                >
-                  <Navigation size={16} strokeWidth={2} />
-                  {t.map.directionsBtn}
-                  <ExternalLink size={14} strokeWidth={2} />
-                </a>
+                <p className="contact-map-description">{t.map.description}</p>
+              </div>
+            </div>
+
+            <div className="contact-map-container">
+              <iframe
+                className="contact-map-iframe"
+                src={mapEmbedUrl}
+                title={t.map.mapTitle}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              
+              <div className="contact-map-overlay">
+                <div className="contact-map-overlay-content">
+                  <div className="contact-map-address">
+                    <div className="contact-map-address-icon">
+                      <MapPin size={20} color={colors.textLight} strokeWidth={2} />
+                    </div>
+                    <span>{t.map.address}</span>
+                  </div>
+                  <a
+                    href={googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-directions-btn"
+                    aria-label={t.map.directionsAria}
+                  >
+                    <Navigation size={16} strokeWidth={2} />
+                    {t.map.directionsBtn}
+                    <ExternalLink size={14} strokeWidth={2} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimatedSection>
     </div>
   );
 }

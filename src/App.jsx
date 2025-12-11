@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import BackToTop from './components/Backtotop/Backtotop';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import ServicesPage from './pages/ServicesPage/ServicesPage';
 import ServicePage from './pages/ServicePage/ServicePage';
 import AboutPage from './pages/AboutPage/AboutPage';
