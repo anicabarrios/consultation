@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Scale, Phone, Mail, MapPin } from 'lucide-react';
 import { colors } from '../../utils/colors.js';
 import BackToTop from '../Backtotop/Backtotop.jsx';
@@ -6,21 +7,24 @@ import './Footer.css';
 
 export default function Footer({ language = 'sr' }) {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const content = {
     sr: {
       brand: {
         name: 'Ilić Lj. Suzana',
         title: 'Advokatska kancelarija',
-        description: 'Profesionalne pravne usluge sa dugogodišnjim iskustvom i posvećenošću svakom klijentu.'
+        description: 'Pružamo pouzdane pravne usluge zasnovane na dugogodišnjoj stručnosti, poverenju i potpunoj posvećenosti zaštiti interesa naših klijenata.'
       },
       quickLinks: {
         title: 'Brzi linkovi',
         links: [
-          { text: 'Početna', href: '/', type: 'home' },
-          { text: 'O nama', href: '#about', type: 'anchor' },
-          { text: 'Usluge', href: '/services', type: 'page' },
-          { text: 'Kontakt', href: '#contact', type: 'anchor' }
+          { text: 'Početna', href: '/' },
+          { text: 'O nama', href: '/about' },
+          { text: 'Usluge', href: '/services' },
+          { text: 'Pitajte Advokata', href: '/qa' },
+          { text: 'Kontakt', href: '/contact' }
         ]
       },
       contact: {
@@ -40,15 +44,16 @@ export default function Footer({ language = 'sr' }) {
       brand: {
         name: 'Ilić Lj. Suzana',
         title: 'Attorney at Law',
-        description: 'Professional legal services with years of experience and dedication to each client.'
+        description: 'We provide reliable legal services based on years of expertise, trust, and complete dedication to protecting our clients\' interests.'
       },
       quickLinks: {
         title: 'Quick Links',
         links: [
-          { text: 'Home', href: '/', type: 'home' },
-          { text: 'About', href: '#about', type: 'anchor' },
-          { text: 'Services', href: '/services', type: 'page' },
-          { text: 'Contact', href: '#contact', type: 'anchor' }
+          { text: 'Home', href: '/' },
+          { text: 'About', href: '/about' },
+          { text: 'Services', href: '/services' },
+          { text: 'Q&A', href: '/qa' },
+          { text: 'Contact', href: '/contact' }
         ]
       },
       contact: {
@@ -86,50 +91,7 @@ export default function Footer({ language = 'sr' }) {
   };
 
   const isHomePage = () => {
-    const path = window.location.pathname;
-    return path === '/' || path === '/index.html' || path === '';
-  };
-
-  const handleLinkClick = (link, e) => {
-    const { href, type } = link;
-
-    // Handle home link
-    if (type === 'home') {
-      e.preventDefault();
-      if (isHomePage()) {
-        // On home page - scroll to top
-        scrollToTop();
-      } else {
-        // On another page - navigate to home
-        window.location.href = '/';
-      }
-      return;
-    }
-
-    // Handle page navigation (like /services)
-    if (type === 'page') {
-      // Let the browser handle normal navigation
-      // No need to prevent default
-      return;
-    }
-
-    // Handle anchor links (#about, #contact, etc.)
-    if (type === 'anchor' && href.startsWith('#')) {
-      e.preventDefault();
-      
-      if (isHomePage()) {
-        // On home page - smooth scroll to section
-        const targetElement = document.getElementById(href.substring(1));
-        if (targetElement) {
-          const headerHeight = 80;
-          const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        }
-      } else {
-        // On another page - navigate to home with hash
-        window.location.href = '/' + href;
-      }
-    }
+    return location.pathname === '/' || location.pathname === '/index.html' || location.pathname === '';
   };
 
   const handleLogoClick = (e) => {
@@ -137,7 +99,7 @@ export default function Footer({ language = 'sr' }) {
     if (isHomePage()) {
       scrollToTop();
     } else {
-      window.location.href = '/';
+      navigate('/');
     }
   };
 
@@ -182,13 +144,12 @@ export default function Footer({ language = 'sr' }) {
                   <ul className="footer-links-list">
                     {t.quickLinks.links.map((link, index) => (
                       <li key={index}>
-                        <a 
-                          href={link.href}
+                        <Link 
+                          to={link.href}
                           className="footer-link"
-                          onClick={(e) => handleLinkClick(link, e)}
                         >
                           {link.text}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

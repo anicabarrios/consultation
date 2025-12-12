@@ -4,10 +4,11 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import BackToTop from './components/Backtotop/Backtotop';
 import HomePage from './pages/HomePage/HomePage';
-import ServicesPage from './pages/ServicesPage/ServicesPage';
-import ServicePage from './pages/ServicePage/ServicePage';
 import AboutPage from './pages/AboutPage/AboutPage';
 import ContactPage from './pages/ContactPage/ContactPage';
+import ServicesPage from './pages/ServicesPage/ServicesPage';
+import ServicePage from './pages/ServicePage/ServicePage';
+import QAPage from './pages/QAPage/QAPage';
 import './App.css';
 
 function ScrollToTop() {
@@ -41,6 +42,11 @@ export default function App() {
             />
             
             <Route 
+              path="/about" 
+              element={<AboutPage language={language} />} 
+            />
+
+            <Route 
               path="/services" 
               element={<ServicesPage language={language} />} 
             />
@@ -49,15 +55,15 @@ export default function App() {
               path="/services/:serviceSlug" 
               element={<ServicePage language={language} />} 
             />
-            
-            <Route 
-              path="/about" 
-              element={<AboutPage language={language} />} 
+
+             <Route 
+              path="/contact" 
+              element={<ContactPage language={language} />} 
             />
             
             <Route 
-              path="/contact" 
-              element={<ContactPage language={language} />} 
+              path="/qa" 
+              element={<QAPage language={language} />} 
             />
             
             <Route 

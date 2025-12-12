@@ -12,10 +12,17 @@ export default function HomePage({ language }) {
     <>
       <Hero language={language} />
   
-      <About language={language} />      
-      
+      <About language={language} />  
+
+      <AnimatedSection 
+        animation="fade-up" 
+        threshold={0.15}
+        rootMargin="0px 0px -60px 0px"
+        duration="slow"
+      >    
       <Services language={language} />
-      
+      </AnimatedSection>
+
       {/* Reviews - Fade in animation  */}
       <AnimatedSection 
         animation="fade-in" 

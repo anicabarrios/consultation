@@ -32,6 +32,7 @@ export default function Header({ language, setLanguage }) {
         home: 'Početna',
         services: 'Usluge',
         about: 'O nama',
+        qa: 'Pitajte Advokata',
         contact: 'Kontakt'
       },
       cta: 'Zakažite konsultacije',
@@ -42,6 +43,7 @@ export default function Header({ language, setLanguage }) {
         home: 'Home',
         services: 'Services',
         about: 'About',
+        qa: 'Q&A',
         contact: 'Contact'
       },
       cta: 'Schedule Consultation',
@@ -55,6 +57,7 @@ export default function Header({ language, setLanguage }) {
     home: '/',
     services: '/services',
     about: '/about',
+    qa: '/qa',
     contact: '/contact'
   };
 

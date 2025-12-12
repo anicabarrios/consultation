@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { colors } from '../../utils/colors';
 import Button from '../Button';
 import './Hero.css';
 
 export default function Hero({ language }) {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -86,6 +88,11 @@ export default function Hero({ language }) {
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
+  // Navigate to contact page
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+
   return (
     <section id="home" className="hero-carousel-section">
       <div className="hero-carousel-container">
@@ -120,24 +127,14 @@ export default function Hero({ language }) {
                     <Button
                       variant="primary"
                       size="large"
-                      onClick={() => {
-                        const contactElement = document.getElementById('contact');
-                        if (contactElement) {
-                          contactElement.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
+                      onClick={handleContactClick}
                     >
                       {slide.cta}
                     </Button>
                     <Button
                       variant="white"
                       size="large"
-                      onClick={() => {
-                        const contactElement = document.getElementById('contact');
-                        if (contactElement) {
-                          contactElement.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
+                      onClick={handleContactClick}
                     >
                       {slide.contact}
                     </Button>

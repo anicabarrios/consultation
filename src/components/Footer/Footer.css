@@ -102,7 +102,7 @@
   font-size: clamp(12px, 1.5vw, 14px);
   font-weight: 700;
   color: var(--footer-accent);
-  margin: 0 0 clamp(10px, 2vw, 16px) 0;
+  margin: 0 0 clamp(8px, 1.5vw, 12px) 0;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-family: 'Inter', -apple-system, sans-serif;
@@ -114,7 +114,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(6px, 1vw, 10px);
+  gap: clamp(3px, 0.6vw, 5px);
 }
 
 .footer-link {
@@ -124,7 +124,7 @@
   font-weight: 500;
   transition: all 0.25s ease;
   display: inline-block;
-  padding: 3px 0;
+  padding: 2px 0;
   position: relative;
 }
 
@@ -271,6 +271,43 @@
   .footer-component { --footer-padding-y: 32px; }
   .footer-brand-description { max-width: 100%; }
   .footer-content.row { gap: 24px; }
+  .footer-content.row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  /* Center footer content on tablet */
+  .footer-brand,
+  .footer-links,
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-logo {
+    justify-content: center;
+    margin: 0 auto 12px auto;
+  }
+  
+  .footer-brand-description {
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  .footer-section-title {
+    text-align: center;
+  }
+  
+  .footer-links-list,
+  .footer-contact-items {
+    align-items: center;
+  }
+  
+  .footer-contact-item {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 767px) {
@@ -331,7 +368,7 @@
   .footer-logo { gap: 10px; margin-bottom: 8px; }
   .footer-brand-description { font-size: 13px; }
   .footer-section-title { font-size: 12px; margin-bottom: 10px; }
-  .footer-links-list { gap: 6px; }
+  .footer-links-list { gap: 3px; }
   .footer-link { font-size: 14px; }
   .footer-contact-items { gap: 10px; }
   .footer-contact-icon { width: 30px; height: 30px; }
@@ -349,7 +386,7 @@
   .footer-brand-text p { font-size: 11px; }
   .footer-brand-description { font-size: 12px; }
   .footer-section-title { font-size: 11px; letter-spacing: 1.5px; margin-bottom: 8px; }
-  .footer-links-list { gap: 5px; }
+  .footer-links-list { gap: 3px; }
   .footer-link { font-size: 13px; }
   .footer-contact-items { gap: 8px; }
   .footer-contact-item { gap: 8px; }
@@ -368,7 +405,7 @@
   .footer-brand-text p { font-size: 10px; }
   .footer-brand-description { font-size: 11px; line-height: 1.5; }
   .footer-section-title { font-size: 10px; letter-spacing: 1px; margin-bottom: 6px; }
-  .footer-links-list { gap: 4px; }
+  .footer-links-list { gap: 2px; }
   .footer-link { font-size: 12px; }
   .footer-contact-items { gap: 6px; }
   .footer-contact-item { gap: 6px; }
