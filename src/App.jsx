@@ -9,6 +9,7 @@ import ContactPage from './pages/ContactPage/ContactPage';
 import ServicesPage from './pages/ServicesPage/ServicesPage';
 import ServicePage from './pages/ServicePage/ServicePage';
 import QAPage from './pages/QAPage/QAPage';
+import AdminPage from './pages/AdminPage/AdminPage';
 import './App.css';
 
 function ScrollToTop() {
@@ -65,6 +66,7 @@ export default function App() {
               path="/qa" 
               element={<QAPage language={language} />} 
             />
+            <Route path="/admin" element={<AdminPage language={language} />} />
             
             <Route 
               path="*" 

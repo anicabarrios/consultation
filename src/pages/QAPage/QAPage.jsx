@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { MessageCircle, Send, User, Calendar, ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { MessageCircle, Send, User, Calendar, ChevronDown, ChevronUp, HelpCircle, Clock, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
 import HeroPages from '../../components/HeroPages/HeroPages';
 import Button from '../../components/Button';
 import AnimatedSection from '../../components/AnimatedSection/AnimatedSection';
+import { submitQuestion, getQuestions } from '../../services/Qaapi';
 import './QAPage.css';
 
 export default function QAPage({ language }) {
@@ -12,9 +13,18 @@ export default function QAPage({ language }) {
     email: '',
     question: ''
   });
-  const [submitted, setSubmitted] = useState(false);
+  
+  // Form states
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: null, message: '' });
+  
+  // Data states
+  const [questions, setQuestions] = useState({ answered: [], pending: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
 
   const formatDate = (dateString) => {
+    if (!dateString) return '';
     const [year, month, day] = dateString.split('-');
     return `${day}/${month}/${year}`;
   };
@@ -35,15 +45,23 @@ export default function QAPage({ language }) {
         questionLabel: 'Vaše pitanje',
         questionPlaceholder: 'Opišite svoje pravno pitanje detaljno...',
         submit: 'Pošaljite',
-        success: 'Hvala! Vaše pitanje je poslato. Odgovorićemo uskoro.'
+        submitting: 'Slanje...',
+        success: 'Hvala! Vaše pitanje je uspešno poslato. Odgovorićemo uskoro.',
+        error: 'Došlo je do greške. Molimo pokušajte ponovo.'
       },
       qa: {
         title: 'Česta Pitanja',
         subtitle: 'Odgovori na najčešća pravna pitanja naših klijenata',
         answered: 'Odgovoreno',
+        pending: 'Čeka odgovor',
         readMore: 'Pročitaj odgovor',
         readLess: 'Sakrij odgovor',
-        noQuestions: 'Trenutno nema dostupnih pitanja i odgovora.'
+        noQuestions: 'Trenutno nema dostupnih pitanja i odgovora.',
+        loading: 'Učitavanje pitanja...',
+        loadError: 'Greška pri učitavanju pitanja.',
+        retry: 'Pokušaj ponovo',
+        pendingSection: 'Pitanja koja čekaju odgovor',
+        answeredSection: 'Odgovorena pitanja'
       }
     },
     en: {
@@ -61,91 +79,170 @@ export default function QAPage({ language }) {
         questionLabel: 'Your question',
         questionPlaceholder: 'Describe your legal question in detail...',
         submit: 'Submit',
-        success: 'Thank you! Your question has been submitted. We will respond soon.'
+        submitting: 'Submitting...',
+        success: 'Thank you! Your question has been successfully submitted. We will respond soon.',
+        error: 'An error occurred. Please try again.'
       },
       qa: {
         title: 'Frequently Asked Questions',
         subtitle: 'Answers to the most common legal questions from our clients',
         answered: 'Answered',
+        pending: 'Awaiting response',
         readMore: 'Read answer',
         readLess: 'Hide answer',
-        noQuestions: 'No questions and answers available at the moment.'
+        noQuestions: 'No questions and answers available at the moment.',
+        loading: 'Loading questions...',
+        loadError: 'Error loading questions.',
+        retry: 'Try again',
+        pendingSection: 'Questions awaiting response',
+        answeredSection: 'Answered questions'
       }
     }
   };
 
   const t = content[language];
 
-  const qaDataSource = [
-    {
-      id: 1,
-      question: {
-        sr: 'Koji su moji prava kao zaposlenog u slučaju otkaza?',
-        en: 'What are my rights as an employee in case of termination?'
-      },
-      answer: {
-        sr: 'Prema Zakonu o radu Republike Srbije, zaposleni ima pravo na otkazni rok koji zavisi od dužine radnog staža. Takođe, imate pravo na otpremninu ukoliko je otkaz izdat bez vaše krivice. Važno je da otkaz bude dat u pisanoj formi sa jasnim obrazloženjem razloga. U slučaju nezakonitog otkaza, zaposleni ima pravo da tuži poslodavca i zahteva vraćanje na posao ili finansijsku naknadu. Preporučujemo da se konsultujete sa advokatom kako biste zaštitili svoja prava.',
-        en: 'According to the Labor Law of the Republic of Serbia, employees have the right to a notice period that depends on the length of service. You also have the right to severance pay if the termination is made without your fault. It is important that the termination is given in written form with clear reasoning. In case of unlawful termination, the employee has the right to sue the employer and request reinstatement or financial compensation. We recommend consulting with a lawyer to protect your rights.'
-      },
-      author: 'Suzana Ilić',
-      date: '2024-12-05',
-      category: { sr: 'Radno Pravo', en: 'Labor Law' }
-    },
-    {
-      id: 2,
-      question: {
-        sr: 'Kako mogu da podelim imovinu nakon razvoda braka?',
-        en: 'How can I divide property after divorce?'
-      },
-      answer: {
-        sr: 'Podela bračne imovine nakon razvoda braka regulisana je Porodičnim zakonom. Zajednička imovina supružnika deli se po pravilu na jednake delove, osim ako se supružnici drukčije ne dogovore. U obzir se uzima sve što je stečeno za vreme trajanja braka, bez obzira na čije ime je registrovano. Imovina koja je stečena pre braka ili poklonom/nasledstvom ostaje odvojena. Postupak podele može biti sporazuman ili sudski. Preporučujemo da angažujete advokata koji će vas zastupati i zaštititi vaše interese tokom procesa podele imovine.',
-        en: 'Division of marital property after divorce is regulated by the Family Law. Joint property of spouses is generally divided equally, unless the spouses agree otherwise. Everything acquired during the marriage is taken into account, regardless of whose name it is registered under. Property acquired before marriage or by gift/inheritance remains separate. The division process can be consensual or through court. We recommend hiring a lawyer who will represent you and protect your interests during the property division process.'
-      },
-      author: 'Suzana Ilić',
-      date: '2024-12-01',
-      category: { sr: 'Porodično Pravo', en: 'Family Law' }
-    },
-    {
-      id: 3,
-      question: {
-        sr: 'Šta treba da znam prilikom kupovine nekretnine?',
-        en: 'What should I know when buying real estate?'
-      },
-      answer: {
-        sr: 'Pre kupovine nekretnine obavezno proverite pravni status objekta u Katastru nepokretnosti. Važno je da budete sigurni da prodavac ima pravo vlasništva i da nekretnina nije opterećena hipotekom ili drugim teretima. Preporučujemo sastavljanje predugovora koji definiše sve uslove kupoprodaje. Pred potpisivanje glavnog ugovora, neophodno je izvršiti proveru svih dokumenata kod notara. Kupac treba da bude svestan svih troškova koji prate kupovinu (porez na prenos apsolutnih prava, troškovi uknjižbe, notarski troškovi). Konsultacija sa advokatom je ključna kako bi se izbegale pravne zamke i zaštitili vaši interesi.',
-        en: 'Before buying real estate, make sure to check the legal status of the property in the Real Estate Cadastre. It is important to ensure that the seller has ownership rights and that the property is not encumbered by mortgage or other burdens. We recommend drafting a preliminary agreement that defines all terms of the sale. Before signing the main contract, it is necessary to verify all documents with a notary. The buyer should be aware of all costs associated with the purchase (property transfer tax, registration costs, notary fees). Consultation with a lawyer is crucial to avoid legal pitfalls and protect your interests.'
-      },
-      author: 'Suzana Ilić',
-      date: '2024-11-28',
-      category: { sr: 'Nepokretnosti', en: 'Real Estate' }
+  // Fetch questions from backend
+  const fetchQuestions = useCallback(async () => {
+    setIsLoading(true);
+    setLoadError(null);
+    
+    try {
+      const response = await getQuestions(language);
+      
+      if (response.success && response.data) {
+        setQuestions({
+          answered: response.data.answered || [],
+          pending: response.data.pending || [],
+          all: response.data.all || []
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching questions:', error);
+      setLoadError(language === 'sr' ? error.message : error.messageEn);
+    } finally {
+      setIsLoading(false);
     }
-  ];
+  }, [language]);
 
-  const qaData = qaDataSource.map(item => ({
-    id: item.id,
-    question: item.question[language],
-    answer: item.answer[language],
-    author: item.author,
-    date: item.date,
-    category: item.category[language]
-  }));
+  // Load questions on mount and language change
+  useEffect(() => {
+    fetchQuestions();
+  }, [fetchQuestions]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Question submitted:', formData);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', question: '' });
-    setTimeout(() => setSubmitted(false), 5000);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await submitQuestion({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        question: formData.question.trim()
+      });
+
+      if (response.success) {
+        setSubmitStatus({ 
+          type: 'success', 
+          message: language === 'sr' ? response.message : response.messageEn 
+        });
+        setFormData({ name: '', email: '', question: '' });
+        
+        // Refresh questions to show the new pending question
+        fetchQuestions();
+        
+        // Clear success message after 6 seconds
+        setTimeout(() => {
+          setSubmitStatus({ type: null, message: '' });
+        }, 6000);
+      }
+    } catch (error) {
+      console.error('Error submitting question:', error);
+      setSubmitStatus({ 
+        type: 'error', 
+        message: language === 'sr' ? (error.message || t.form.error) : (error.messageEn || t.form.error)
+      });
+      
+      // Clear error after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus({ type: null, message: '' });
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleQA = (id) => {
     setExpandedQA(expandedQA === id ? null : id);
   };
+
+  // Render a single Q&A item
+  const renderQAItem = (item, isAnswered = true) => (
+    <div key={item.id} className={`qa-item ${!isAnswered ? 'qa-item-pending' : ''}`}>
+      <div className="qa-header">
+        <div className="qa-meta">
+          {isAnswered && item.category && (
+            <span className="qa-category">{item.category}</span>
+          )}
+          {!isAnswered && (
+            <span className="qa-category qa-category-pending">
+              <Clock size={12} />
+              {t.qa.pending}
+            </span>
+          )}
+          <span className="qa-date">
+            <Calendar size={14} />
+            {formatDate(item.date)}
+          </span>
+        </div>
+        <h3 className="qa-question">{item.question}</h3>
+        <div className="qa-author-name">
+          <User size={14} />
+          <span>{item.name}</span>
+        </div>
+      </div>
+
+      {isAnswered && item.answer && (
+        <>
+          <div className={`qa-answer ${expandedQA === item.id ? 'expanded' : ''}`}>
+            <div className="answer-header">
+              <User size={16} />
+              <span>Suzana Ilić</span>
+              <span className="answered-badge">{t.qa.answered}</span>
+            </div>
+            <div className="answer-content">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+
+          <button
+            className="toggle-btn"
+            onClick={() => toggleQA(item.id)}
+            aria-expanded={expandedQA === item.id}
+            aria-label={expandedQA === item.id ? t.qa.readLess : t.qa.readMore}
+          >
+            {expandedQA === item.id ? (
+              <>
+                {t.qa.readLess}
+                <ChevronUp size={18} />
+              </>
+            ) : (
+              <>
+                {t.qa.readMore}
+                <ChevronDown size={18} />
+              </>
+            )}
+          </button>
+        </>
+      )}
+    </div>
+  );
 
   return (
     <div className="qa-page">
@@ -159,6 +256,7 @@ export default function QAPage({ language }) {
       <div className="qa-content">
         <div className="container">
           <div className="row">
+            {/* Question Form */}
             <div className="col-lg-5 mb-5 mb-lg-0">
               <AnimatedSection 
                 animation="fade-left" 
@@ -173,10 +271,19 @@ export default function QAPage({ language }) {
                   <p>{t.form.subtitle}</p>
                 </div>
 
-                {submitted && (
+                {/* Success Message */}
+                {submitStatus.type === 'success' && (
                   <div className="success-message">
                     <div className="success-icon">✓</div>
-                    <p>{t.form.success}</p>
+                    <p>{submitStatus.message}</p>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {submitStatus.type === 'error' && (
+                  <div className="error-message">
+                    <AlertCircle size={24} />
+                    <p>{submitStatus.message}</p>
                   </div>
                 )}
 
@@ -191,6 +298,7 @@ export default function QAPage({ language }) {
                       onChange={handleInputChange}
                       placeholder={t.form.namePlaceholder}
                       required
+                      disabled={isSubmitting}
                       className="form-input"
                     />
                   </div>
@@ -205,6 +313,7 @@ export default function QAPage({ language }) {
                       onChange={handleInputChange}
                       placeholder={t.form.emailPlaceholder}
                       required
+                      disabled={isSubmitting}
                       className="form-input"
                     />
                   </div>
@@ -218,19 +327,36 @@ export default function QAPage({ language }) {
                       onChange={handleInputChange}
                       placeholder={t.form.questionPlaceholder}
                       required
+                      disabled={isSubmitting}
                       rows="6"
                       className="form-input form-textarea"
                     />
                   </div>
 
-                  <Button type="submit" variant="primary" size="large" fullWidth={true}>
-                    <Send size={18} />
-                    {t.form.submit}
+                  <Button 
+                    type="submit" 
+                    variant="primary" 
+                    size="large" 
+                    fullWidth={true}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 size={18} className="spin" />
+                        {t.form.submitting}
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} />
+                        {t.form.submit}
+                      </>
+                    )}
                   </Button>
                 </form>
               </AnimatedSection>
             </div>
 
+            {/* Q&A List */}
             <div className="col-lg-7">
               <AnimatedSection 
                 animation="fade-right" 
@@ -245,58 +371,56 @@ export default function QAPage({ language }) {
                   <p>{t.qa.subtitle}</p>
                 </div>
 
-                {qaData.length === 0 ? (
-                  <div className="no-questions">
-                    <MessageCircle size={48} />
-                    <p>{t.qa.noQuestions}</p>
+                {/* Loading State */}
+                {isLoading && (
+                  <div className="loading-state">
+                    <Loader2 size={48} className="spin" />
+                    <p>{t.qa.loading}</p>
                   </div>
-                ) : (
-                  <div className="qa-list">
-                    {qaData.map((item) => (
-                      <div key={item.id} className="qa-item">
-                        <div className="qa-header">
-                          <div className="qa-meta">
-                            <span className="qa-category">{item.category}</span>
-                            <span className="qa-date">
-                              <Calendar size={14} />
-                              {formatDate(item.date)}
-                            </span>
-                          </div>
-                          <h3 className="qa-question">{item.question}</h3>
-                        </div>
+                )}
 
-                        <div className={`qa-answer ${expandedQA === item.id ? 'expanded' : ''}`}>
-                          <div className="answer-header">
-                            <User size={16} />
-                            <span>{item.author}</span>
-                            <span className="answered-badge">{t.qa.answered}</span>
-                          </div>
-                          <div className="answer-content">
-                            <p>{item.answer}</p>
-                          </div>
-                        </div>
+                {/* Error State */}
+                {loadError && !isLoading && (
+                  <div className="error-state">
+                    <AlertCircle size={48} />
+                    <p>{t.qa.loadError}</p>
+                    <button onClick={fetchQuestions} className="retry-btn">
+                      <RefreshCw size={18} />
+                      {t.qa.retry}
+                    </button>
+                  </div>
+                )}
 
-                        <button
-                          className="toggle-btn"
-                          onClick={() => toggleQA(item.id)}
-                          aria-expanded={expandedQA === item.id}
-                          aria-label={expandedQA === item.id ? t.qa.readLess : t.qa.readMore}
-                        >
-                          {expandedQA === item.id ? (
-                            <>
-                              {t.qa.readLess}
-                              <ChevronUp size={18} />
-                            </>
-                          ) : (
-                            <>
-                              {t.qa.readMore}
-                              <ChevronDown size={18} />
-                            </>
-                          )}
-                        </button>
+                {/* Questions List */}
+                {!isLoading && !loadError && (
+                  <>
+                    {questions.answered.length === 0 && questions.pending.length === 0 ? (
+                      <div className="no-questions">
+                        <MessageCircle size={48} />
+                        <p>{t.qa.noQuestions}</p>
                       </div>
-                    ))}
-                  </div>
+                    ) : (
+                      <div className="qa-list">
+                        {/* Answered Questions */}
+                        {questions.answered.length > 0 && (
+                          <>
+                            {questions.answered.map((item) => renderQAItem(item, true))}
+                          </>
+                        )}
+
+                        {/* Pending Questions */}
+                        {questions.pending.length > 0 && (
+                          <>
+                            <div className="qa-section-divider">
+                              <Clock size={18} />
+                              <span>{t.qa.pendingSection}</span>
+                            </div>
+                            {questions.pending.map((item) => renderQAItem(item, false))}
+                          </>
+                        )}
+                      </div>
+                    )}
+                  </>
                 )}
               </AnimatedSection>
             </div>

@@ -77,7 +77,7 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(224, 224, 224, 0.5);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .qa-form-section:hover,
@@ -130,12 +130,19 @@
   color: #aaa;
 }
 
+.form-input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 .form-textarea {
   resize: vertical;
   min-height: clamp(120px, 15vw, 140px);
   line-height: 1.6;
 }
 
+/* Success Message */
 .success-message {
   background: linear-gradient(135deg, #afa27f 0%, #958966 100%);
   color: #ffffff;
@@ -169,6 +176,31 @@
   font-weight: 500;
 }
 
+/* Error Message */
+.error-message {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: #ffffff;
+  padding: clamp(18px, 2.5vw, 20px) clamp(20px, 3vw, 24px);
+  border-radius: clamp(7px, 1vw, 8px);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 16px);
+  animation: slideDown 0.4s ease-out;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.25);
+}
+
+.error-message svg {
+  flex-shrink: 0;
+}
+
+.error-message p {
+  margin: 0;
+  font-size: clamp(13px, 1.5vw, 14px);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -180,11 +212,103 @@
   }
 }
 
+/* Spinner Animation */
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading State */
+.loading-state {
+  text-align: center;
+  padding: clamp(70px, 10vw, 100px) clamp(24px, 5vw, 40px);
+  color: #afa27f;
+}
+
+.loading-state svg {
+  margin-bottom: 20px;
+  stroke-width: 1.5;
+}
+
+.loading-state p {
+  font-size: clamp(14px, 1.8vw, 16px);
+  margin: 0;
+  font-weight: 500;
+  color: #666;
+}
+
+/* Error State */
+.error-state {
+  text-align: center;
+  padding: clamp(70px, 10vw, 100px) clamp(24px, 5vw, 40px);
+  color: #dc3545;
+}
+
+.error-state svg {
+  margin-bottom: 20px;
+  stroke-width: 1.5;
+}
+
+.error-state p {
+  font-size: clamp(14px, 1.8vw, 16px);
+  margin: 0 0 24px 0;
+  font-weight: 500;
+  color: #666;
+}
+
+.retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #afa27f;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: #958966;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(175, 162, 127, 0.3);
+}
+
 /* Q&A List */
 .qa-list {
   display: flex;
   flex-direction: column;
   gap: clamp(20px, 3vw, 24px);
+}
+
+/* Section Divider */
+.qa-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: clamp(16px, 2.5vw, 20px) 0;
+  margin-top: clamp(16px, 3vw, 24px);
+  color: #666;
+  font-size: clamp(13px, 1.5vw, 14px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-top: 1px dashed #e0e0e0;
+}
+
+.qa-section-divider svg {
+  color: #afa27f;
 }
 
 .qa-item {
@@ -193,6 +317,16 @@
 
 .qa-item:hover {
   transform: translateY(-3px);
+}
+
+/* Pending Question Styles */
+.qa-item-pending {
+  border-left: 4px solid #afa27f;
+  background: linear-gradient(135deg, #ffffff 0%, #fafaf8 100%);
+}
+
+.qa-item-pending:hover {
+  box-shadow: 0 4px 16px rgba(175, 162, 127, 0.12), 0 0 0 1px rgba(175, 162, 127, 0.2);
 }
 
 .qa-header {
@@ -220,6 +354,12 @@
   text-transform: uppercase;
 }
 
+.qa-category-pending {
+  background: linear-gradient(135deg, #f0ebe0 0%, #e8e3d6 100%);
+  color: #8b7d5a;
+  gap: 6px;
+}
+
 .qa-date {
   display: flex;
   align-items: center;
@@ -236,6 +376,21 @@
   line-height: 1.4;
   margin: 0;
   letter-spacing: -0.01em;
+}
+
+.qa-author-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: #888;
+  font-size: clamp(12px, 1.3vw, 13px);
+  font-weight: 500;
+}
+
+.qa-author-name svg {
+  color: #afa27f;
+  opacity: 0.7;
 }
 
 .qa-answer {
@@ -389,6 +544,10 @@
     width: 100%;
     text-align: center;
   }
+  
+  .qa-section-divider {
+    font-size: 12px;
+  }
 }
 
 /* Print Styles */
@@ -429,10 +588,15 @@
     opacity: 1 !important;
     transform: none !important;
   }
+  
+  .spin {
+    animation: none !important;
+  }
 }
 
 .form-input:focus-visible,
-.toggle-btn:focus-visible {
+.toggle-btn:focus-visible,
+.retry-btn:focus-visible {
   outline: 2px solid #afa27f;
   outline-offset: 2px;
 }
