@@ -1,0 +1,48 @@
+/* =====================================================
+   ANSWER MODAL - STRUCTURAL STYLES
+   Colors are handled inline via colors.js
+   ===================================================== */
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-modal-content {
+    max-height: 95vh;
+    border-radius: 16px 16px 0 0;
+    margin-top: auto;
+  }
+
+  .admin-modal-footer {
+    flex-direction: column;
+  }
+
+  .admin-modal-footer button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-modal-tabs {
+    padding: 0 16px;
+  }
+
+  .admin-modal-tab {
+    padding: 14px 12px;
+    font-size: 13px;
+  }
+
+  .admin-modal-body {
+    padding: 16px;
+  }
+
+  .admin-modal-preview {
+    padding: 14px 16px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .admin-modal-content,
+  .admin-modal-overlay {
+    animation: none;
+  }
+}

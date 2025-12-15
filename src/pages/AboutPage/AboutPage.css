@@ -87,7 +87,7 @@
   gap: clamp(16px, 3vw, 24px);
   border: 2px dashed rgba(175, 162, 127, 0.25);
   transition: border-color 0.4s ease;
-  min-height: clamp(320px, 55vw, 520px);
+  min-height: clamp(380px, 65vw, 600px);
 }
 
 .about-lawyer-frame:hover .about-lawyer-photo {
@@ -569,7 +569,7 @@
 
 @media (max-width: 767px) {
   .about-lawyer-photo {
-    min-height: clamp(250px, 60vw, 350px);
+    min-height: clamp(300px, 70vw, 420px);
   }
 }
 
@@ -579,7 +579,7 @@
   }
   
   .about-lawyer-photo {
-    min-height: clamp(220px, 70vw, 300px);
+    min-height: clamp(280px, 80vw, 360px);
   }
   
   .about-credential-tag {

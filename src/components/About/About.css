@@ -1,3 +1,6 @@
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
 .about-component {
   --section-padding: clamp(80px, 12vw, 120px);
   --container-padding: clamp(40px, 6vw, 60px);
@@ -11,7 +14,9 @@
   --benefit-text-size: clamp(15px, 2vw, 17px);
 }
 
-/* Animations */
+/* ============================================
+   ANIMATIONS KEYFRAMES
+   ============================================ */
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -34,6 +39,101 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   INITIAL HIDDEN STATES (BEFORE ANIMATION)
+   ============================================ */
+
+/* Main Section - Text Content (starts hidden) */
+.about-component .about-text-content {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+/* Main Section - Image Container (starts hidden) */
+.about-component .about-image-container {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+/* Quote Section - Quote Card (starts hidden) */
+.about-component .about-quote-card {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Quote Section - Promise Container (starts hidden) */
+.about-component .about-promise-container {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Trust Section - Image Container (starts hidden) */
+.about-component .about-trust-image {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+/* Trust Section - Text Content (starts hidden) */
+.about-component .about-trust-content {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+/* ============================================
+   ANIMATED STATES (WHEN IN VIEW)
+   ============================================ */
+
+/* Main Section Animations */
+.about-component section.animate-in .about-text-content {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.about-component section.animate-in .about-image-container {
+  animation: slideInRight 0.8s ease-out 0.2s forwards;
+}
+
+/* Quote Section Animations */
+.about-component section.animate-in .about-quote-card {
+  animation: fadeInUp 0.8s ease-out 0.1s forwards;
+}
+
+.about-component section.animate-in .about-promise-container {
+  animation: fadeInUp 0.8s ease-out 0.3s forwards;
+}
+
+/* Trust Section Animations */
+.about-component section.animate-in .about-trust-image {
+  animation: slideInLeft 0.8s ease-out 0.2s forwards;
+}
+
+.about-component section.animate-in .about-trust-content {
+  animation: slideInRight 0.8s ease-out 0.4s forwards;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
 /* Base Image Styles */
 .about-component img {
   max-width: 100%;
@@ -43,23 +143,42 @@
 }
 
 /* Image Container Hover Effects */
-.about-component [style*="mainImageContainer"]:hover,
-.about-component [style*="trustImageContainer"]:hover {
-  transform: translateY(-8px) !important;
+.about-component .about-image-container:hover,
+.about-component .about-trust-image:hover {
+  transform: translateY(-8px);
   box-shadow: 
     0 35px 70px rgba(0, 0, 0, 0.15),
-    0 15px 35px rgba(0, 0, 0, 0.08) !important;
+    0 15px 35px rgba(0, 0, 0, 0.08);
 }
 
-/* Benefit Items Hover Effects */
+/* Override hover when animated */
+.about-component section.animate-in .about-image-container:hover,
+.about-component section.animate-in .about-trust-image:hover {
+  transform: translateY(-8px);
+}
+
+/* ============================================
+   BENEFIT ITEMS
+   ============================================ */
 .about-component .benefit-dot {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Button Hover Effects */
-.about-component button:hover {
-  transform: translateY(-4px) !important;
+.about-component .benefit-item {
+  transition: all 0.3s ease;
 }
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+.about-component button {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
 
 /* Quote Section Mobile Adjustments */
 @media (max-width: 767px) {
@@ -71,8 +190,8 @@
     border-radius: 0 0 20px 20px !important;
   }
   
-  .about-component [style*="textContent"],
-  .about-component [style*="trustContent"] {
+  .about-component .about-text-content,
+  .about-component .about-trust-content {
     padding-right: 0 !important;
     padding-left: 0 !important;
   }
@@ -86,7 +205,7 @@
   }
 }
 
-/* Responsive Image Heights */
+/* Tablet (768px - 1199px) */
 @media (max-width: 1199px) and (min-width: 768px) {
   .about-component {
     --image-height: clamp(620px, 62vw, 720px);
@@ -96,6 +215,7 @@
   }
 }
 
+/* Mobile (below 768px) */
 @media (max-width: 767px) {
   .about-component {
     --section-padding: clamp(60px, 10vw, 80px);
@@ -108,6 +228,7 @@
   }
 }
 
+/* Small Mobile (below 576px) */
 @media (max-width: 575px) {
   .about-component {
     --section-padding: clamp(40px, 8vw, 60px);
@@ -119,7 +240,7 @@
   }
 }
 
-/* Tablet Landscape Adjustments */
+/* Tablet Landscape */
 @media (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
   .about-component {
     --quote-height: clamp(340px, 42vw, 380px);
@@ -127,124 +248,12 @@
   }
 }
 
-/* Tablet Portrait Adjustments */
+/* Tablet Portrait */
 @media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
   .about-component {
     --quote-height: clamp(380px, 45vw, 420px);
     --image-height: clamp(680px, 70vw, 780px);
   }
-}
-
-/* Global Transitions */
-.about-component * {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-}
-
-/* Image Loading States */
-.about-component img {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  transition: opacity 0.3s ease;
-}
-
-.about-component img[src]:not([src=""]) {
-  opacity: 1;
-}
-
-.about-component img:not([src]),
-.about-component img[src=""] {
-  opacity: 0.7;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-}
-
-/* Focus States for Accessibility */
-.about-component button:focus-visible {
-  outline: 2px solid #c29d59;
-  outline-offset: 2px;
-}
-
-.about-component img:focus-visible {
-  outline: 2px solid #c29d59;
-  outline-offset: 4px;
-}
-
-/* High Contrast Mode Support */
-@media (prefers-contrast: high) {
-  .about-component img {
-    border: 2px solid #000;
-  }
-  
-  .about-component button {
-    border: 2px solid #000;
-  }
-}
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-  .about-component *,
-  .about-component::before,
-  .about-component::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Print Styles */
-@media print {
-  .about-component {
-    background: white !important;
-  }
-  
-  .about-component img {
-    max-width: 100%;
-    height: auto;
-    break-inside: avoid;
-  }
-  
-  .about-component button {
-    display: none !important;
-  }
-  
-  .about-component [style*="boxShadow"],
-  .about-component [style*="box-shadow"] {
-    box-shadow: none !important;
-  }
-}
-
-/* Image Error Handling */
-.about-component img[alt]:after {
-  content: "🖼️ " attr(alt);
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(248, 249, 250, 0.9);
-  padding: 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #666;
-  text-align: center;
-  border: 2px dashed #ddd;
-}
-
-/* Loading Animation for Images */
-@keyframes imageLoading {
-  0% { opacity: 0.3; }
-  50% { opacity: 0.7; }
-  100% { opacity: 0.3; }
-}
-
-.about-component img:not([complete]) {
-  animation: imageLoading 1.5s ease-in-out infinite;
-}
-
-/* Ensure images maintain aspect ratio */
-.about-component img {
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  object-position: center;
 }
 
 /* Ultra-wide screen adjustments */
@@ -262,14 +271,80 @@
   }
 }
 
-/* Specific fixes for image containers */
-.about-component [style*="mainImageContainer"],
-.about-component [style*="trustImageContainer"] {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+/* ============================================
+   GLOBAL TRANSITIONS (for hover states only)
+   ============================================ */
+.about-component .about-image-container,
+.about-component .about-trust-image {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.about-component [style*="mainImageContainer"] img,
-.about-component [style*="trustImageContainer"] img {
-  position: relative;
-  z-index: 1;
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus States */
+.about-component button:focus-visible {
+  outline: 2px solid #c29d59;
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .about-component button {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .about-component .about-text-content,
+  .about-component .about-image-container,
+  .about-component .about-quote-card,
+  .about-component .about-promise-container,
+  .about-component .about-trust-image,
+  .about-component .about-trust-content {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  
+  .about-component section.animate-in .about-text-content,
+  .about-component section.animate-in .about-image-container,
+  .about-component section.animate-in .about-quote-card,
+  .about-component section.animate-in .about-promise-container,
+  .about-component section.animate-in .about-trust-image,
+  .about-component section.animate-in .about-trust-content {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .about-component {
+    background: white !important;
+  }
+  
+  .about-component .about-text-content,
+  .about-component .about-image-container,
+  .about-component .about-quote-card,
+  .about-component .about-promise-container,
+  .about-component .about-trust-image,
+  .about-component .about-trust-content {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .about-component img {
+    max-width: 100%;
+    height: auto;
+    break-inside: avoid;
+  }
+  
+  .about-component button {
+    display: none !important;
+  }
 }

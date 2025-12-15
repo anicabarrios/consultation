@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
-  Users, Shield, Building, Briefcase, Home, Scale, 
-  FileSignature, Calculator, Clipboard, Gavel, Building2, MessageCircle 
+  Shield, Building, Briefcase, Scale, FileSignature, 
+  Calculator, Clipboard, Gavel, Landmark,
+  CreditCard, FileText, ShieldCheck
 } from 'lucide-react';
 import { colors } from '../../utils/colors';
 import { useScrollAnimation } from '../../utils/Usescrollanimation';
@@ -122,65 +123,67 @@ export default function Services({ language }) {
   const navigate = useNavigate();
 
   const serviceUrlMap = {
-    'Porodično pravo': 'porodicno-pravo',
-    'Krivično pravo': 'krivicno-pravo', 
+    // Serbian URLs
+    'Krivično pravo': 'krivicno-pravo',
     'Korporativno pravo': 'korporativno-pravo',
     'Radno pravo': 'radno-pravo',
-    'Nasledno pravo': 'nasledno-pravo',
-    'Prekršajno pravo': 'prekrsajno-pravo',
-    'Ugovori': 'ugovori',
     'Naknada štete': 'naknada-stete',
     'Upravni postupak': 'upravni-postupak',
     'Upravni spor': 'upravni-spor',
-    'Nekretnine': 'nekretnine',
-    'Medijacija': 'medijacija',
-    'Family Law': 'family-law',
+    'Građansko i obligaciono pravo': 'gradjansko-obligaciono-pravo',
+    'Privredno pravo': 'privredno-pravo',
+    'Bankarsko i finansijsko pravo': 'bankarsko-finansijsko-pravo',
+    'Izvršni postupci': 'izvrsni-postupci',
+    'Ugovorno pravo': 'ugovorno-pravo',
+    'Usklađenost poslovanja': 'uskladjenost-poslovanja',
+    // English URLs
     'Criminal Law': 'criminal-law',
     'Corporate Law': 'corporate-law',
     'Labor Law': 'labor-law',
-    'Inheritance Law': 'inheritance-law',
-    'Misdemeanor Law': 'misdemeanor-law',
-    'Contract Law': 'contract-law',
     'Damage Compensation': 'damage-compensation',
     'Administrative Procedure': 'administrative-procedure',
     'Administrative Dispute': 'administrative-dispute',
-    'Real Estate': 'real-estate',
-    'Mediation': 'mediation'
+    'Civil and Obligation Law': 'civil-obligation-law',
+    'Commercial Law': 'commercial-law',
+    'Banking and Financial Law': 'banking-financial-law',
+    'Enforcement Proceedings': 'enforcement-proceedings',
+    'Contract Law': 'contract-law',
+    'Business Compliance': 'business-compliance'
   };
 
   const content = {
     sr: {
       subtitle: 'NAŠE USLUGE',
       services: [
-        { name: 'Porodično pravo', icon: Users },
-        { name: 'Krivično pravo', icon: Shield }, 
+        { name: 'Građansko i obligaciono pravo', icon: Scale },
+        { name: 'Krivično pravo', icon: Shield },
+        { name: 'Privredno pravo', icon: Landmark },
         { name: 'Korporativno pravo', icon: Building },
         { name: 'Radno pravo', icon: Briefcase },
-        { name: 'Nasledno pravo', icon: Home },
-        { name: 'Prekršajno pravo', icon: Scale },
-        { name: 'Ugovori', icon: FileSignature },
+        { name: 'Bankarsko i finansijsko pravo', icon: CreditCard },
+        { name: 'Izvršni postupci', icon: FileText },
+        { name: 'Ugovorno pravo', icon: FileSignature },
         { name: 'Naknada štete', icon: Calculator },
         { name: 'Upravni postupak', icon: Clipboard },
         { name: 'Upravni spor', icon: Gavel },
-        { name: 'Nekretnine', icon: Building2 },
-        { name: 'Medijacija', icon: MessageCircle }
+        { name: 'Usklađenost poslovanja', icon: ShieldCheck }
       ]
     },
     en: {
       subtitle: 'OUR SERVICES',
       services: [
-        { name: 'Family Law', icon: Users },
+        { name: 'Civil and Obligation Law', icon: Scale },
         { name: 'Criminal Law', icon: Shield },
-        { name: 'Corporate Law', icon: Building }, 
+        { name: 'Commercial Law', icon: Landmark },
+        { name: 'Corporate Law', icon: Building },
         { name: 'Labor Law', icon: Briefcase },
-        { name: 'Inheritance Law', icon: Home },
-        { name: 'Misdemeanor Law', icon: Scale },
+        { name: 'Banking and Financial Law', icon: CreditCard },
+        { name: 'Enforcement Proceedings', icon: FileText },
         { name: 'Contract Law', icon: FileSignature },
         { name: 'Damage Compensation', icon: Calculator },
         { name: 'Administrative Procedure', icon: Clipboard },
         { name: 'Administrative Dispute', icon: Gavel },
-        { name: 'Real Estate', icon: Building2 },
-        { name: 'Mediation', icon: MessageCircle }
+        { name: 'Business Compliance', icon: ShieldCheck }
       ]
     }
   };

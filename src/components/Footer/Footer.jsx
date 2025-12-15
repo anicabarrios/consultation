@@ -31,7 +31,7 @@ export default function Footer({ language = 'sr' }) {
         title: 'Kontakt informacije',
         address: 'Sokolska 1/21, Niš',
         phone: '+381 63 108 9990',
-        email: 'suzana.ilic@legal.rs'
+        email: 'advsuzanailic@gmail.com'
       },
       copyright: `© ${currentYear} Advokatska kancelarija Ilić Lj. Suzana. Sva prava zadržana.`,
       aria: {
@@ -60,7 +60,7 @@ export default function Footer({ language = 'sr' }) {
         title: 'Contact Information',
         address: 'Sokolska 1/21, Niš',
         phone: '+381 63 108 9990',
-        email: 'suzana.ilic@legal.rs'
+        email: 'advsuzanailic@gmail.com'
       },
       copyright: `© ${currentYear} Ilić Lj. Suzana Law Office. All rights reserved.`,
       aria: {

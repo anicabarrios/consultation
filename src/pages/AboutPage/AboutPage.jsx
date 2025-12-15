@@ -16,46 +16,47 @@ export default function AboutPage({ language }) {
         badge: 'OSNIVAČ I ADVOKAT',
         name: 'Suzana Ilić',
         title: 'Advokat',
-        description: 'Suzana Ilić je osnivač Advokatske kancelarije Ilić Lj. Suzana sa dugogodišnjim iskustvom u pravnoj praksi. Posvećena je pružanju visokokvalitetnih pravnih usluga i zaštiti interesa svojih klijenata.',
+        description: 'Advokat Suzana Ilić je osnivač Advokatske kancelarije Ilić Lj. Suzana. Profesionalnu karijeru gradila je više od tri decenije u bankarskom sektoru, gde je obavljala rukovodeće funkcije u oblasti pravnih poslova i usklađenosti poslovanja (Compliance).',
+        description2: 'Stečeno iskustvo obuhvata širok spektar pravnih oblasti: bankarsko i finansijsko pravo, korporativno pravo, ugovorno pravo, parnične i izvršne postupke, regulatornu usklađenost i sprečavanje pranja novca. U svom radu posebno ceni profesionalnu etiku, poverljivost i individualan pristup svakom klijentu.',
         qualifications: 'Kvalifikacije',
         qualificationsList: [
           'Diplomirani pravnik',
           'Položen pravosudni ispit',
           'Član Advokatske komore Niš',
-          'Dugogodišnje iskustvo u pravnoj praksi'
+          'Preko 30 godina pravnog iskustva'
         ],
-        expertise: 'Specijalizacije',
+        expertise: 'Oblasti rada',
         expertiseList: [
           'Korporativno pravo',
+          'Usklađenost poslovanja (Compliance)',
+          'Bankarsko i finansijsko pravo',
           'Ugovorno pravo',
-          'Naknada štete',
-          'Prekršajno pravo',
-          'Porodično pravo',
-          'Nasledno pravo'
+          'Parnični i izvršni postupci',
+          'Sprečavanje pranja novca (AML)'
         ]
       },
       values: {
         badge: 'NAŠE VREDNOSTI',
         title: 'Principi koji nas vode',
-        description: 'Gradimo odnose sa klijentima zasnovane na poverenju i iskrenoj pažnji, uvek štiteći njihov interes i reputaciju.',
+        description: 'Gradimo dugoročne odnose sa klijentima zasnovane na poverenju, profesionalizmu i posvećenosti njihovim interesima.',
         items: [
-          { icon: Shield, title: 'Profesionalnost', description: 'Posvećeni smo najvišim standardima pravne prakse i kontinuiranom usavršavanju.' },
-          { icon: Heart, title: 'Posvećenost', description: 'Svaki klijent dobija našu punu pažnju i individualni pristup njegovom slučaju.' },
-          { icon: Target, title: 'Efikasnost', description: 'Težimo brzom i kvalitetnom rešavanju pravnih problema sa najboljim ishodom.' },
-          { icon: CheckCircle, title: 'Integritet', description: 'Gradimo odnose zasnovane na poverenju, transparentnosti i etičkom postupanju.' }
+          { icon: Shield, title: 'Profesionalnost', description: 'Posvećeni smo najvišim standardima pravne struke i kontinuiranom stručnom usavršavanju.' },
+          { icon: Heart, title: 'Posvećenost', description: 'Svakom klijentu pristupamo individualno, sa punom pažnjom i angažovanjem na njegovom predmetu.' },
+          { icon: Target, title: 'Efikasnost', description: 'Težimo optimalnim rešenjima koja štite interese klijenata uz racionalno upravljanje resursima.' },
+          { icon: CheckCircle, title: 'Integritet', description: 'Poslujemo transparentno i etično, gradeći odnose zasnovane na uzajamnom poverenju.' }
         ]
       },
       promise: {
         badge: 'NAŠE OBEĆANJE',
         title: 'Šta možete očekivati',
-        description: 'Naša advokatska kancelarija će vam pružiti brz, kvalitetan i profesionalan rad u rešavanju vaših pravnih problema.',
+        description: 'Pružamo pravne usluge visokog kvaliteta, prilagođene specifičnim potrebama svakog klijenta.',
         points: [
-          'Besplatne inicijalne konsultacije',
-          'Transparentno formiranje cena',
+          'Inicijalne konsultacije bez naknade',
+          'Transparentno formiranje cena usluga',
           'Redovno izveštavanje o toku predmeta',
-          'Dostupnost i brza komunikacija',
-          'Zaštita poverljivosti podataka',
-          'Posvećenost vašim interesima'
+          'Dostupnost i pravovremena komunikacija',
+          'Stroga zaštita poverljivih podataka',
+          'Potpuna posvećenost vašim interesima'
         ]
       }
     },
@@ -65,46 +66,47 @@ export default function AboutPage({ language }) {
         badge: 'FOUNDER & ATTORNEY',
         name: 'Suzana Ilić',
         title: 'Attorney at Law',
-        description: 'Suzana Ilić is the founder of Ilić Lj. Suzana Law Office with many years of experience in legal practice. She is dedicated to providing high-quality legal services and protecting the interests of her clients.',
+        description: 'Attorney Suzana Ilić is the founder of Ilić Lj. Suzana Law Office. She built her professional career over three decades in the banking sector, holding executive positions in legal affairs and regulatory compliance.',
+        description2: 'Her experience encompasses a wide range of legal areas, including banking and financial law, corporate law, contract law, litigation and enforcement proceedings, as well as regulatory compliance and anti-money laundering. Her legal practice is characterized by dedication to providing expert legal support while consistently upholding standards of professional ethics, confidentiality, and accountability.',
         qualifications: 'Qualifications',
         qualificationsList: [
-          'Law degree graduate',
-          'Passed bar exam',
+          'Law Degree',
+          'Bar Examination',
           'Member of Niš Bar Association',
-          'Years of experience in legal practice'
+          'Over 30 years of legal experience'
         ],
-        expertise: 'Specializations',
+        expertise: 'Practice Areas',
         expertiseList: [
           'Corporate Law',
+          'Regulatory Compliance',
+          'Banking & Financial Law',
           'Contract Law',
-          'Damage Compensation',
-          'Misdemeanor Law',
-          'Family Law',
-          'Inheritance Law'
+          'Litigation & Enforcement',
+          'Anti-Money Laundering (AML)'
         ]
       },
       values: {
         badge: 'OUR VALUES',
         title: 'Principles that guide us',
-        description: 'We build relationships with clients based on trust and sincere attention, always protecting their interests and reputation.',
+        description: 'We build long-term relationships with clients based on trust, professionalism, and dedication to their interests.',
         items: [
-          { icon: Shield, title: 'Professionalism', description: 'We are committed to the highest standards of legal practice and continuous improvement.' },
-          { icon: Heart, title: 'Dedication', description: 'Every client receives our full attention and individual approach to their case.' },
-          { icon: Target, title: 'Efficiency', description: 'We strive for fast and quality resolution of legal issues with the best outcome.' },
-          { icon: CheckCircle, title: 'Integrity', description: 'We build relationships based on trust, transparency and ethical conduct.' }
+          { icon: Shield, title: 'Professionalism', description: 'We are committed to the highest standards of legal practice and continuous professional development.' },
+          { icon: Heart, title: 'Dedication', description: 'We approach each client individually, with full attention and commitment to their case.' },
+          { icon: Target, title: 'Efficiency', description: 'We strive for optimal solutions that protect client interests while managing resources effectively.' },
+          { icon: CheckCircle, title: 'Integrity', description: 'We operate transparently and ethically, building relationships based on mutual trust.' }
         ]
       },
       promise: {
         badge: 'OUR PROMISE',
         title: 'What you can expect',
-        description: 'Our law office will provide you with fast, quality and professional work in solving your legal problems.',
+        description: 'We provide high-quality legal services tailored to the specific needs of each client.',
         points: [
-          'Free initial consultations',
-          'Transparent pricing',
-          'Regular case progress reports',
-          'Availability and quick communication',
-          'Data confidentiality protection',
-          'Dedication to your interests'
+          'Complimentary initial consultations',
+          'Transparent fee structure',
+          'Regular case progress updates',
+          'Accessibility and timely communication',
+          'Strict confidentiality protection',
+          'Complete dedication to your interests'
         ]
       }
     }
@@ -167,7 +169,8 @@ export default function AboutPage({ language }) {
 
                 <h2 className="about-lawyer-name">{t.lawyer.name}</h2>
                 <p className="about-lawyer-title">{t.lawyer.title}</p>
-                <p className="about-lawyer-description">{t.lawyer.description}</p>
+                <p className="about-lawyer-description" style={{ marginBottom: '12px' }}>{t.lawyer.description}</p>
+                <p className="about-lawyer-description">{t.lawyer.description2}</p>
 
                 <div className="about-credentials">
                   <div className="about-credential-group">

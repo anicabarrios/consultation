@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { colors } from '../../utils/colors.js';
 import Card from '../Card.jsx';
+import './About.css';
 
 export default function About({ language }) {
+  const navigate = useNavigate();
 
   const content = {
     sr: {
@@ -10,7 +13,7 @@ export default function About({ language }) {
         subtitle: 'O NAMA',
         title: 'Advokatska kancelarija Ilić Lj. Suzana',
         mainHeading: 'Poverenje je temelj naših odnosa sa klijentima',
-        description: 'Težimo da svaki naš rezultat bude bolji od prethodnog. Najbolja preporuka za našu advokatsku kancelariju su naši zadovoljni klijenti u Beogradu i Srbiji. Istrajni smo u pronalaženju novih rešenja, koja su efikasna i po najvišim merilima advokarske prakse.',
+        description: 'Težimo da svaki naš rezultat bude bolji od prethodnog. Najbolja preporuka za našu advokatsku kancelariju su naši zadovoljni klijenti. Istrajni smo u pronalaženju novih rešenja, koja su efikasna i po najvišim merilima advokatske prakse.',
         additionalText: 'Gradimo odnose sa klijentima zasnovane na poverenju i iskrenoj pažnji, uvek štiteći njihov interes i reputaciju.',
         promise: 'Naša advokatska kancelarija će vam pružiti brz, kvalitetan i profesionalan rad u rešavanju vaših pravnih problema.',
         legalText: 'Advokatska kancelarija Ilić Lj. Suzana pruža klijentima sve vrste pravnih usluga i pravne pomoći naročito iz oblasti: Korporativnog prava, Ugovornog prava, Naknade štete, Prekršajnog prava…',
@@ -22,7 +25,7 @@ export default function About({ language }) {
         subtitle: 'ABOUT US',
         title: 'Ilić Lj. Suzana Law Office',
         mainHeading: 'Trust is the foundation of our client relationships',
-        description: 'We strive to make each of our results better than the previous one. The best recommendation for our law office are our satisfied clients in Belgrade and Serbia. We are persistent in finding new solutions that are effective and meet the highest standards of legal practice.',
+        description: 'We strive to make each of our results better than the previous one. The best recommendation for our law office are our satisfied clients. We are persistent in finding new solutions that are effective and meet the highest standards of legal practice.',
         additionalText: 'We build relationships with clients based on trust and sincere attention, always protecting their interests and reputation.',
         promise: 'Our law office will provide you with fast, quality and professional work in solving your legal problems.',
         legalText: 'Ilić Lj. Suzana Law Office provides clients with all types of legal services and legal assistance, particularly in the areas of: Corporate law, Contract law, Damage compensation, Misdemeanor law…',
@@ -64,20 +67,8 @@ export default function About({ language }) {
 
     return () => observer.disconnect();
   }, []);
-  const styles = {
-    getCSSVars: () => ({
-      '--section-padding': 'clamp(80px, 12vw, 120px)',
-      '--container-padding': 'clamp(40px, 6vw, 60px)',
-      '--text-spacing': 'clamp(24px, 4vw, 36px)',
-      '--card-padding': 'clamp(20px, 3vw, 35px)',
-      '--image-height': 'clamp(450px, 55vw, 700px)',
-      '--quote-height': 'clamp(280px, 35vw, 420px)',
-      '--main-title-size': 'clamp(26px, 4.5vw, 48px)',
-      '--subtitle-size': 'clamp(11px, 1.5vw, 13px)',
-      '--body-text-size': 'clamp(14px, 2vw, 18px)',
-      '--benefit-text-size': 'clamp(15px, 2vw, 17px)',
-    }),
 
+  const styles = {
     // Main sections
     mainSection: {
       background: `linear-gradient(180deg, ${colors.lightBg} 0%, #ffffff 100%)`,
@@ -93,7 +84,8 @@ export default function About({ language }) {
       right: 0,
       bottom: 0,
       background: `linear-gradient(135deg, ${colors.accent}02 0%, transparent 50%, ${colors.primary}02 100%)`,
-      zIndex: 1
+      zIndex: 1,
+      pointerEvents: 'none'
     },
 
     container: {
@@ -102,8 +94,8 @@ export default function About({ language }) {
     },
 
     textContent: {
-      paddingRight: 'var(--container-padding)',
-      animation: 'slideInLeft 0.8s ease-out forwards'
+      paddingRight: 'var(--container-padding)'
+      // Removed inline animation - handled by CSS
     },
 
     subtitleWrapper: {
@@ -180,7 +172,8 @@ export default function About({ language }) {
         radial-gradient(circle at 85% 20%, ${colors.accent}06 0%, transparent 50%),
         radial-gradient(circle at 15% 80%, ${colors.primary}04 0%, transparent 50%)
       `,
-      zIndex: 1
+      zIndex: 1,
+      pointerEvents: 'none'
     },
 
     cardContent: {
@@ -208,9 +201,8 @@ export default function About({ language }) {
         0 10px 25px ${colors.shadowLight}
       `,
       position: 'relative',
-      overflow: 'hidden',
-      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-      animation: 'slideInRight 0.8s ease-out 0.2s forwards'
+      overflow: 'hidden'
+      // Removed inline animation - handled by CSS
     },
 
     mainImage: {
@@ -244,7 +236,8 @@ export default function About({ language }) {
       backgroundSize: '60px 60px',
       backgroundPosition: '0 0, 0 30px, 30px -30px, -30px 0px',
       opacity: 0.03,
-      zIndex: 1
+      zIndex: 1,
+      pointerEvents: 'none'
     },
 
     quoteCard: {
@@ -326,7 +319,8 @@ export default function About({ language }) {
       right: 0,
       bottom: 0,
       background: `linear-gradient(135deg, ${colors.accent}04 0%, transparent 50%, ${colors.primary}02 100%)`,
-      zIndex: 1
+      zIndex: 1,
+      pointerEvents: 'none'
     },
 
     promiseContent: {
@@ -380,7 +374,8 @@ export default function About({ language }) {
       marginBottom: '6px',
       gap: '16px',
       padding: '6px 0',
-      transition: 'all 0.3s ease'
+      transition: 'all 0.3s ease',
+      cursor: 'default'
     },
 
     benefitDot: {
@@ -434,9 +429,8 @@ export default function About({ language }) {
         0 10px 25px ${colors.shadowLight}
       `,
       position: 'relative',
-      overflow: 'hidden',
-      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-      animation: 'slideInLeft 0.8s ease-out 0.3s forwards'
+      overflow: 'hidden'
+      // Removed inline animation - handled by CSS
     },
 
     trustImage: {
@@ -448,8 +442,8 @@ export default function About({ language }) {
     },
 
     trustContent: {
-      paddingLeft: 'var(--container-padding)',
-      animation: 'slideInRight 0.8s ease-out 0.4s forwards'
+      paddingLeft: 'var(--container-padding)'
+      // Removed inline animation - handled by CSS
     },
 
     trustBadge: {
@@ -573,346 +567,236 @@ export default function About({ language }) {
     }
   };
 
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+
   return (
-    <>
-      <style>{`
-        .about-component {
-          ${Object.entries(styles.getCSSVars()).map(([key, value]) => `${key}: ${value};`).join('\n          ')}
-        }
-
-        /* Animations */
-        @keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-60px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInRight {
-          from { opacity: 0; transform: translateX(60px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-
-
-        /* Entrance Animations */
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Section Animation Classes */
-        .about-component section {
-          opacity: 0;
-          transform: translateY(40px);
-          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .about-component section.animate-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        /* Staggered animation delays for child elements */
-        .about-component section.animate-in .col-12:first-child {
-          animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .about-component section.animate-in .col-12:last-child {
-          animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-
-        /* Respect reduced motion preference */
-        @media (prefers-reduced-motion: reduce) {
-          .about-component section,
-          .about-component section.animate-in,
-          .about-component section.animate-in .col-12:first-child,
-          .about-component section.animate-in .col-12:last-child {
-            animation: none !important;
-            transition: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-        }
-        /* Responsive Breakpoints */
-        @media (max-width: 1199px) and (min-width: 768px) {
-          .about-component {
-            --image-height: clamp(620px, 62vw, 720px);
-            --quote-height: clamp(320px, 40vw, 380px);
-            --card-padding: clamp(35px, 5vw, 50px);
-            --container-padding: 0;
-          }
-        }
-
-        @media (max-width: 767px) {
-          .about-component {
-            --section-padding: clamp(60px, 10vw, 80px);
-            --container-padding: 0;
-            --image-height: clamp(350px, 50vw, 450px);
-            --quote-height: clamp(260px, 35vw, 320px);
-            --card-padding: clamp(30px, 5vw, 40px);
-            --main-title-size: clamp(22px, 4vw, 28px);
-            --benefit-text-size: clamp(14px, 2vw, 16px);
-          }
-
-          .quote-card-mobile { border-radius: 20px 20px 0 0; }
-          .promise-container-mobile { border-radius: 0 0 20px 20px; }
-        }
-
-        @media (max-width: 575px) {
-          .about-component {
-            --section-padding: clamp(40px, 8vw, 60px);
-            --image-height: clamp(300px, 45vw, 350px);
-            --quote-height: clamp(220px, 32vw, 280px);
-            --card-padding: clamp(25px, 4vw, 35px);
-            --main-title-size: clamp(20px, 3.5vw, 24px);
-            --benefit-text-size: 14px;
-          }
-
-          .quote-mark-mobile { font-size: 80px; top: 20px; left: 20px; }
-        }
-
-        @media (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
-          .about-component {
-            --quote-height: clamp(340px, 42vw, 380px);
-            --image-height: clamp(580px, 60vw, 680px);
-          }
-        }
-
-        @media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
-          .about-component {
-            --quote-height: clamp(380px, 45vw, 420px);
-            --image-height: clamp(680px, 70vw, 780px);
-          }
-        }
-
-        /* Global transitions */
-        .about-component * {
-          transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-        }
-      `}</style>
-
-      <div className="about-component">
-        {/* Main About Section */}
-        <section id="about" ref={mainSectionRef} style={styles.mainSection}>
-          <div style={styles.bgGradient} />
-          
-          <div className="container" style={styles.container}>
-            <div className="row align-items-center g-4 g-lg-5">
-              {/* Text Column */}
-              <div className="col-12 col-lg-6">
-                <div style={styles.textContent}>
-                  <div style={styles.subtitleWrapper}>
-                    <div style={styles.accentLine} />
-                    <p style={styles.subtitle}>
-                      {t.section.subtitle}
-                    </p>
-                  </div>
-                  
-                  <h2 style={styles.mainTitle}>
-                    {t.section.title}
-                  </h2>
-                  
-                  <div style={styles.titleUnderline} />
-
-                  <p style={styles.legalText}>
-                    {t.section.legalText}
+    <div className="about-component">
+      {/* Main About Section */}
+      <section id="about" ref={mainSectionRef} style={styles.mainSection}>
+        <div style={styles.bgGradient} />
+        
+        <div className="container" style={styles.container}>
+          <div className="row align-items-center g-4 g-lg-5">
+            {/* Text Column */}
+            <div className="col-12 col-lg-6">
+              <div className="about-text-content" style={styles.textContent}>
+                <div style={styles.subtitleWrapper}>
+                  <div style={styles.accentLine} />
+                  <p style={styles.subtitle}>
+                    {t.section.subtitle}
                   </p>
-
-                  {/* Specialization Section */}
-                  <Card 
-                    variant="elevated"
-                    padding="medium"
-                    style={styles.specializationCard}
-                  >
-                    <div style={styles.cardAccent} />
-                    <div style={styles.cardBgAccent} />
-                    
-                    <div style={styles.cardContent}>
-                      <p style={styles.specializationText}>
-                        {t.section.specializationText}
-                      </p>
-                    </div>
-                  </Card>
                 </div>
-              </div>
+                
+                <h2 style={styles.mainTitle}>
+                  {t.section.title}
+                </h2>
+                
+                <div style={styles.titleUnderline} />
 
-              {/* Image Column */}
-              <div className="col-12 col-lg-6">
-                <div 
-                  style={styles.mainImageContainer}
-                  onMouseEnter={(e) => handleImageHover(e, true)}
-                  onMouseLeave={(e) => handleImageHover(e, false)}
-                >
-                  <img
-                    src="./images/about-2.webp"
-                    alt={language === 'sr' ? 'Advokatska kancelarija' : 'Law Office'}
-                    style={styles.mainImage}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+                <p style={styles.legalText}>
+                  {t.section.legalText}
+                </p>
 
-        {/* Quote Section */}
-        <section ref={quoteSectionRef} style={styles.quoteSection}>
-          <div style={styles.quoteBgTexture} />
-          
-          <div className="container">
-            <div className="row align-items-stretch g-0">
-              {/* Quote Column */}
-              <div className="col-12 col-lg-6">
-                <Card
-                  variant="glass"
-                  padding="none"
-                  className={window.innerWidth <= 767 ? 'quote-card-mobile' : ''}
-                  style={styles.quoteCard}
+                {/* Specialization Section */}
+                <Card 
+                  variant="elevated"
+                  padding="medium"
+                  style={styles.specializationCard}
                 >
-                  <div 
-                    style={styles.quoteMark}
-                    className={window.innerWidth <= 575 ? 'quote-mark-mobile' : ''}
-                  >
-                    "
-                  </div>
+                  <div style={styles.cardAccent} />
+                  <div style={styles.cardBgAccent} />
                   
-                  <div style={styles.quoteContent}>
-                    <h3 style={styles.latinQuote}>
-                      "Qui iure suo utitur, neminem laedit"
-                    </h3>
-                    <div style={styles.quoteUnderline} />
-                    <p style={styles.quoteTranslation}>
-                      {language === 'sr' 
-                        ? 'Ko se služi svojim pravom, nikoga ne vredja.'
-                        : 'He who exercises his right does no wrong to anyone.'
-                      }
+                  <div style={styles.cardContent}>
+                    <p style={styles.specializationText}>
+                      {t.section.specializationText}
                     </p>
                   </div>
                 </Card>
               </div>
+            </div>
 
-              {/* Promise Column */}
-              <div className="col-12 col-lg-6">
-                <div 
-                  style={styles.promiseContainer}
-                  className={window.innerWidth <= 767 ? 'promise-container-mobile' : ''}
-                >
-                  <div style={styles.promiseBgAccent} />
-                  
-                  <div style={styles.promiseContent}>
-                    <div style={styles.promiseBadge}>
-                      <div style={styles.promiseDot} />
-                      <span style={styles.promiseBadgeText}>
-                        {language === 'sr' ? 'NAŠE OBEĆANJE' : 'OUR PROMISE'}
-                      </span>
-                    </div>
-
-                    <h3 style={styles.promiseTitle}>
-                      {t.section.promise}
-                    </h3>
-
-                    {/* Key benefits */}
-                    <div style={styles.benefitsList}>
-                      {[
-                        { 
-                          sr: 'Brza reakcija na vaše potrebe', 
-                          en: 'Quick response to your needs' 
-                        },
-                        { 
-                          sr: 'Kvalitetno i profesionalno rešavanje', 
-                          en: 'Quality and professional solutions' 
-                        },
-                        { 
-                          sr: 'Potpuna podrška kroz ceo proces', 
-                          en: 'Complete support throughout the process' 
-                        }
-                      ].map((benefit, index) => (
-                        <div 
-                          key={index} 
-                          style={styles.benefitItem}
-                          onMouseEnter={(e) => handleBenefitHover(e, true)}
-                          onMouseLeave={(e) => handleBenefitHover(e, false)}
-                        >
-                          <div 
-                            className="benefit-dot"
-                            style={styles.benefitDot}
-                          />
-                          <span style={styles.benefitText}>
-                            {language === 'sr' ? benefit.sr : benefit.en}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <button 
-                      style={styles.ctaButton}
-                      onMouseEnter={(e) => handleButtonHover(e, true)}
-                      onMouseLeave={(e) => handleButtonHover(e, false)}
-                      onClick={() => {
-                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                    >
-                      {language === 'sr' ? 'KONTAKTIRAJTE NAS' : 'CONTACT US'}
-                    </button>
-                  </div>
-                </div>
+            {/* Image Column */}
+            <div className="col-12 col-lg-6">
+              <div 
+                className="about-image-container"
+                style={styles.mainImageContainer}
+                onMouseEnter={(e) => handleImageHover(e, true)}
+                onMouseLeave={(e) => handleImageHover(e, false)}
+              >
+                <img
+                  src="./images/about-2.webp"
+                  alt={language === 'sr' ? 'Advokatska kancelarija' : 'Law Office'}
+                  style={styles.mainImage}
+                />
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Trust Section */}
-        <section ref={trustSectionRef} style={styles.trustSection}>
-          <div className="container">
-            <div className="row align-items-center g-5">
-              {/* Image Column */}
-              <div className="col-12 col-lg-6">
+      {/* Quote Section */}
+      <section ref={quoteSectionRef} style={styles.quoteSection}>
+        <div style={styles.quoteBgTexture} />
+        
+        <div className="container">
+          <div className="row align-items-stretch g-0">
+            {/* Quote Column */}
+            <div className="col-12 col-lg-6">
+              <Card
+                variant="glass"
+                padding="none"
+                className={`about-quote-card ${window.innerWidth <= 767 ? 'quote-card-mobile' : ''}`}
+                style={styles.quoteCard}
+              >
                 <div 
-                  style={styles.trustImageContainer}
-                  onMouseEnter={(e) => handleImageHover(e, true)}
-                  onMouseLeave={(e) => handleImageHover(e, false)}
+                  style={styles.quoteMark}
+                  className={window.innerWidth <= 575 ? 'quote-mark-mobile' : ''}
                 >
-                  <img
-                    src="./images/about-1.webp"
-                    alt={language === 'sr' ? 'Profesionalno savetovanje' : 'Professional Consultation'}
-                    style={styles.trustImage}
-                  />
+                  "
                 </div>
-              </div>
+                
+                <div style={styles.quoteContent}>
+                  <h3 style={styles.latinQuote}>
+                    "Qui iure suo utitur, neminem laedit"
+                  </h3>
+                  <div style={styles.quoteUnderline} />
+                  <p style={styles.quoteTranslation}>
+                    {language === 'sr' 
+                      ? 'Ko se služi svojim pravom, nikoga ne vređa.'
+                      : 'He who exercises his right does no wrong to anyone.'
+                    }
+                  </p>
+                </div>
+              </Card>
+            </div>
 
-              {/* Text Column */}
-              <div className="col-12 col-lg-6">
-                <div style={styles.trustContent}>
-                  <div style={styles.trustBadge}>
-                    <div style={styles.trustDot} />
-                    <span style={styles.trustBadgeText}>
-                      {language === 'sr' ? 'NAŠA VREDNOST' : 'OUR VALUES'}
+            {/* Promise Column */}
+            <div className="col-12 col-lg-6">
+              <div 
+                className={`about-promise-container ${window.innerWidth <= 767 ? 'promise-container-mobile' : ''}`}
+                style={styles.promiseContainer}
+              >
+                <div style={styles.promiseBgAccent} />
+                
+                <div style={styles.promiseContent}>
+                  <div style={styles.promiseBadge}>
+                    <div style={styles.promiseDot} />
+                    <span style={styles.promiseBadgeText}>
+                      {language === 'sr' ? 'NAŠE OBEĆANJE' : 'OUR PROMISE'}
                     </span>
                   </div>
-                  
-                  <h2 style={styles.trustTitle}>
-                    {t.section.mainHeading}
-                  </h2>
-                  
-                  <div style={styles.trustUnderline} />
 
-                  <p style={styles.trustDescription}>
-                    {t.section.description}
-                  </p>
+                  <h3 style={styles.promiseTitle}>
+                    {t.section.promise}
+                  </h3>
 
-                  <Card
-                    variant="elevated"
-                    padding="large"
-                    style={styles.trustCard}
+                  {/* Key benefits */}
+                  <div style={styles.benefitsList}>
+                    {[
+                      { 
+                        sr: 'Brza reakcija na vaše potrebe', 
+                        en: 'Quick response to your needs' 
+                      },
+                      { 
+                        sr: 'Kvalitetno i profesionalno rešavanje', 
+                        en: 'Quality and professional solutions' 
+                      },
+                      { 
+                        sr: 'Potpuna podrška kroz ceo proces', 
+                        en: 'Complete support throughout the process' 
+                      }
+                    ].map((benefit, index) => (
+                      <div 
+                        key={index} 
+                        className="benefit-item"
+                        style={styles.benefitItem}
+                        onMouseEnter={(e) => handleBenefitHover(e, true)}
+                        onMouseLeave={(e) => handleBenefitHover(e, false)}
+                      >
+                        <div 
+                          className="benefit-dot"
+                          style={styles.benefitDot}
+                        />
+                        <span style={styles.benefitText}>
+                          {language === 'sr' ? benefit.sr : benefit.en}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <button 
+                    type="button"
+                    style={styles.ctaButton}
+                    onMouseEnter={(e) => handleButtonHover(e, true)}
+                    onMouseLeave={(e) => handleButtonHover(e, false)}
+                    onClick={handleContactClick}
                   >
-                    <div style={styles.trustCardAccent} />
-                    <p style={styles.trustAdditionalText}>
-                      {t.section.additionalText}
-                    </p>
-                  </Card>
+                    {language === 'sr' ? 'KONTAKTIRAJTE NAS' : 'CONTACT US'}
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </div>
-    </>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section ref={trustSectionRef} style={styles.trustSection}>
+        <div className="container">
+          <div className="row align-items-center g-5">
+            {/* Image Column */}
+            <div className="col-12 col-lg-6">
+              <div 
+                className="about-trust-image"
+                style={styles.trustImageContainer}
+                onMouseEnter={(e) => handleImageHover(e, true)}
+                onMouseLeave={(e) => handleImageHover(e, false)}
+              >
+                <img
+                  src="./images/about-1.webp"
+                  alt={language === 'sr' ? 'Profesionalno savetovanje' : 'Professional Consultation'}
+                  style={styles.trustImage}
+                />
+              </div>
+            </div>
+
+            {/* Text Column */}
+            <div className="col-12 col-lg-6">
+              <div className="about-trust-content" style={styles.trustContent}>
+                <div style={styles.trustBadge}>
+                  <div style={styles.trustDot} />
+                  <span style={styles.trustBadgeText}>
+                    {language === 'sr' ? 'NAŠA VREDNOST' : 'OUR VALUES'}
+                  </span>
+                </div>
+                
+                <h2 style={styles.trustTitle}>
+                  {t.section.mainHeading}
+                </h2>
+                
+                <div style={styles.trustUnderline} />
+
+                <p style={styles.trustDescription}>
+                  {t.section.description}
+                </p>
+
+                <Card
+                  variant="elevated"
+                  padding="large"
+                  style={styles.trustCard}
+                >
+                  <div style={styles.trustCardAccent} />
+                  <p style={styles.trustAdditionalText}>
+                    {t.section.additionalText}
+                  </p>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

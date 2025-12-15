@@ -138,7 +138,7 @@ export default function Header({ language, setLanguage }) {
                   onMouseEnter={(e) => handleIconHover(e, true)}
                   onMouseLeave={(e) => handleIconHover(e, false)}
                 />
-                <span className="contact-text">suzana.ilic@legal.rs</span>
+                <span className="contact-text">advsuzanailic@gmail.com</span>
               </div>
             </div>
             <div className="d-flex align-items-center language-selector">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import { 
   Phone, Mail, MapPin, Clock, Send, MessageSquare,
   CheckCircle, AlertCircle, ChevronDown, Info, Calendar, AlertTriangle
@@ -7,6 +8,13 @@ import { colors } from '../../utils/colors.js';
 import Button from '../Button';
 import Card from '../Card';
 import './Contact.css';
+
+// EmailJS Configuration
+const EMAILJS_CONFIG = {
+  serviceId: 'service_dagvr7d',
+  templateId: 'template_1j64ohx',
+  publicKey: '5a09SWQB44olMaPmX'
+};
 
 export default function Contact({ language }) {
   const [formData, setFormData] = useState({
@@ -25,7 +33,7 @@ export default function Contact({ language }) {
           items: [
             { type: 'address', value: 'Sokolska 1/21, Niš', icon: MapPin },
             { type: 'phone', value: '+381 63 108 9990', icon: Phone },
-            { type: 'email', value: 'suzana.ilic@legal.rs', icon: Mail }
+            { type: 'email', value: 'advsuzanailic@gmail.com', icon: Mail }
           ]
         },
         hours: {
@@ -72,7 +80,7 @@ export default function Contact({ language }) {
           items: [
             { type: 'address', value: 'Sokolska 1/21, Niš', icon: MapPin },
             { type: 'phone', value: '+381 63 108 9990', icon: Phone },
-            { type: 'email', value: 'suzana.ilic@legal.rs', icon: Mail }
+            { type: 'email', value: 'advsuzanailic@gmail.com', icon: Mail }
           ]
         },
         hours: {
@@ -147,11 +155,33 @@ export default function Contact({ language }) {
       return;
     }
     setIsSubmitting(true);
+    
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || 'Nije navedeno',
+        subject: formData.subject || 'Bez predmeta',
+        legal_area: formData.legalArea || 'Nije izabrano',
+        message: formData.message,
+        // Additional fields that might be useful in your template
+        to_name: 'Advokatska kancelarija Ilić',
+        reply_to: formData.email
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+      );
+
       setFormStatus('success');
       setFormData({ name: '', email: '', phone: '', subject: '', message: '', legalArea: '' });
-    } catch {
+    } catch (error) {
+      console.error('EmailJS Error:', error);
       setFormStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -190,11 +220,10 @@ export default function Contact({ language }) {
     <section id="contact" className="contact-section" style={cssVars}>
       <div className="container contact-container">
         <div className="row justify-content-center mb-4">
-          <div className="col-12 text-center">
-            <div className="contact-subtitle-wrapper" style={{ justifyContent: 'center' }}>
-              <div className="contact-accent-line" />
-              <p className="contact-subtitle">{t.section.subtitle}</p>
-              <div className="contact-accent-line" />
+          <div className="col-12 col-lg-10 text-center">
+            <div className="contact-subtitle-wrapper d-inline-flex">
+              <span className="contact-accent-line"></span>
+              <span className="contact-subtitle">{t.section.subtitle}</span>
             </div>
           </div>
         </div>

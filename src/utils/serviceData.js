@@ -1,61 +1,62 @@
 import { 
-  Users, 
   Shield, 
   Building, 
   Briefcase, 
-  Home, 
   Scale, 
   FileSignature, 
   Calculator, 
   Clipboard, 
-  Gavel, 
-  Building2, 
-  MessageCircle 
+  Gavel,
+  Landmark,
+  CreditCard,
+  FileText,
+  ShieldCheck
 } from 'lucide-react';
 
 export const servicesData = {
-  // Serbian Services
-  'porodicno-pravo': {
-    id: 'porodicno-pravo',
-    icon: Users,
+  // Građansko i obligaciono pravo
+  'gradjansko-obligaciono-pravo': {
+    id: 'gradjansko-obligaciono-pravo',
+    icon: Scale,
     sr: {
-      name: 'Porodično pravo',
-      subtitle: 'Pravna zaštita porodičnih odnosa',
-      description: 'Specijalizovani smo za rešavanje svih pitanja iz oblasti porodičnog prava sa empatijom i profesionalnošću.',
-      overview: 'Porodičnim zakonom uređuju se brak i odnosi u braku, odnosi u vanbračnoj zajednici, odnosi deteta i roditelja, usvojenje, hraniteljstvo, starateljstvo, izdržavanje, imovinski odnosi u porodici, zaštita od nasilja u porodici, postupci u vezi sa porodičnim odnosima i lično ime.',
-      details: 'Svakodnevno se susrećemo sa velikim brojem slučajeva razvoda braka, starateljstva nad decom, podele bračne imovine, nasilja u porodici i sl. a svaki slučaj iz oblasti porodičnog prava je jedinstven i zahteva individualan pristup.',
-      approach: 'Advokatska kancelarija Ilić Lj. Suzana pruža pravne usluge u ovoj oblasti na način koji je efikasan i najmanje stresan za učesnike u postupku.',
+      name: 'Građansko i obligaciono pravo',
+      subtitle: 'Zaštita prava i pravnih interesa u građanskopravnim odnosima',
+      description: 'Pružamo sveobuhvatne pravne usluge iz oblasti građanskog i obligacionog prava za fizička i pravna lica.',
+      overview: 'Građansko pravo predstavlja granu prava koja reguliše imovinske i lične odnose između pravnih subjekata. Obligaciono pravo, kao njegov sastavni deo, uređuje pravne odnose nastale na osnovu ugovora, prouzrokovanja štete i drugih pravnih činjenica.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža pravne usluge koje obuhvataju: zastupanje u građanskim parnicama, sastavljanje ugovora svih vrsta, rešavanje imovinskih sporova, zaštitu prava svojine, naknadu štete, tumačenje i primenu obligacionih odnosa.',
+      approach: 'Pristupamo svakom predmetu sa posebnom pažnjom i posvećenošću, težeći ka optimalnom rešenju za klijenta uz poštovanje zakonskih propisa i etičkih normi pravne profesije.',
       services: [
-        'Razvod braka',
-        'Starateljstvo nad decom',
-        'Podela bračne imovine',
-        'Zaštita od nasilja u porodici',
-        'Usvojenje',
-        'Hraniteljstvo',
-        'Izdržavanje',
-        'Vanbračne zajednice'
+        'Zastupanje u građanskim parnicama',
+        'Sastavljanje ugovora',
+        'Rešavanje imovinskih sporova',
+        'Zaštita prava svojine',
+        'Naknada štete',
+        'Obligacioni odnosi',
+        'Sticanje bez osnova',
+        'Poslovodstvo bez naloga'
       ]
     },
     en: {
-      name: 'Family Law',
-      subtitle: 'Legal protection of family relationships',
-      description: 'We specialize in resolving all family law matters with empathy and professionalism.',
-      overview: 'The Family Law regulates marriage and marital relationships, common-law relationships, parent-child relationships, adoption, foster care, guardianship, support, property relations in the family, protection from domestic violence, procedures related to family relationships and personal names.',
-      details: 'We encounter a large number of cases daily involving divorce, child custody, division of marital property, domestic violence, etc. Each family law case is unique and requires an individual approach.',
-      approach: 'Ilić Lj. Suzana Law Office provides legal services in this area in a way that is efficient and least stressful for the participants in the procedure.',
+      name: 'Civil and Obligation Law',
+      subtitle: 'Protection of rights and legal interests in civil law relations',
+      description: 'We provide comprehensive legal services in the field of civil and obligation law for individuals and legal entities.',
+      overview: 'Civil law is a branch of law that regulates property and personal relations between legal subjects. Obligation law, as an integral part, governs legal relations arising from contracts, causing damage, and other legal facts.',
+      details: 'Ilić Lj. Suzana Law Office provides legal services including: representation in civil litigation, drafting of all types of contracts, resolution of property disputes, protection of property rights, damage compensation, interpretation and application of obligational relations.',
+      approach: 'We approach each case with special attention and dedication, striving for the optimal solution for the client while respecting legal regulations and ethical norms of the legal profession.',
       services: [
-        'Divorce proceedings',
-        'Child custody',
-        'Division of marital property',
-        'Protection from domestic violence',
-        'Adoption',
-        'Foster care',
-        'Support obligations',
-        'Common-law relationships'
+        'Representation in civil litigation',
+        'Contract drafting',
+        'Property dispute resolution',
+        'Property rights protection',
+        'Damage compensation',
+        'Obligational relations',
+        'Unjust enrichment',
+        'Negotiorum gestio'
       ]
     }
   },
 
+  // Krivično pravo
   'krivicno-pravo': {
     id: 'krivicno-pravo',
     icon: Shield,
@@ -97,6 +98,49 @@ export const servicesData = {
     }
   },
 
+  // Privredno pravo i statusne promene privrednih društava
+  'privredno-pravo': {
+    id: 'privredno-pravo',
+    icon: Landmark,
+    sr: {
+      name: 'Privredno pravo',
+      subtitle: 'Pravna podrška privrednim subjektima i statusne promene',
+      description: 'Pružamo kompletne pravne usluge iz oblasti privrednog prava uključujući statusne promene privrednih društava.',
+      overview: 'Privredno pravo reguliše pravne odnose između privrednih subjekata. Naša kancelarija pruža usluge pravnog savetovanja i zastupanja u svim aspektima privrednog poslovanja, uključujući statusne promene kao što su spajanje, podela, pripajanje i odvajanje privrednih društava.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža usluge: pravnog savetovanja pri statusnim promenama, izrade potrebne dokumentacije, zastupanja pred Agencijom za privredne registre, due diligence postupaka, pregovaranja i sastavljanja ugovora o statusnim promenama.',
+      approach: 'Pristupamo statusnim promenama sa posebnom pažnjom na zaštitu interesa klijenta i minimiziranje pravnih rizika povezanih sa transformacijom privrednog društva.',
+      services: [
+        'Spajanje privrednih društava',
+        'Podela privrednih društava',
+        'Pripajanje',
+        'Odvajanje uz osnivanje',
+        'Odvajanje uz pripajanje',
+        'Promena pravne forme',
+        'Due diligence',
+        'Pravno savetovanje'
+      ]
+    },
+    en: {
+      name: 'Commercial Law',
+      subtitle: 'Legal support for business entities and status changes',
+      description: 'We provide complete legal services in commercial law including corporate status changes.',
+      overview: 'Commercial law regulates legal relations between business entities. Our office provides legal advice and representation in all aspects of commercial operations, including status changes such as mergers, divisions, acquisitions, and spin-offs of companies.',
+      details: 'Ilić Lj. Suzana Law Office provides services: legal advice on status changes, preparation of required documentation, representation before the Business Registers Agency, due diligence procedures, negotiation and drafting of status change agreements.',
+      approach: 'We approach status changes with special attention to protecting client interests and minimizing legal risks associated with company transformation.',
+      services: [
+        'Company mergers',
+        'Company divisions',
+        'Acquisitions',
+        'Spin-off with establishment',
+        'Spin-off with acquisition',
+        'Legal form change',
+        'Due diligence',
+        'Legal consulting'
+      ]
+    }
+  },
+
+  // Korporativno pravo
   'korporativno-pravo': {
     id: 'korporativno-pravo',
     icon: Building,
@@ -138,388 +182,356 @@ export const servicesData = {
     }
   },
 
+  // Radno pravo
   'radno-pravo': {
     id: 'radno-pravo',
     icon: Briefcase,
     sr: {
       name: 'Radno pravo',
       subtitle: 'Zaštita prava zaposlenih i poslodavaca',
-      description: 'Kompletne usluge iz oblasti radnog prava za zaposlene i poslodavce u svim vrstama radnih odnosa.',
-      overview: 'Prava, obaveze i odgovornosti iz radnog odnosa uređuju se Zakonom o radu i posebnim zakonom, u skladu sa ratifikovanim međunarodnim konvencijama. Takođe, prava, obaveze i odgovornosti iz radnog odnosa uređuju se i kolektivnim ugovorom i ugovorom o radu, a pravilnikom o radu, odnosno ugovorom o radu samo kada je to određeno ovim zakonom.',
-      details: 'Opštim aktom poslodavca i ugovorom o radu mogu da se utvrde veća prava i povoljniji uslovi rada od prava i uslova utvrđenih zakonom ali se tim aktima poslodavca ne mogu utvrditi manja prava i nepovoljniji uslovi rada za zaposlenog od onih koji su propisani zakonom.',
-      approach: 'Odredbe Zakona o radu primenjuju se na sve zaposlene koji rade na teritoriji Republike Srbije, kod domaćeg, stranog, fizičkog ili pravnog lica (poslodavac), na zaposlene u državnim organima, organima teritorijalne autonomije i lokalne samouprave, zaposlene u javnim službama, na zaposlene koji su upućeni na rad u inostranstvo od strane poslodavca, kao i na zaposlene strane državljane i lica bez državljanstva koji rade kod poslodavca na teritoriji Republike Srbije. Advokatska kancelarija Ilić Lj. Suzana pruža usluge zastupanja u svim postupcima koji imaju za predmet kršenje odredaba Zakona o radu i dr. propisa iz oblasti radnog prava.',
+      description: 'Pružamo pravnu podršku u svim pitanjima vezanim za radne odnose, kako za zaposlene tako i za poslodavce.',
+      overview: 'Radno pravo reguliše odnose između zaposlenih i poslodavaca. Naša kancelarija pruža usluge savetovanja i zastupanja u svim pitanjima vezanim za zasnivanje, trajanje i prestanak radnog odnosa.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža pravne usluge koje obuhvataju: sastavljanje ugovora o radu, pravilnika o radu i drugih internih akata, savetovanje pri zasnivanju i prestanku radnog odnosa, zastupanje u radnim sporovima, zaštitu prava zaposlenih, savetovanje poslodavaca u vezi sa radnopravnim pitanjima.',
+      approach: 'Težimo ka pronalaženju optimalnih rešenja koja štite interese naših klijenata uz poštovanje zakonskih propisa iz oblasti radnog prava.',
       services: [
-        'Ugovori o radu',
-        'Otkaz radnog odnosa',
-        'Kolektivni pregovori',
-        'Radni sporovi',
-        'Bezbednost na radu',
-        'Diskriminacija na radu',
-        'Sindikalno predstavljanje',
-        'Radno vreme i odmori'
+        'Sastavljanje ugovora o radu',
+        'Izrada pravilnika o radu',
+        'Prestanak radnog odnosa',
+        'Zastupanje u radnim sporovima',
+        'Zaštita prava zaposlenih',
+        'Savetovanje poslodavaca',
+        'Kolektivno pregovaranje',
+        'Disciplinski postupci'
       ]
     },
     en: {
       name: 'Labor Law',
       subtitle: 'Protection of employee and employer rights',
-      description: 'Complete labor law services for employees and employers in all types of employment relationships.',
-      overview: 'Rights, obligations and responsibilities arising from employment relationships are regulated by the Labor Law and special laws, in accordance with ratified international conventions. Also, rights, obligations and responsibilities arising from employment relationships are regulated by collective agreements and employment contracts, and by work regulations, or employment contracts only when determined by this law.',
-      details: 'General acts of the employer and employment contracts may determine greater rights and more favorable working conditions than those established by law, but these employer acts cannot establish lesser rights and less favorable working conditions for employees than those prescribed by law.',
-      approach: 'The provisions of the Labor Law apply to all employees working on the territory of the Republic of Serbia, with domestic, foreign, natural or legal persons (employer), to employees in state bodies, bodies of territorial autonomy and local self-government, employees in public services, to employees sent to work abroad by the employer, as well as to employed foreign nationals and stateless persons working with employers on the territory of the Republic of Serbia. Ilić Lj. Suzana Law Office provides representation services in all proceedings concerning violations of Labor Law provisions and other regulations in the field of labor law.',
+      description: 'We provide legal support in all matters related to employment relationships, for both employees and employers.',
+      overview: 'Labor law regulates relations between employees and employers. Our office provides advisory and representation services in all matters related to establishment, duration and termination of employment.',
+      details: 'Ilić Lj. Suzana Law Office provides legal services including: drafting employment contracts, work regulations and other internal documents, advice on establishment and termination of employment, representation in labor disputes, protection of employee rights, advising employers on labor law matters.',
+      approach: 'We strive to find optimal solutions that protect our clients\' interests while respecting labor law regulations.',
       services: [
-        'Employment contracts',
-        'Termination of employment',
+        'Drafting employment contracts',
+        'Preparation of work regulations',
+        'Employment termination',
+        'Representation in labor disputes',
+        'Employee rights protection',
+        'Employer consulting',
         'Collective bargaining',
-        'Labor disputes',
-        'Workplace safety',
-        'Workplace discrimination',
-        'Union representation',
-        'Working time and rest'
+        'Disciplinary procedures'
       ]
     }
   },
 
-  'nasledno-pravo': {
-    id: 'nasledno-pravo',
-    icon: Home,
+  // Bankarsko i finansijsko pravo
+  'bankarsko-finansijsko-pravo': {
+    id: 'bankarsko-finansijsko-pravo',
+    icon: CreditCard,
     sr: {
-      name: 'Nasledno pravo',
-      subtitle: 'Profesionalno rešavanje naslednih pitanja',
-      description: 'Sveobuhvatne usluge u oblasti naslednog prava za zakonsko nasleđivanje i zaveštanje.',
-      overview: 'Nasleđuje se zaostavština. Zaostavštinu čine sva prava podobna za nasleđivanje koja su ostaviocu pripadala u trenutku smrti. Naslediti može samo ko je živ u trenutku ostaviočeve smrti, kao i dete koje je već začeto u trenutku ostaviočeve smrti ako se živo rodi.',
-      details: 'Zaostavštinu ne čine predmeti domaćinstva manje vrednosti koji služe svakodnevnim potrebama ostaviočevih potomaka, njegovog bračnog druga i roditelja, ako su sa ostaviočem živeli u istom domaćinstvu, već oni postaju zajednička svojina ovih lica.',
-      approach: 'Advokatska kancelarija Ilić Lj. Suzana pruža sve pravne usluge u postupcima koji imaju za predmet zakonsko nasleđivanje ili zaveštanje (testament).',
+      name: 'Bankarsko i finansijsko pravo',
+      subtitle: 'Pravna podrška u bankarskom i finansijskom sektoru',
+      description: 'Pružamo specijalizovane pravne usluge iz oblasti bankarskog i finansijskog prava.',
+      overview: 'Bankarsko i finansijsko pravo obuhvata pravne norme koje regulišu poslovanje banaka, finansijskih institucija i tržišta kapitala. Naša kancelarija pruža pravnu podršku klijentima u ovoj složenoj i dinamičnoj oblasti.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža usluge: pravnog savetovanja u bankarskim poslovima, sastavljanja i analize ugovora o kreditu, zastupanja u sporovima sa bankama i finansijskim institucijama, savetovanja u vezi sa hartijama od vrednosti, usklađenosti poslovanja sa regulativom finansijskog sektora.',
+      approach: 'Kombinujemo duboko poznavanje finansijske regulative sa praktičnim iskustvom u cilju pružanja efikasnih pravnih rešenja našim klijentima.',
       services: [
-        'Zakonsko nasleđivanje',
-        'Zaveštanje (testament)',
-        'Ostavinski postupak',
-        'Naslednopravni ugovori',
-        'Legalizacija nepokretnosti',
-        'Podela nasleđa',
-        'Nasledni sporovi',
-        'Odbacivanje nasleđa'
+        'Kreditni poslovi',
+        'Ugovori o kreditu',
+        'Sporovi sa bankama',
+        'Hartije od vrednosti',
+        'Finansijska regulativa',
+        'Investicioni fondovi',
+        'Platni promet',
+        'Devizno poslovanje'
       ]
     },
     en: {
-      name: 'Inheritance Law',
-      subtitle: 'Professional resolution of inheritance matters',
-      description: 'Comprehensive inheritance law services for legal inheritance and wills.',
-      overview: 'Inheritance consists of the estate. The estate consists of all rights suitable for inheritance that belonged to the testator at the time of death. Only those who are alive at the time of the testator\'s death can inherit, as well as children who are already conceived at the time of the testator\'s death if born alive.',
-      details: 'The estate does not consist of household items of lesser value that serve the daily needs of the testator\'s descendants, spouse and parents, if they lived in the same household with the testator, but they become joint property of these persons.',
-      approach: 'Ilić Lj. Suzana Law Office provides all legal services in proceedings concerning legal inheritance or wills (testament).',
+      name: 'Banking and Financial Law',
+      subtitle: 'Legal support in banking and financial sector',
+      description: 'We provide specialized legal services in banking and financial law.',
+      overview: 'Banking and financial law encompasses legal norms regulating the operations of banks, financial institutions, and capital markets. Our office provides legal support to clients in this complex and dynamic field.',
+      details: 'Ilić Lj. Suzana Law Office provides services: legal advice in banking operations, drafting and analysis of loan agreements, representation in disputes with banks and financial institutions, advice on securities, compliance with financial sector regulations.',
+      approach: 'We combine deep knowledge of financial regulations with practical experience to provide efficient legal solutions to our clients.',
       services: [
-        'Legal inheritance',
-        'Wills (testament)',
-        'Probate proceedings',
-        'Inheritance contracts',
-        'Property legalization',
-        'Estate division',
-        'Inheritance disputes',
-        'Inheritance waiver'
+        'Credit operations',
+        'Loan agreements',
+        'Banking disputes',
+        'Securities',
+        'Financial regulations',
+        'Investment funds',
+        'Payment transactions',
+        'Foreign exchange operations'
       ]
     }
   },
 
-  'prekrsajno-pravo': {
-    id: 'prekrsajno-pravo',
-    icon: Scale,
+  // Izvršni postupci
+  'izvrsni-postupci': {
+    id: 'izvrsni-postupci',
+    icon: FileText,
     sr: {
-      name: 'Prekršajno pravo',
-      subtitle: 'Zastupanje u prekršajnim postupcima',
-      description: 'Stručna odbrana u prekršajnim postupcima sa fokusom na specifične oblasti privrednog prava.',
-      overview: 'Advokatska kancelarija Ilić Lj. Suzana pridaje veliku pažnju prekršajnom pravu i pruža pravne usluge klijentima pravnim licima u prekršajnom postupku, pred prekršajnim sudom ili pred drugim organom u sledećim oblastima prekršaja:',
-      details: 'Prekršaji kod deviznog poslovanja, poreski prekršaji, prekršaji u oblasti javnih prihoda, spoljno-trgovinski prekršaji, prekršaji u prometu robe i usluga, carinski prekršaji, prekršaji iz oblasti životne sredine, prekršaji kod trgovanja hartijama od vrednosti.',
-      approach: 'Pravne usluge Advokatska kancelarija Ilić Lj. Suzana pruža i odgovornim fizičkim licima iz napred navedenih prekršaja pravnih lica. Advokatska kancelarija Ilić Lj. Suzana ne pruža pravne usluge iz drugih oblasti prekršaja.',
+      name: 'Izvršni postupci',
+      subtitle: 'Efikasno sprovođenje i zaštita prava',
+      description: 'Pružamo pravne usluge u izvršnim postupcima za efikasnu realizaciju i zaštitu prava.',
+      overview: 'Izvršni postupak služi za prinudno ostvarivanje novčanih i nenovčanih potraživanja na osnovu izvršne ili verodostojne isprave.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža potpunu pravnu podršku u svim fazama izvršnog postupka, sa ciljem efikasne i zakonite zaštite prava stranaka.',
+      approach: 'Pristupamo svakom predmetu sa ciljem postizanja najboljeg mogućeg rezultata za klijenta uz minimalne troškove i vreme.',
       services: [
-        'Prekršaji kod deviznog poslovanja',
-        'Poreski prekršaji',
-        'Prekršaji u oblasti javnih prihoda',
-        'Spoljno-trgovinski prekršaji',
-        'Prekršaji u prometu robe i usluga',
-        'Carinski prekršaji',
-        'Prekršaji iz oblasti životne sredine',
-        'Prekršaji kod trgovanja hartijama od vrednosti'
+        'Pokretanje izvršnog postupka',
+        'Zastupanja poverilaca u postupku prinudne naplate potraživanja',
+        'Zastupanja dužnika u izvršnom postupku',
+        'Sastavljanja predloga za izvršenje',
+        'Sastavljanja prigovora, žalbi i drugih pravnih podnesaka u izvršnom postupku',
+        'Pravne podrške u postupcima sprovođenja izvršenja pred izvršiteljima i sudovima',
+        'Praćenje i analiza toka izvršnog postupka i preduzimanje odgovarajućih pravnih radnji radi ubrzanja postupka',
+        'Savetovanje i zastupanje u postupcima obustave, odlaganja ili protivizvršenja'
+        
       ]
     },
     en: {
-      name: 'Misdemeanor Law',
-      subtitle: 'Representation in misdemeanor proceedings',
-      description: 'Expert defense in misdemeanor proceedings with focus on specific areas of commercial law.',
-      overview: 'Ilić Lj. Suzana Law Office pays great attention to misdemeanor law and provides legal services to legal entity clients in misdemeanor proceedings, before misdemeanor courts or other authorities in the following misdemeanor areas:',
-      details: 'Foreign exchange misdemeanors, tax misdemeanors, public revenue misdemeanors, foreign trade misdemeanors, goods and services trade misdemeanors, customs misdemeanors, environmental misdemeanors, and securities trading misdemeanors.',
-      approach: 'Ilić Lj. Suzana Law Office also provides legal services to responsible natural persons for the aforementioned legal entity misdemeanors. Ilić Lj. Suzana Law Office does not provide legal services for other areas of misdemeanors.',
+      name: 'Enforcement Proceedings',
+      subtitle: 'Efficient enforcement and protection of rights',
+      description: 'We provide legal services in enforcement proceedings for efficient realization and protection of rights.',
+      overview: 'Enforcement proceedings serve for compulsory realization of monetary and non-monetary claims based on enforceable or authentic documents. Our office provides comprehensive legal support in all phases of enforcement proceedings.',
+      details: 'Ilić Lj. Suzana Law Office provides complete legal support in all phases of enforcement proceedings, with the goal of efficient and lawful protection of parties\' rights.',
+      approach: 'We approach each case with the goal of achieving the best possible outcome for the client with minimal costs and time.',
       services: [
-        'Foreign exchange misdemeanors',
-        'Tax misdemeanors',
-        'Public revenue misdemeanors',
-        'Foreign trade misdemeanors',
-        'Goods and services trade misdemeanors',
-        'Customs misdemeanors',
-        'Environmental misdemeanors',
-        'Securities trading misdemeanors'
+        'Initiation of enforcement proceedings',
+        'Creditor representation in debt collection',
+        'Debtor representation',
+        'Drafting enforcement motions',
+        'Drafting objections and appeals',
+        'Support in enforcement before bailiffs and courts',
+        'Monitoring and analysis of proceedings',
+        'Suspension and counter-enforcement'
       ]
     }
   },
 
-  'ugovori': {
-    id: 'ugovori',
+  // Ugovorno pravo
+  'ugovorno-pravo': {
+    id: 'ugovorno-pravo',
     icon: FileSignature,
     sr: {
       name: 'Ugovorno pravo',
-      subtitle: 'Stručno sastavljanje i analiza ugovora',
-      description: 'Kompletne usluge sastavljanja, analize i zastupanja u sporovima iz ugovornog prava.',
-      overview: 'Advokatska kancelarija Ilić Lj. Suzana pruža pravne usluge sastavljanja svih vrsta ugovora iz poslovne delatnosti klijenata pravnih lica i raznih ugovora klijenata fizičkih lica, na način da su isti precizni i detaljni, da obuhvataju sve što je neophodno za zaštitu interesa klijenata i da osiguravaju primenu načela autonomije volje, savesnosti i poštenja kao i načela ravnopravnosti ugovornih strana.',
-      details: 'Kancelarija je specijalizovana za zastupanje klijenata pravnih lica u parničnim, izvršnim i drugim postupcima kao i sačinjavanje svih vrsta ugovora za potrebe poslovanja klijenata pravnih lica kao i klijenata fizičkih lica (ugovor o poklonu, zakupu, doživotnom izdržavanju, ugovor o prometu nepokretnosti...).',
-      approach: 'Pružamo usluge zastupanja u sporovima koji za predmet imaju prava i obaveze iz istih ugovora, pred svim nadležnim organima odnosno, u postupku medijacije.',
+      subtitle: 'Izrada i analiza ugovora svih vrsta',
+      description: 'Pružamo kompletne usluge izrade, analize i pregovaranja ugovora za fizička i pravna lica.',
+      overview: 'Ugovorno pravo reguliše stvaranje, izvršenje i prestanak ugovornih odnosa. Naša kancelarija pruža sveobuhvatne usluge koje obezbeđuju pravnu sigurnost u poslovnim i privatnim transakcijama.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža usluge: izrade i revizije ugovora svih vrsta (ugovori o prodaji, zakupu, delu, posredovanju, franšizi, distribuciji), pregovaranja ugovornih odredbi, analize postojećih ugovora, savetovanja u slučaju povrede ugovora.',
+      approach: 'Težimo ka izradi preciznih i sveobuhvatnih ugovora koji štite interese naših klijenata i minimiziraju potencijalne rizike.',
       services: [
-        'Ugovori o kupoprodaji',
-        'Ugovori o poslovnoj saradnji',
-        'Ugovori o radu i uslugama',
+        'Izrada ugovora',
+        'Revizija ugovora',
+        'Pregovaranje',
+        'Ugovori o prodaji',
         'Ugovori o zakupu',
-        'Ugovori o poklonu',
-        'Ugovori o doživotnom izdržavanju',
-        'Ugovori o prometu nepokretnosti',
-        'Revizija postojećih ugovora'
+        'Ugovori o franšizi',
+        'Ugovori o delu',
+        'Analiza ugovora'
       ]
     },
     en: {
       name: 'Contract Law',
-      subtitle: 'Professional contract drafting and analysis',
-      description: 'Complete services for drafting, analysis and representation in contract law disputes.',
-      overview: 'Ilić Lj. Suzana Law Office provides legal services for drafting all types of contracts for business activities of legal entity clients and various contracts for individual clients, ensuring they are precise and detailed, covering everything necessary to protect client interests and ensuring application of principles of autonomy of will, good faith and honesty as well as the principle of equality of contracting parties.',
-      details: 'The office specializes in representing legal entity clients in litigation, enforcement and other proceedings as well as drafting all types of contracts for business needs of legal entity clients and individual clients (gift contracts, lease agreements, life support contracts, real estate transaction contracts...).',
-      approach: 'We provide representation services in disputes concerning rights and obligations arising from the same contracts, before all competent authorities or in mediation procedures.',
+      subtitle: 'Drafting and analysis of all types of contracts',
+      description: 'We provide complete contract drafting, analysis and negotiation services for individuals and legal entities.',
+      overview: 'Contract law regulates the creation, performance, and termination of contractual relations. Our office provides comprehensive services ensuring legal certainty in business and private transactions.',
+      details: 'Ilić Lj. Suzana Law Office provides services: drafting and revision of all types of contracts (sales, lease, work, agency, franchise, distribution agreements), negotiating contract terms, analysis of existing contracts, advice in case of contract breach.',
+      approach: 'We strive to create precise and comprehensive contracts that protect our clients\' interests and minimize potential risks.',
       services: [
-        'Sales contracts',
-        'Business cooperation contracts',
-        'Work and service contracts',
+        'Contract drafting',
+        'Contract revision',
+        'Negotiation',
+        'Sales agreements',
         'Lease agreements',
-        'Gift contracts',
-        'Life support contracts',
-        'Real estate transaction contracts',
-        'Revision of existing contracts'
+        'Franchise agreements',
+        'Work agreements',
+        'Contract analysis'
       ]
     }
   },
 
+  // Naknada štete
   'naknada-stete': {
     id: 'naknada-stete',
     icon: Calculator,
     sr: {
       name: 'Naknada štete',
-      subtitle: 'Profesionalno zastupanje u oblastima obeštećenja',
-      description: 'Sveobuhvatne usluge u sporovima za naknadu materijalne i nematerijalne štete.',
-      overview: 'Advokatska kancelarija Ilić Lj. Suzana pruža pravne usluge u sporovima koji za predmet imaju "štetu", kako materijalnu u formi stvarne štete - umanjenja nečije imovine ili sprečavanja njenog povećanja (izmakla dobit), tako i nematerijalnu štetu kao nanošenje fizičkog ili psihičkog bola ili straha drugom licu.',
-      details: 'Materijalna ili imovinska šteta rezultat je povrede nekog imovinskog interesa (uništenje stvari, odnosno onemogućavanje ili otežavanje upotrebe stvari) ali može nastupiti i u slučaju povrede tuđe fizičke ličnosti, ako je ta povreda povukla nesposobnost za rad ili troškove lečenja.',
-      approach: 'Nematerijalna šteta ne predstavlja imovinski gubitak - ona nastupa usled pretrpljenih duševnih i fizičkih bolova i straha, za koje sud može dosuditi naknadu nematerijalne štete, u vidu isplate određene svote novca, kada to opravdavaju intenzitet i dužina trajanja bolova i straha, vodeći računa o značaju povređenog dobra i cilju kome služi ta naknada, a cilj naknade jeste, da onaj čije je dobro povređeno, sebi priušti kakvo drugo zadovoljstvo koje će mu omogućiti da doživi neku prijatnost nakon teškog duševnog ili fizičkog bola i straha koji je pretrpeo.',
+      subtitle: 'Ostvarivanje prava na naknadu pretrpljene štete',
+      description: 'Zastupamo klijente u postupcima za naknadu materijalne i nematerijalne štete.',
+      overview: 'Pravo na naknadu štete predstavlja temeljno pravo svakog lica koje je pretrpelo štetu. Naša kancelarija pruža sveobuhvatnu pravnu podršku u ostvarivanju ovog prava.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža usluge zastupanja u postupcima naknade štete prouzrokovane: saobraćajnim nezgodama, povredama na radu, lekarskim greškama, neispunjenjem ugovornih obaveza, povredom časti i ugleda.',
+      approach: 'Pristupamo svakom predmetu sa posebnom pažnjom, temelino procenjujući osnovanost zahteva i visinu naknade.',
       services: [
         'Saobraćajne nezgode',
-        'Profesionalna greška',
         'Povrede na radu',
-        'Medicinski tretman',
-        'Stvarna šteta',
-        'Izmakla dobit',
+        'Lekarske greške',
+        'Materijalna šteta',
         'Nematerijalna šteta',
-        'Duševni i fizički bolovi'
+        'Ugovorna šteta',
+        'Povreda ugleda',
+        'Osiguranje'
       ]
     },
     en: {
       name: 'Damage Compensation',
-      subtitle: 'Professional representation in compensation matters',
-      description: 'Comprehensive services in disputes for material and non-material damage compensation.',
-      overview: 'Ilić Lj. Suzana Law Office provides legal services in disputes concerning "damage", both material damage in the form of actual damage - reduction of someone\'s property or prevention of its increase (lost profit), as well as non-material damage as inflicting physical or mental pain or fear to another person.',
-      details: 'Material or property damage results from violation of some property interest (destruction of things, or preventing or hindering the use of things) but can also occur in case of injury to another person\'s physical person, if that injury resulted in inability to work or treatment costs.',
-      approach: 'Non-material damage does not represent property loss - it occurs due to suffered mental and physical pain and fear, for which the court may award compensation for non-material damage, in the form of payment of a certain amount of money, when justified by the intensity and duration of pain and fear, taking into account the significance of the injured good and the purpose served by that compensation, and the purpose of compensation is for the one whose good was injured to afford themselves some other satisfaction that will allow them to experience some pleasure after the severe mental or physical pain and fear they suffered.',
+      subtitle: 'Exercising the right to compensation for damages suffered',
+      description: 'We represent clients in proceedings for material and non-material damage compensation.',
+      overview: 'The right to damage compensation is a fundamental right of every person who has suffered damage. Our office provides comprehensive legal support in exercising this right.',
+      details: 'Ilić Lj. Suzana Law Office provides representation services in damage compensation proceedings caused by: traffic accidents, workplace injuries, medical errors, breach of contractual obligations, defamation.',
+      approach: 'We approach each case with special attention, thoroughly assessing the validity of claims and the amount of compensation.',
       services: [
         'Traffic accidents',
-        'Professional errors',
         'Workplace injuries',
-        'Medical treatment',
-        'Actual damage',
-        'Lost profits',
+        'Medical malpractice',
+        'Material damage',
         'Non-material damage',
-        'Mental and physical suffering'
+        'Contractual damage',
+        'Defamation',
+        'Insurance'
       ]
     }
   },
 
+  // Upravni postupak
   'upravni-postupak': {
     id: 'upravni-postupak',
     icon: Clipboard,
     sr: {
       name: 'Upravni postupak',
-      subtitle: 'Zastupanje u upravnim postupcima',
-      description: 'Profesionalne usluge zastupanja pred organima uprave u svim vrstama upravnih postupaka.',
-      overview: 'Upravni postupak je skup pravila koja državni organi i organizacije, organi i organizacije pokrajinske autonomije i organi i organizacije jedinica lokalne samouprave, ustanove, javna preduzeća, posebni organi preko kojih se ostvaruje regulatorna funkcija i pravna i fizička lica kojima su poverena javna ovlašćenja, primenjuju kada postupaju u upravnim stvarima.',
-      details: 'Upravna stvar jeste pojedinačna situacija u kojoj organ, neposredno primenjujući zakone (prvenstveno Zakon o opštem upravnom postupku), druge propise i opšte akte, pravno ili faktički utiče na položaj stranke tako što donosi upravne akte, garantne akte, zaključuje upravne ugovore, preduzima upravne radnje i pruža javne usluge.',
-      approach: 'Zakonom o upravnim sporovima uređuje se predmet upravnog spora, nadležnost za rešavanje upravnih sporova, stranke, pravila postupka, pravna sredstva i izvršenje donetih sudskih presuda. Advokatska kancelarija Ilić Lj. Suzana pruža usluge zastupanja u upravnim sporovima: protiv upravnog akta donetog u drugom stepenu, protiv prvostepenog upravnog akta protiv koga nije dozvoljena žalba u upravnom postupku, kada nadležni organ o zahtevu, odnosno žalbi stranke nije doneo upravni akt (ćutanje uprave), pod uslovima predviđenim zakonom.',
+      subtitle: 'Zastupanje pred državnim organima',
+      description: 'Pružamo pravnu pomoć i zastupanje u svim vrstama upravnih postupaka pred državnim organima.',
+      overview: 'Upravni postupak je skup pravila po kojima državni organi postupaju i donose pojedinačne akte. Naša kancelarija pruža sveobuhvatnu pravnu podršku u ovoj oblasti.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža usluge: podnošenja zahteva i žalbi u upravnom postupku, zastupanja pred upravnim organima, izrade pravnih sredstava, savetovanja u vezi sa pravima i obavezama u upravnom postupku.',
+      approach: 'Pristupamo upravnim postupcima sa temeljnim poznavanjem propisa i dugogodišnjim iskustvom u radu sa državnim organima.',
       services: [
-        'Upravni akti',
-        'Žalbe u upravnom postupku',
-        'Ćutanje uprave',
-        'Upravni ugovori',
-        'Javni pozivi',
-        'Dozvole i odobrenja',
-        'Inspekcijski postupci',
-        'Javne usluge'
+        'Podnošenje zahteva',
+        'Izrada žalbi',
+        'Zastupanje pred organima',
+        'Građevinske dozvole',
+        'Urbanističke dozvole',
+        'Poreske stvari',
+        'Carinski postupci',
+        'Inspekcijski postupci'
       ]
     },
     en: {
       name: 'Administrative Procedure',
-      subtitle: 'Representation in administrative procedures',
-      description: 'Professional representation services before administrative authorities in all types of administrative procedures.',
-      overview: 'Administrative procedure is a set of rules that state bodies and organizations, provincial autonomy bodies and organizations and local self-government unit bodies and organizations, institutions, public enterprises, special bodies through which regulatory function is exercised and legal and natural persons entrusted with public powers, apply when acting in administrative matters.',
-      details: 'An administrative matter is an individual situation in which a body, directly applying laws (primarily the General Administrative Procedure Law), other regulations and general acts, legally or factually affects the position of a party by adopting administrative acts, guarantee acts, concluding administrative contracts, undertaking administrative actions and providing public services.',
-      approach: 'The Administrative Disputes Law regulates the subject of administrative dispute, jurisdiction for resolving administrative disputes, parties, procedural rules, legal remedies and enforcement of court judgments. Ilić Lj. Suzana Law Office provides representation services in administrative disputes: against administrative acts adopted in the second instance, against first-instance administrative acts against which appeal is not allowed in administrative procedure, when the competent authority has not adopted an administrative act upon request or appeal of a party (administrative silence), under conditions provided by law.',
+      subtitle: 'Representation before government authorities',
+      description: 'We provide legal assistance and representation in all types of administrative procedures before government authorities.',
+      overview: 'Administrative procedure is a set of rules according to which government authorities act and issue individual acts. Our office provides comprehensive legal support in this area.',
+      details: 'Ilić Lj. Suzana Law Office provides services: filing applications and appeals in administrative procedures, representation before administrative authorities, drafting legal remedies, advice regarding rights and obligations in administrative procedures.',
+      approach: 'We approach administrative procedures with thorough knowledge of regulations and years of experience working with government authorities.',
       services: [
-        'Administrative acts',
-        'Appeals in administrative procedure',
-        'Administrative silence',
-        'Administrative contracts',
-        'Public calls',
-        'Permits and approvals',
-        'Inspection procedures',
-        'Public services'
+        'Filing applications',
+        'Drafting appeals',
+        'Representation before authorities',
+        'Building permits',
+        'Urban planning permits',
+        'Tax matters',
+        'Customs procedures',
+        'Inspection procedures'
       ]
     }
   },
 
+  // Upravni spor
   'upravni-spor': {
     id: 'upravni-spor',
     icon: Gavel,
     sr: {
       name: 'Upravni spor',
-      subtitle: 'Sudska zaštita u upravnim sporovima',
-      description: 'Stručno zastupanje u upravnim sporovima pred nadležnim sudovima.',
-      overview: 'Zakonom o upravnim sporovima uređuje se predmet upravnog spora, nadležnost za rešavanje upravnih sporova, stranke, pravila postupka, pravna sredstva i izvršenje donetih sudskih presuda.',
-      details: 'U upravnom sporu sud odlučuje o zakonitosti konačnih upravnih akata, osim onih za koje je predviđena drugačija sudska zaštita. U upravnom sporu sud odlučuje i o zakonitosti konačnih pojedinačnih akata kojima se rešava o pravu, obavezi ili na zakonu zasnovanom interesu, u pogledu kojih u određenom slučaju zakonom nije predviđena drugačija sudska zaštita.',
-      approach: 'Advokatska kancelarija Ilić Lj. Suzana pruža usluge zastupanja u upravnim sporovima: protiv upravnog akta donetog u drugom stepenu, protiv prvostepenog upravnog akta protiv koga nije dozvoljena žalba u upravnom postupku, kada nadležni organ o zahtevu, odnosno žalbi stranke nije doneo upravni akt (ćutanje uprave), pod uslovima predviđenim zakonom.',
+      subtitle: 'Sudska zaštita u upravnim stvarima',
+      description: 'Pružamo zastupanje u upravnim sporovima pred Upravnim sudom radi zaštite prava povređenih upravnim aktima.',
+      overview: 'Upravni spor predstavlja sudski postupak u kojem se kontroliše zakonitost pojedinačnih akata državnih organa. Naša kancelarija pruža stručnu pravnu pomoć u ovoj oblasti.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža usluge: podnošenja tužbi Upravnom sudu, zastupanja u upravnom sporu, izrade pravnih sredstava, savetovanja o mogućnostima pobijanja upravnih akata.',
+      approach: 'Pristupamo upravnim sporovima sa dubinom poznavanja upravnog prava i sudske prakse Upravnog suda.',
       services: [
-        'Tužbe protiv upravnih akata',
-        'Ćutanje uprave',
-        'Poništavanje upravnih rešenja',
-        'Obavezivanje na izdavanje akata',
-        'Sporovi zbog nepravilnih odluka',
-        'Zakonitost konačnih upravnih akata',
-        'Izvršenje sudskih presuda',
-        'Žalbe protiv presuda'
+        'Podnošenje tužbi',
+        'Zastupanje pred sudom',
+        'Pobijanje upravnih akata',
+        'Vanredna pravna sredstva',
+        'Poništaj rešenja',
+        'Vraćanje na ponovno odlučivanje',
+        'Pravna analiza',
+        'Savetovanje'
       ]
     },
     en: {
       name: 'Administrative Dispute',
-      subtitle: 'Court protection in administrative disputes',
-      description: 'Expert representation in administrative disputes before competent courts.',
-      overview: 'The Administrative Disputes Law regulates the subject of administrative dispute, jurisdiction for resolving administrative disputes, parties, procedural rules, legal remedies and enforcement of court judgments.',
-      details: 'In administrative disputes, the court decides on the legality of final administrative acts, except those for which different court protection is provided. In administrative disputes, the court also decides on the legality of final individual acts that resolve rights, obligations or legally based interests, for which in certain cases different court protection is not provided by law.',
-      approach: 'Ilić Lj. Suzana Law Office provides representation services in administrative disputes: against administrative acts adopted in the second instance, against first-instance administrative acts against which appeal is not allowed in administrative procedure, when the competent authority has not adopted an administrative act upon request or appeal of a party (administrative silence), under conditions provided by law.',
+      subtitle: 'Judicial protection in administrative matters',
+      description: 'We provide representation in administrative disputes before the Administrative Court to protect rights violated by administrative acts.',
+      overview: 'Administrative dispute is a judicial procedure in which the legality of individual acts of government authorities is controlled. Our office provides expert legal assistance in this area.',
+      details: 'Ilić Lj. Suzana Law Office provides services: filing lawsuits with the Administrative Court, representation in administrative disputes, drafting legal remedies, advice on possibilities for challenging administrative acts.',
+      approach: 'We approach administrative disputes with deep knowledge of administrative law and Administrative Court case law.',
       services: [
-        'Lawsuits against administrative acts',
-        'Administrative silence',
-        'Annulment of administrative decisions',
-        'Obligation to issue acts',
-        'Disputes due to improper decisions',
-        'Legality of final administrative acts',
-        'Enforcement of court decisions',
-        'Appeals against judgments'
+        'Filing lawsuits',
+        'Court representation',
+        'Challenging administrative acts',
+        'Extraordinary legal remedies',
+        'Annulment of decisions',
+        'Remanding for reconsideration',
+        'Legal analysis',
+        'Consulting'
       ]
     }
   },
 
-  'nekretnine': {
-    id: 'nekretnine',
-    icon: Building2,
+  // Usklađenost poslovanja (Compliance)
+  'uskladjenost-poslovanja': {
+    id: 'uskladjenost-poslovanja',
+    icon: ShieldCheck,
     sr: {
-      name: 'Nekretnine',
-      subtitle: 'Sveobuhvatne usluge u prometu nekretnina',
-      description: 'Kompletan pravni servis za sve transakcije sa nekretninama uz maksimalnu sigurnost i zaštitu.',
-      overview: 'Advokatska kancelarija Ilić Lj. Suzana pruža pravne usluge svim klijentima kod kupoprodaje nepokretnosti (poslovnog objekta, stana, zemljišta i dr), obzirom da se radi o oblasti koja trpi česte izmene zakonskih i podzakonskih propisa i nosi ogroman rizik.',
-      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža sledeće usluge u ovoj oblasti: pribavljanje izvoda iz listova nepokretnosti u Katastru, sastavljanje ugovora o prometu nepokretnosti, sastavljanje ugovora o izgradnji nepokretnosti, dokumentacija u vezi pribavljanja građevinskih, lokacijskih i upotrebnih dozvola, uknjižba prava svojine na nepokretnostima u Katastru nepokretnosti, konstituisanje (upis) hipoteke na nepokretnostima u Katastru nepokretnosti.',
-      approach: 'Pružamo proveru dokumentacije pre kupovine nepokretnosti i zastupanje u postupcima pred sudom i drugim državnim organima koji za predmet imaju nepokretnosti.',
+      name: 'Usklađenost poslovanja',
+      subtitle: 'Compliance - Usklađenost sa zakonskim i regulatornim zahtevima',
+      description: 'Pružamo sveobuhvatne usluge usklađenosti poslovanja sa zakonskim i regulatornim zahtevima.',
+      overview: 'Usklađenost poslovanja (compliance) podrazumeva sistem mera i postupaka kojima se obezbeđuje da organizacija posluje u skladu sa primenjivim zakonima, propisima, internim pravilima i etičkim standardima.',
+      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža usluge: izrade internih akata usklađenosti, procene rizika od neusklađenog poslovanja, implementacije sistema za sprečavanje pranja novca i finansiranja terorizma (AML/CFT), usklađenosti sa propisima o zaštiti podataka o ličnosti (GDPR), izrade kodeksa poslovnog ponašanja i etičkih standarda.',
+      approach: 'Pristupamo usklađenosti kao kontinuiranom procesu koji zahteva stalno praćenje propisa i prilagođavanje internih procedura.',
       services: [
-        'Pribavljanje izvoda iz listova nepokretnosti',
-        'Sastavljanje ugovora o prometu nepokretnosti',
-        'Sastavljanje ugovora o izgradnji nepokretnosti',
-        'Pribavljanje građevinskih dozvola',
-        'Pribavljanje lokacijskih dozvola',
-        'Pribavljanje upotrebnih dozvola',
-        'Uknjižba prava svojine u Katastru',
-        'Konstituisanje hipoteke'
+        'Izrada compliance programa',
+        'Procena rizika',
+        'AML/CFT usklađenost',
+        'Zaštita podataka (GDPR)',
+        'Interni akti',
+        'Kodeks ponašanja',
+        'Due diligence',
+        'Obuka zaposlenih'
       ]
     },
     en: {
-      name: 'Real Estate',
-      subtitle: 'Comprehensive real estate transaction services',
-      description: 'Complete legal service for all real estate transactions with maximum security and protection.',
-      overview: 'Ilić Lj. Suzana Law Office provides legal services to all clients in real estate transactions (commercial buildings, apartments, land, etc.), considering this is an area that undergoes frequent changes in legal and regulatory provisions and carries enormous risk.',
-      details: 'Ilić Lj. Suzana Law Office provides the following services in this area: obtaining excerpts from real estate records in the Cadastre, drafting real estate transaction contracts, drafting construction contracts, documentation related to obtaining building, location and use permits, registration of ownership rights on real estate in the Real Estate Cadastre, establishing (registering) mortgages on real estate in the Real Estate Cadastre.',
-      approach: 'We provide documentation verification before real estate purchase and representation in proceedings before courts and other state authorities concerning real estate.',
+      name: 'Business Compliance',
+      subtitle: 'Compliance with legal and regulatory requirements',
+      description: 'We provide comprehensive business compliance services with legal and regulatory requirements.',
+      overview: 'Business compliance encompasses a system of measures and procedures ensuring that an organization operates in accordance with applicable laws, regulations, internal rules, and ethical standards.',
+      details: 'Ilić Lj. Suzana Law Office provides services: drafting internal compliance documents, risk assessment of non-compliant operations, implementation of anti-money laundering and counter-terrorism financing systems (AML/CFT), compliance with personal data protection regulations (GDPR), drafting codes of business conduct and ethical standards.',
+      approach: 'We approach compliance as a continuous process requiring constant monitoring of regulations and adaptation of internal procedures.',
       services: [
-        'Obtaining real estate record excerpts',
-        'Drafting real estate transaction contracts',
-        'Drafting construction contracts',
-        'Obtaining building permits',
-        'Obtaining location permits',
-        'Obtaining use permits',
-        'Ownership registration in Cadastre',
-        'Mortgage establishment'
+        'Compliance program development',
+        'Risk assessment',
+        'AML/CFT compliance',
+        'Data protection (GDPR)',
+        'Internal documents',
+        'Code of conduct',
+        'Due diligence',
+        'Employee training'
       ]
     }
   },
 
-  'medijacija': {
-    id: 'medijacija',
-    icon: MessageCircle,
-    sr: {
-      name: 'Medijacija',
-      subtitle: 'Mirno rešavanje sporova kroz pregovaranje',
-      description: 'Efikasno i ekonomično rešavanje sporova kroz postupak medijacije kao alternativu sudskom sporu.',
-      overview: 'Postupak mirnog, vansudskog rešavanja spora, u kojem stranke dobrovoljno nastoje da sporni odnos reše putem pregovaranja, uz pomoć medijatora. Medijator na neutralan, nezavistan i nepristrasan način posreduje između strana u sporu, a u cilju nalaženja najpovoljnijeg rešenja za sporni odnos, koji rezultira potpisivanjem sporazuma strana u datom sporu.',
-      details: 'Advokatska kancelarija Ilić Lj. Suzana pruža usluge zastupanja u svim postupcima medijacije kao jeftinijeg postupka od sudskog (oslobađanje od plaćanja sudskih taksi ukoliko se parnični postupak okonča medijacijom, do dana zaključenja prvog ročišta za glavnu raspravu).',
-      approach: 'Medijacija predstavlja brzu, efikasnu i ekonomičnu alternativu tradicionalnom sudskom postupku, omogućavajući stranama da zadrže kontrolu nad ishodom spora i postignu obostrano prihvatljivo rešenje.',
-      services: [
-        'Komercijalna medijacija',
-        'Porodična medijacija',
-        'Radni sporovi medijacija',
-        'Građanska medijacija',
-        'Međunarodna medijacija',
-        'Online medijacija',
-        'Pregovaranje sporazuma',
-        'Mirno rešavanje sporova'
-      ]
-    },
-    en: {
-      name: 'Mediation',
-      subtitle: 'Peaceful dispute resolution through negotiation',
-      description: 'Efficient and economical dispute resolution through mediation as an alternative to court litigation.',
-      overview: 'A procedure of peaceful, out-of-court dispute resolution, in which parties voluntarily attempt to resolve their dispute through negotiation, with the help of a mediator. The mediator mediates between the parties in dispute in a neutral, independent and impartial manner, aiming to find the most favorable solution for the disputed relationship, resulting in the signing of an agreement between the parties in the given dispute.',
-      details: 'Ilić Lj. Suzana Law Office provides representation services in all mediation procedures as a cheaper procedure than court proceedings (exemption from court fees if litigation is concluded by mediation, until the day of conclusion of the first hearing for the main hearing).',
-      approach: 'Mediation represents a fast, efficient and economical alternative to traditional court proceedings, allowing parties to retain control over the outcome of the dispute and achieve a mutually acceptable solution.',
-      services: [
-        'Commercial mediation',
-        'Family mediation',
-        'Labor dispute mediation',
-        'Civil mediation',
-        'International mediation',
-        'Online mediation',
-        'Agreement negotiation',
-        'Peaceful dispute resolution'
-      ]
-    }
-  },
-
-  // English service URLs (mapped to same data but different URLs)
-  'family-law': 'porodicno-pravo',
-  'criminal-law': 'krivicno-pravo', 
+  // English service URLs (mapped to Serbian data)
+  'civil-obligation-law': 'gradjansko-obligaciono-pravo',
+  'criminal-law': 'krivicno-pravo',
+  'commercial-law': 'privredno-pravo',
   'corporate-law': 'korporativno-pravo',
   'labor-law': 'radno-pravo',
-  'inheritance-law': 'nasledno-pravo',
-  'misdemeanor-law': 'prekrsajno-pravo',
-  'contract-law': 'ugovori',
+  'banking-financial-law': 'bankarsko-finansijsko-pravo',
+  'enforcement-proceedings': 'izvrsni-postupci',
+  'contract-law': 'ugovorno-pravo',
   'damage-compensation': 'naknada-stete',
   'administrative-procedure': 'upravni-postupak',
   'administrative-dispute': 'upravni-spor',
-  'real-estate': 'nekretnine',
-  'mediation': 'medijacija'
+  'business-compliance': 'uskladjenost-poslovanja'
 };
 
 // Helper function to get service data by slug
@@ -551,32 +563,32 @@ export const getAllServices = (language = 'sr') => {
 export const getServiceSlugs = (language = 'sr') => {
   const slugMapping = {
     sr: [
-      'porodicno-pravo',
+      'gradjansko-obligaciono-pravo',
       'krivicno-pravo',
+      'privredno-pravo',
       'korporativno-pravo',
       'radno-pravo',
-      'nasledno-pravo',
-      'prekrsajno-pravo',
-      'ugovori',
+      'bankarsko-finansijsko-pravo',
+      'izvrsni-postupci',
+      'ugovorno-pravo',
       'naknada-stete',
       'upravni-postupak',
       'upravni-spor',
-      'nekretnine',
-      'medijacija'
+      'uskladjenost-poslovanja'
     ],
     en: [
-      'family-law',
+      'civil-obligation-law',
       'criminal-law',
+      'commercial-law',
       'corporate-law',
       'labor-law',
-      'inheritance-law',
-      'misdemeanor-law',
+      'banking-financial-law',
+      'enforcement-proceedings',
       'contract-law',
       'damage-compensation',
       'administrative-procedure',
       'administrative-dispute',
-      'real-estate',
-      'mediation'
+      'business-compliance'
     ]
   };
   

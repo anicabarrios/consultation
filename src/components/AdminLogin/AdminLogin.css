@@ -1,0 +1,6 @@
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .admin-login-wrapper button span {
+    display: none;
+  }
+}

@@ -71,7 +71,7 @@ export default function ServicePage({ language }) {
   const t = labels[language];
   const contactInfo = {
     phone: '+381 63 108 9990',
-    email: 'suzana.ilic@legal.rs',
+    email: 'advsuzanailic@gmail.com',
     address: 'Sokolska 1/21, Niš'
   };
 
