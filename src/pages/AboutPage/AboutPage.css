@@ -80,20 +80,29 @@
   aspect-ratio: 3 / 4;
   background: linear-gradient(145deg, rgba(175, 162, 127, 0.06) 0%, rgba(248, 249, 250, 1) 50%, rgba(175, 162, 127, 0.04) 100%);
   border-radius: clamp(12px, 2vw, 18px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(16px, 3vw, 24px);
-  border: 2px dashed rgba(175, 162, 127, 0.25);
-  transition: border-color 0.4s ease;
+  overflow: hidden;
+  position: relative;
   min-height: clamp(380px, 65vw, 600px);
 }
 
-.about-lawyer-frame:hover .about-lawyer-photo {
-  border-color: rgba(175, 162, 127, 0.4);
+/* Profile Photo Image */
+.about-photo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.about-lawyer-frame:hover .about-photo-image {
+  transform: scale(1.03);
+}
+
+/* Placeholder styles (for fallback if no image) */
 .about-photo-icon {
   width: clamp(60px, 25vw, 180px);
   height: clamp(60px, 25vw, 180px);
@@ -325,7 +334,7 @@
   font-size: clamp(24px, 4.5vw, 48px);
   font-weight: 800;
   color: var(--text-light);
-  margin-bottom: clamp(16px, 2.5vw, 26px);
+  margin-bottom: clamp(16px, 3vw, 24px);
   line-height: 1.15;
   font-family: 'Inter', -apple-system, sans-serif;
   letter-spacing: -0.025em;
@@ -335,45 +344,47 @@
 .about-values-description {
   font-size: clamp(14px, 1.8vw, 18px);
   color: rgba(255, 255, 255, 0.75);
-  line-height: 1.75;
-  max-width: 620px;
+  line-height: 1.7;
+  max-width: 600px;
   margin: 0 auto;
   animation: fadeInUp 0.6s ease-out 0.2s both;
 }
 
-/* Value Cards */
 .about-value-card {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: clamp(18px, 3vw, 24px);
-  padding: clamp(26px, 4vw, 44px) clamp(22px, 3vw, 32px);
+  border: 1px solid rgba(175, 162, 127, 0.15);
+  border-radius: clamp(16px, 3vw, 24px);
+  padding: clamp(28px, 4vw, 40px);
   text-align: center;
-  height: 100%;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  animation: scaleIn 0.6s ease-out both;
+  backdrop-filter: blur(10px);
+  height: 100%;
+  animation: scaleIn 0.5s ease-out both;
 }
 
+.about-value-card:nth-child(1) { animation-delay: 0.1s; }
+.about-value-card:nth-child(2) { animation-delay: 0.2s; }
+.about-value-card:nth-child(3) { animation-delay: 0.3s; }
+.about-value-card:nth-child(4) { animation-delay: 0.4s; }
+
 .about-value-card:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.06);
   border-color: rgba(175, 162, 127, 0.35);
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 40px rgba(175, 162, 127, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
 .about-value-icon {
-  width: clamp(55px, 10vw, 95px);
-  height: clamp(55px, 10vw, 95px);
-  background: linear-gradient(135deg, rgba(175, 162, 127, 0.2) 0%, rgba(175, 162, 127, 0.06) 100%);
-  border: 2px solid rgba(175, 162, 127, 0.2);
+  width: clamp(56px, 10vw, 72px);
+  height: clamp(56px, 10vw, 72px);
+  background: linear-gradient(135deg, rgba(175, 162, 127, 0.15) 0%, rgba(175, 162, 127, 0.05) 100%);
+  border: 1px solid rgba(175, 162, 127, 0.25);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto clamp(18px, 3vw, 30px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 auto clamp(20px, 3vw, 28px);
+  transition: all 0.4s ease;
 }
 
 .about-value-card:hover .about-value-icon {
@@ -619,13 +630,18 @@
   .about-promise-badge,
   .about-promise-item,
   .about-promise-number,
-  .about-credential-tag {
+  .about-credential-tag,
+  .about-photo-image {
     transition: none !important;
   }
   
   .about-lawyer-frame:hover,
   .about-value-card:hover,
   .about-promise-item:hover {
+    transform: none !important;
+  }
+  
+  .about-lawyer-frame:hover .about-photo-image {
     transform: none !important;
   }
 }
@@ -700,5 +716,9 @@
   .about-promise-item {
     box-shadow: none !important;
     border: 1px solid #ccc !important;
+  }
+  
+  .about-photo-image {
+    filter: none !important;
   }
 }

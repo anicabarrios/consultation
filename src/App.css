@@ -1,24 +1,12 @@
-/* Ensure the app doesn't scale incorrectly */
 .app-wrapper {
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  transform: none !important;
-  zoom: 1 !important;
-  -webkit-transform: none !important;
   position: relative;
 }
 
 .main-content {
   flex: 1 1 auto;
   width: 100%;
-  transform: none;
-}
-
-/* Override any Bootstrap or library zoom issues */
-.container,
-.container-fluid {
-  transform: none;
-  zoom: 1;
 }

@@ -150,10 +150,11 @@ export default function AboutPage({ language }) {
               <div className="about-lawyer-visual">
                 <div className="about-lawyer-frame">
                   <div className="about-lawyer-photo">
-                    <User className="about-photo-icon" color={colors.accent} strokeWidth={0.5} />
-                    <span className="about-photo-text">
-                      {language === 'sr' ? 'Fotografija' : 'Photo'}
-                    </span>
+                    <img 
+                      src="/images/profile.webp" 
+                      alt={language === 'sr' ? 'Advokat Suzana Ilić' : 'Attorney Suzana Ilić'}
+                      className="about-photo-image"
+                    />
                   </div>
                   <div className="about-lawyer-frame-badge">
                     <Scale size={16} color={colors.textLight} strokeWidth={2} />
