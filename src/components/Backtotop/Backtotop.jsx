@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
 import { colors } from '../../utils/colors.js';
-import './Backtotop.css'
+import './Backtotop.css';
 
 export default function BackToTop({ language = 'sr' }) {
   const [isVisible, setIsVisible] = useState(false);
