@@ -1,6 +1,4 @@
-// scripts/seedData.js
-require('dotenv').config();
-const mongoose = require('mongoose');
+// backend/utils/seedData.js
 const Question = require('../models/Question');
 
 // Sample Q&As - mix of answered and pending
@@ -129,16 +127,15 @@ const sampleData = [
   }
 ];
 
+// Export as async function (called by server.js)
 const seedDatabase = async () => {
   try {
-    // Insert mock questions
-    await Question.insertMany(mockQuestions);
-    console.log(`✓ Inserted ${mockQuestions.length} mock questions`);
+    await Question.insertMany(sampleData);
+    console.log(`✓ Inserted ${sampleData.length} sample questions`);
   } catch (error) {
     console.error('Error seeding database:', error.message);
     throw error;
   }
 };
 
-
-seedDatabase();
+module.exports = seedDatabase;

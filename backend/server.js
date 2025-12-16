@@ -61,7 +61,7 @@ const connectDB = async () => {
   }
 };
 
-
+// Auto-seed database if empty (runs only once)
 const seedIfEmpty = async () => {
   try {
     const Question = require('./models/Question');
@@ -93,6 +93,7 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 connectDB().then(async (connected) => {
+  // Seed database if connected and empty
   if (connected) {
     await seedIfEmpty();
   }
