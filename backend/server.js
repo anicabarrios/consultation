@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config();
 
+// Import routes - single index file
 const routes = require('./routes/index');
 
 const app = express();
@@ -49,11 +50,32 @@ const connectDB = async () => {
     if (process.env.MONGODB_URI) {
       await mongoose.connect(process.env.MONGODB_URI);
       console.log('✓ MongoDB connected successfully');
+      return true;
     } else {
       console.log('⚠ MongoDB URI not configured');
+      return false;
     }
   } catch (error) {
     console.error('✗ MongoDB connection error:', error.message);
+    return false;
+  }
+};
+
+
+const seedIfEmpty = async () => {
+  try {
+    const Question = require('./models/Question');
+    const count = await Question.countDocuments();
+    
+    if (count === 0) {
+      console.log('📦 Database is empty, seeding mock data...');
+      await require('./utils/seedData')();
+      console.log('✓ Database seeded successfully!');
+    } else {
+      console.log(`✓ Database has ${count} questions, skipping seed`);
+    }
+  } catch (error) {
+    console.error('Seed error:', error.message);
   }
 };
 
@@ -70,7 +92,11 @@ app.use((err, req, res, next) => {
 // Start server
 const PORT = process.env.PORT || 5000;
 
-connectDB().then(() => {
+connectDB().then(async (connected) => {
+  if (connected) {
+    await seedIfEmpty();
+  }
+  
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`
 ╔════════════════════════════════════════════════╗

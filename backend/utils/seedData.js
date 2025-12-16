@@ -129,69 +129,16 @@ const sampleData = [
   }
 ];
 
-async function seedDatabase() {
+const seedDatabase = async () => {
   try {
-    const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/ilic-law-qa';
-    await mongoose.connect(mongoUri);
-    console.log('✅ Connected to MongoDB\n');
-
-    console.log('📝 Seeding sample Q&As...\n');
-    
-    let added = 0;
-    let skipped = 0;
-    
-    for (const qa of sampleData) {
-      const exists = await Question.findOne({ 
-        'question.sr': qa.question.sr 
-      });
-      
-      if (!exists) {
-        await Question.create(qa);
-        const status = qa.isAnswered ? '✅ Answered' : '⏳ Pending';
-        console.log(`   ${status}: ${qa.question.sr.substring(0, 50)}...`);
-        added++;
-      } else {
-        console.log(`   ⚠️  Already exists: ${qa.question.sr.substring(0, 50)}...`);
-        skipped++;
-      }
-    }
-    
-    const counts = await Question.aggregate([
-      {
-        $group: {
-          _id: '$isAnswered',
-          count: { $sum: 1 }
-        }
-      }
-    ]);
-    
-    const answered = counts.find(c => c._id === true)?.count || 0;
-    const pending = counts.find(c => c._id === false)?.count || 0;
-    
-    console.log(`
-╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║   🎉 Database seeding completed!                             ║
-║                                                              ║
-║   📊 This run:                                               ║
-║      • Added: ${added}                                              ║
-║      • Skipped: ${skipped}                                           ║
-║                                                              ║
-║   📊 Total in database:                                      ║
-║      • Total questions: ${answered + pending}                                   ║
-║      • Answered: ${answered}                                          ║
-║      • Pending: ${pending}                                           ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
-    `);
-    
+    // Insert mock questions
+    await Question.insertMany(mockQuestions);
+    console.log(`✓ Inserted ${mockQuestions.length} mock questions`);
   } catch (error) {
-    console.error('❌ Seeding error:', error);
-  } finally {
-    await mongoose.connection.close();
-    console.log('👋 Database connection closed');
-    process.exit(0);
+    console.error('Error seeding database:', error.message);
+    throw error;
   }
-}
+};
+
 
 seedDatabase();
