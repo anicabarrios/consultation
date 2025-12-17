@@ -1,17 +1,17 @@
 /* ============================================
-   CSS VARIABLES
+   CSS VARIABLES - Base (Desktop 1200px+)
    ============================================ */
 .about-component {
-  --section-padding: clamp(80px, 12vw, 120px);
-  --container-padding: clamp(40px, 6vw, 60px);
-  --text-spacing: clamp(24px, 4vw, 36px);
-  --card-padding: clamp(20px, 3vw, 35px);
-  --image-height: clamp(450px, 55vw, 700px);
-  --quote-height: clamp(280px, 35vw, 420px);
-  --main-title-size: clamp(26px, 4.5vw, 48px);
-  --subtitle-size: clamp(11px, 1.5vw, 13px);
-  --body-text-size: clamp(14px, 2vw, 18px);
-  --benefit-text-size: clamp(15px, 2vw, 17px);
+  --section-padding: 120px;
+  --container-padding: 60px;
+  --text-spacing: 36px;
+  --card-padding: 35px;
+  --image-height: 700px;
+  --quote-height: 420px;
+  --main-title-size: 48px;
+  --subtitle-size: 13px;
+  --body-text-size: 18px;
+  --benefit-text-size: 17px;
 }
 
 /* ============================================
@@ -180,6 +180,165 @@
    RESPONSIVE BREAKPOINTS
    ============================================ */
 
+/* Ultra-wide screen (1920px+) */
+@media (min-width: 1920px) {
+  .about-component {
+    --section-padding: 120px;
+    --container-padding: 60px;
+    --text-spacing: 36px;
+    --card-padding: 35px;
+    --image-height: 800px;
+    --quote-height: 420px;
+    --main-title-size: 48px;
+    --subtitle-size: 13px;
+    --body-text-size: 18px;
+    --benefit-text-size: 17px;
+  }
+}
+
+/* Large Desktop (1200px - 1919px) */
+@media (max-width: 1919px) and (min-width: 1200px) {
+  .about-component {
+    --section-padding: 110px;
+    --container-padding: 55px;
+    --text-spacing: 34px;
+    --card-padding: 32px;
+    --image-height: 650px;
+    --quote-height: 400px;
+    --main-title-size: 44px;
+    --subtitle-size: 13px;
+    --body-text-size: 17px;
+    --benefit-text-size: 17px;
+  }
+}
+
+/* Desktop (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .about-component {
+    --section-padding: 100px;
+    --container-padding: 50px;
+    --text-spacing: 32px;
+    --card-padding: 30px;
+    --image-height: 580px;
+    --quote-height: 380px;
+    --main-title-size: 40px;
+    --subtitle-size: 12px;
+    --body-text-size: 17px;
+    --benefit-text-size: 16px;
+  }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .about-component {
+    --section-padding: 90px;
+    --container-padding: 0;
+    --text-spacing: 30px;
+    --card-padding: 40px;
+    --image-height: 680px;
+    --quote-height: 360px;
+    --main-title-size: 36px;
+    --subtitle-size: 12px;
+    --body-text-size: 16px;
+    --benefit-text-size: 16px;
+  }
+}
+
+/* Tablet Portrait (768px - 1024px landscape) */
+@media (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
+  .about-component {
+    --quote-height: 360px;
+    --image-height: 620px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
+  .about-component {
+    --quote-height: 400px;
+    --image-height: 750px;
+  }
+}
+
+/* Large Mobile (576px - 767px) */
+@media (max-width: 767px) and (min-width: 576px) {
+  .about-component {
+    --section-padding: 70px;
+    --container-padding: 0;
+    --text-spacing: 28px;
+    --card-padding: 35px;
+    --image-height: 420px;
+    --quote-height: 300px;
+    --main-title-size: 28px;
+    --subtitle-size: 11px;
+    --body-text-size: 16px;
+    --benefit-text-size: 15px;
+  }
+}
+
+/* Mobile (480px - 575px) */
+@media (max-width: 575px) and (min-width: 480px) {
+  .about-component {
+    --section-padding: 55px;
+    --container-padding: 0;
+    --text-spacing: 26px;
+    --card-padding: 30px;
+    --image-height: 350px;
+    --quote-height: 270px;
+    --main-title-size: 24px;
+    --subtitle-size: 11px;
+    --body-text-size: 15px;
+    --benefit-text-size: 14px;
+  }
+}
+
+/* Small Mobile (360px - 479px) */
+@media (max-width: 479px) and (min-width: 360px) {
+  .about-component {
+    --section-padding: 50px;
+    --container-padding: 0;
+    --text-spacing: 24px;
+    --card-padding: 28px;
+    --image-height: 320px;
+    --quote-height: 250px;
+    --main-title-size: 22px;
+    --subtitle-size: 11px;
+    --body-text-size: 15px;
+    --benefit-text-size: 14px;
+  }
+}
+
+/* Extra Small Mobile (320px - 359px) */
+@media (max-width: 359px) and (min-width: 320px) {
+  .about-component {
+    --section-padding: 45px;
+    --container-padding: 0;
+    --text-spacing: 22px;
+    --card-padding: 25px;
+    --image-height: 280px;
+    --quote-height: 220px;
+    --main-title-size: 20px;
+    --subtitle-size: 11px;
+    --body-text-size: 14px;
+    --benefit-text-size: 14px;
+  }
+}
+
+/* Very Small Mobile (< 320px) */
+@media (max-width: 319px) {
+  .about-component {
+    --section-padding: 40px;
+    --container-padding: 0;
+    --text-spacing: 20px;
+    --card-padding: 22px;
+    --image-height: 260px;
+    --quote-height: 200px;
+    --main-title-size: 18px;
+    --subtitle-size: 10px;
+    --body-text-size: 14px;
+    --benefit-text-size: 13px;
+  }
+}
+
 /* Quote Section Mobile Adjustments */
 @media (max-width: 767px) {
   .quote-card-mobile {
@@ -202,72 +361,6 @@
     font-size: 80px !important;
     top: 20px !important;
     left: 20px !important;
-  }
-}
-
-/* Tablet (768px - 1199px) */
-@media (max-width: 1199px) and (min-width: 768px) {
-  .about-component {
-    --image-height: clamp(620px, 62vw, 720px);
-    --quote-height: clamp(320px, 40vw, 380px);
-    --card-padding: clamp(35px, 5vw, 50px);
-    --container-padding: 0;
-  }
-}
-
-/* Mobile (below 768px) */
-@media (max-width: 767px) {
-  .about-component {
-    --section-padding: clamp(60px, 10vw, 80px);
-    --container-padding: 0;
-    --image-height: clamp(350px, 50vw, 450px);
-    --quote-height: clamp(260px, 35vw, 320px);
-    --card-padding: clamp(30px, 5vw, 40px);
-    --main-title-size: clamp(22px, 4vw, 28px);
-    --benefit-text-size: clamp(14px, 2vw, 16px);
-  }
-}
-
-/* Small Mobile (below 576px) */
-@media (max-width: 575px) {
-  .about-component {
-    --section-padding: clamp(40px, 8vw, 60px);
-    --image-height: clamp(300px, 45vw, 350px);
-    --quote-height: clamp(220px, 32vw, 280px);
-    --card-padding: clamp(25px, 4vw, 35px);
-    --main-title-size: clamp(20px, 3.5vw, 24px);
-    --benefit-text-size: 14px;
-  }
-}
-
-/* Tablet Landscape */
-@media (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
-  .about-component {
-    --quote-height: clamp(340px, 42vw, 380px);
-    --image-height: clamp(580px, 60vw, 680px);
-  }
-}
-
-/* Tablet Portrait */
-@media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
-  .about-component {
-    --quote-height: clamp(380px, 45vw, 420px);
-    --image-height: clamp(680px, 70vw, 780px);
-  }
-}
-
-/* Ultra-wide screen adjustments */
-@media (min-width: 1920px) {
-  .about-component {
-    --image-height: clamp(600px, 40vw, 800px);
-  }
-}
-
-/* Very small mobile adjustments */
-@media (max-width: 320px) {
-  .about-component {
-    --image-height: clamp(250px, 80vw, 300px);
-    --quote-height: clamp(180px, 60vw, 220px);
   }
 }
 
