@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { colors } from '../../utils/colors';
 import Button from '../Button';
 import './Hero.css';
@@ -76,18 +75,6 @@ export default function Hero({ language }) {
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
-
   // Navigate to contact page
   const handleContactClick = () => {
     navigate('/contact');
@@ -113,7 +100,7 @@ export default function Hero({ language }) {
             <div className="container position-relative h-100 d-flex align-items-center" style={{ zIndex: 4 }}>
               <div className="row align-items-center justify-content-center w-100">
                 <div className="col-12 col-lg-8 text-center">
-                  <div style={{ marginBottom: 'clamp(30px, 5vw, 45px)' }}>
+                  <div className="hero-content-wrapper">
                     <h1 className="hero-title">{slide.title}</h1>
                     <p 
                       className="hero-subtitle"
@@ -146,22 +133,7 @@ export default function Hero({ language }) {
         ))}
       </div>
 
-      <button
-        onClick={prevSlide}
-        className="hero-nav-btn hero-nav-prev"
-        aria-label={language === 'sr' ? 'Prethodni slajd' : 'Previous slide'}
-      >
-        <ChevronLeft size={24} />
-      </button>
-
-      <button
-        onClick={nextSlide}
-        className="hero-nav-btn hero-nav-next"
-        aria-label={language === 'sr' ? 'Sledeći slajd' : 'Next slide'}
-      >
-        <ChevronRight size={24} />
-      </button>
-
+      {/* Navigation Dots */}
       <div className="hero-dots">
         {slides.map((_, index) => (
           <button
@@ -176,6 +148,7 @@ export default function Hero({ language }) {
         ))}
       </div>
 
+      {/* Progress Bar */}
       <div className="hero-progress">
         <div 
           className="hero-progress-bar"
