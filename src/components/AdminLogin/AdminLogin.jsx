@@ -29,7 +29,7 @@ export default function AdminLogin({ language, onLoginSuccess, content, sharedSt
     card: {
       background: colors.textLight,
       borderRadius: '20px',
-      padding: 'clamp(32px, 5vw, 48px)',
+      padding: '48px',
       boxShadow: `0 20px 60px ${colors.shadowMedium}`,
       width: '100%',
       maxWidth: '400px',
@@ -48,7 +48,7 @@ export default function AdminLogin({ language, onLoginSuccess, content, sharedSt
     },
     title: {
       color: colors.primary,
-      fontSize: 'clamp(1.5rem, 4vw, 1.75rem)',
+      fontSize: '1.75rem',
       fontWeight: '700',
       margin: '0 0 8px'
     },
@@ -164,7 +164,7 @@ export default function AdminLogin({ language, onLoginSuccess, content, sharedSt
   ];
 
   return (
-    <div style={styles.wrapper}>
+    <div style={styles.wrapper} className="admin-login-wrapper">
       <button 
         style={styles.backBtn}
         onClick={() => navigate('/')}
@@ -175,12 +175,12 @@ export default function AdminLogin({ language, onLoginSuccess, content, sharedSt
         <span>{t.back}</span>
       </button>
 
-      <div style={styles.card}>
+      <div style={styles.card} className="admin-login-card">
         <div style={styles.iconWrapper}>
           <Shield size={32} />
         </div>
         
-        <h1 style={styles.title}>{t.login.title}</h1>
+        <h1 style={styles.title} className="admin-login-title">{t.login.title}</h1>
         <p style={styles.subtitle}>{t.login.subtitle}</p>
 
         {loginError && (

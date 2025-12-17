@@ -90,27 +90,24 @@ export default function Hero({ language }) {
             style={{
               background: index === 0 ? '#1a1a2e' : '#0f1419',
               backgroundImage: `url(${slide.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
             }}
           >
             <div className="hero-overlay" />
 
-            <div className="container position-relative h-100 d-flex align-items-center" style={{ zIndex: 4 }}>
+            <div className="container position-relative h-100 d-flex align-items-center justify-content-center" style={{ zIndex: 4 }}>
               <div className="row align-items-center justify-content-center w-100">
-                <div className="col-12 col-lg-8 text-center">
+                <div className="col-12 col-lg-10 col-xl-8 text-center px-3">
                   <div className="hero-content-wrapper">
                     <h1 className="hero-title">{slide.title}</h1>
                     <p 
                       className="hero-subtitle"
-                      style={{ color: colors.accent, margin: '0 auto' }}
+                      style={{ color: colors.accent }}
                     >
                       {slide.subtitle}
                     </p>
                   </div>
                   <p className="hero-description">{slide.description}</p>
-                  <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                  <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center" style={{ width: '100%' }}>
                     <Button
                       variant="primary"
                       size="large"

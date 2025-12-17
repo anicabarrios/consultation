@@ -1,7 +1,15 @@
-/* Contact Section */
+/* Contact Section - Base (Desktop 1200px+) */
 .contact-section {
+  --section-padding: 120px;
+  --subtitle-size: 14px;
+  --card-title-size: 20px;
+  --contact-text-size: 15px;
+  --hours-text-size: 14px;
+  --hours-note-size: 13px;
+  --form-title-size: 28px;
+  
   background: linear-gradient(180deg, var(--light-bg) 0%, #ffffff 50%, var(--light-bg) 100%);
-  padding: clamp(80px, 12vw, 120px) 0;
+  padding: var(--section-padding) 0;
   position: relative;
   overflow: hidden;
 }
@@ -35,7 +43,7 @@
 
 .contact-section .contact-subtitle {
   color: var(--accent);
-  font-size: clamp(11px, 1.4vw, 14px);
+  font-size: var(--subtitle-size);
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -144,7 +152,7 @@
 }
 
 .contact-section .sidebar-card-title {
-  font-size: clamp(16px, 2.2vw, 20px);
+  font-size: var(--card-title-size);
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
@@ -212,7 +220,7 @@
 
 .contact-section .contact-item-text,
 .contact-section .contact-link {
-  font-size: clamp(14px, 1.8vw, 15px);
+  font-size: var(--contact-text-size);
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 600;
@@ -226,7 +234,7 @@
 
 .contact-section .hours-label,
 .contact-section .hours-value {
-  font-size: clamp(13px, 1.8vw, 14px);
+  font-size: var(--hours-text-size);
   line-height: 1.4;
 }
 
@@ -237,7 +245,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: clamp(12px, 1.5vw, 13px);
+  font-size: var(--hours-note-size);
   color: var(--accent);
   font-style: italic;
   font-weight: 500;
@@ -270,7 +278,7 @@
 }
 
 .contact-section .form-title {
-  font-size: clamp(22px, 3.5vw, 28px);
+  font-size: var(--form-title-size);
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 14px;
@@ -455,14 +463,51 @@
   border-color: rgba(220, 53, 69, 0.3);
 }
 
-/* RESPONSIVE */
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Large Desktop (1200px - 1399px) */
+@media (max-width: 1399px) {
+  .contact-section {
+    --section-padding: 110px;
+    --subtitle-size: 13px;
+    --card-title-size: 19px;
+    --contact-text-size: 15px;
+    --hours-text-size: 14px;
+    --hours-note-size: 13px;
+    --form-title-size: 26px;
+  }
+}
+
+/* Desktop (992px - 1199px) */
 @media (max-width: 1199px) {
+  .contact-section {
+    --section-padding: 100px;
+    --subtitle-size: 13px;
+    --card-title-size: 18px;
+    --contact-text-size: 15px;
+    --hours-text-size: 14px;
+    --hours-note-size: 13px;
+    --form-title-size: 26px;
+  }
+  
   .contact-section .contact-info-card { min-height: 280px !important; }
   .contact-section .contact-form-card { min-height: 600px !important; }
 }
 
+/* Tablet (768px - 991px) */
 @media (max-width: 991px) {
-  .contact-section { padding: clamp(60px, 10vw, 80px) 0; }
+  .contact-section {
+    --section-padding: 80px;
+    --subtitle-size: 12px;
+    --card-title-size: 18px;
+    --contact-text-size: 15px;
+    --hours-text-size: 14px;
+    --hours-note-size: 12px;
+    --form-title-size: 25px;
+  }
+  
   .contact-section .contact-info-cards { margin-bottom: 32px; gap: 18px; }
   .contact-section .contact-info-card,
   .contact-section .contact-hours-card,
@@ -471,7 +516,18 @@
   .contact-section .select-option { padding: 18px 20px; min-height: 54px; font-size: 15px; }
 }
 
+/* Large Mobile (576px - 767px) */
 @media (max-width: 767px) {
+  .contact-section {
+    --section-padding: 70px;
+    --subtitle-size: 12px;
+    --card-title-size: 17px;
+    --contact-text-size: 14px;
+    --hours-text-size: 14px;
+    --hours-note-size: 12px;
+    --form-title-size: 24px;
+  }
+  
   .contact-section .contact-item,
   .contact-section .hours-item { gap: 12px; padding: 10px 8px; }
   .contact-section .contact-item { padding: 12px 10px; }
@@ -497,12 +553,22 @@
   .contact-section .select-option { padding: 16px; min-height: 52px; }
 }
 
+/* Mobile (480px - 575px) */
 @media (max-width: 575px) {
+  .contact-section {
+    --section-padding: 60px;
+    --subtitle-size: 11px;
+    --card-title-size: 16px;
+    --contact-text-size: 14px;
+    --hours-text-size: 13px;
+    --hours-note-size: 11px;
+    --form-title-size: 22px;
+  }
+  
   .contact-section .contact-subtitle-wrapper { gap: 12px; }
   .contact-section .contact-accent-line { width: 3px; height: 18px; }
   .contact-section .sidebar-card-header { margin-bottom: 18px; padding-bottom: 14px; gap: 8px; }
   .contact-section .sidebar-card-icon { width: 30px; height: 30px; border-radius: 7px; }
-  .contact-section .sidebar-card-title { font-size: clamp(14px, 1.8vw, 16px); }
   .contact-section .sidebar-card-header::after { width: 30px; }
   .contact-section .contact-items-grid,
   .contact-section .hours-items-grid { gap: 6px; }
@@ -510,8 +576,6 @@
   .contact-section .hours-item { padding: 8px 4px; gap: 10px; }
   .contact-section .contact-item-icon,
   .contact-section .hours-item-icon { width: 34px; height: 34px; border-radius: 6px; }
-  .contact-section .hours-label,
-  .contact-section .hours-value { font-size: 13px; }
   .contact-section .hours-note { padding: 10px; font-size: 11px; margin-top: 2px; }
   .contact-section .form-badge { padding: 8px 16px; font-size: 11px; }
   .contact-section .custom-select { min-height: 52px; padding: 14px; }
@@ -519,26 +583,55 @@
   .contact-section .custom-select-dropdown { max-height: 180px; }
 }
 
+/* Small Mobile (360px - 479px) */
+@media (max-width: 479px) {
+  .contact-section {
+    --section-padding: 55px;
+    --subtitle-size: 11px;
+    --card-title-size: 15px;
+    --contact-text-size: 14px;
+    --hours-text-size: 13px;
+    --hours-note-size: 11px;
+    --form-title-size: 21px;
+  }
+}
+
+/* Extra Small Mobile (320px - 375px) */
 @media (max-width: 375px) {
+  .contact-section {
+    --section-padding: 50px;
+    --subtitle-size: 11px;
+    --card-title-size: 14px;
+    --contact-text-size: 13px;
+    --hours-text-size: 12px;
+    --hours-note-size: 10px;
+    --form-title-size: 20px;
+  }
+  
   .contact-section .sidebar-card-header { margin-bottom: 16px; padding-bottom: 12px; }
   .contact-section .sidebar-card-icon { width: 28px; height: 28px; border-radius: 6px; }
-  .contact-section .sidebar-card-title { font-size: 14px; }
   .contact-section .contact-item-icon,
   .contact-section .hours-item-icon { width: 32px; height: 32px; }
-  .contact-section .hours-label,
-  .contact-section .hours-value { font-size: 12px; }
   .contact-section .hours-note { padding: 8px; font-size: 10px; }
 }
 
-@media (max-width: 320px) {
+/* Very Small Mobile (< 320px) */
+@media (max-width: 319px) {
+  .contact-section {
+    --section-padding: 45px;
+    --subtitle-size: 10px;
+    --card-title-size: 13px;
+    --contact-text-size: 12px;
+    --hours-text-size: 11px;
+    --hours-note-size: 10px;
+    --form-title-size: 18px;
+  }
+  
   .contact-section .sidebar-card-header { margin-bottom: 14px; padding-bottom: 10px; gap: 6px; }
   .contact-section .sidebar-card-icon { width: 26px; height: 26px; border-radius: 5px; }
-  .contact-section .sidebar-card-title { font-size: 13px; }
   .contact-section .sidebar-card-header::after { width: 25px; }
   .contact-section .contact-item-icon,
   .contact-section .hours-item-icon { width: 28px; height: 28px; }
-  .contact-section .hours-label,
-  .contact-section .hours-value { font-size: 11px; }
   .contact-section .hours-note { padding: 6px; font-size: 10px; gap: 6px; }
 }
 

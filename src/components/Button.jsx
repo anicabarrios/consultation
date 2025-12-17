@@ -36,11 +36,11 @@ export function Button({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 'clamp(6px, 1.5vw, 10px)',
+    gap: '10px',
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
     fontWeight: '600',
     border: 'none',
-    borderRadius: 'clamp(6px, 1.5vw, 8px)',
+    borderRadius: '8px',
     cursor: disabled ? 'not-allowed' : 'pointer',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     textDecoration: 'none',
@@ -54,19 +54,19 @@ export function Button({
 
   const sizeStyles = {
     small: { 
-      padding: 'clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 16px)', 
-      fontSize: 'clamp(12px, 2.5vw, 14px)', 
-      minHeight: 'clamp(36px, 8vw, 40px)' 
+      padding: '8px 16px', 
+      fontSize: '14px', 
+      minHeight: '40px' 
     },
     medium: { 
-      padding: 'clamp(10px, 2.5vw, 12px) clamp(18px, 4vw, 24px)', 
-      fontSize: 'clamp(14px, 3vw, 16px)', 
-      minHeight: 'clamp(44px, 9vw, 48px)' 
+      padding: '12px 24px', 
+      fontSize: '16px', 
+      minHeight: '48px' 
     },
     large: { 
-      padding: 'clamp(12px, 3vw, 16px) clamp(24px, 5vw, 32px)', 
-      fontSize: 'clamp(16px, 3.5vw, 18px)', 
-      minHeight: 'clamp(48px, 10vw, 56px)' 
+      padding: '16px 32px', 
+      fontSize: '18px', 
+      minHeight: '56px' 
     },
   };
 

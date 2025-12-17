@@ -47,7 +47,7 @@
 }
 
 .services-title {
-  font-size: clamp(36px, 5vw, 52px);
+  font-size: 52px;
   font-weight: 800;
   color: #1a1a2e;
   margin-bottom: 32px;
@@ -148,6 +148,10 @@
     padding: 100px 0;
   }
   
+  .services-title {
+    font-size: 48px;
+  }
+  
   .service-button {
     padding: 70px 35px;
     min-height: 260px;
@@ -170,6 +174,10 @@
 
 /* Tablet (991px and below) */
 @media (max-width: 991px) {
+  .services-title {
+    font-size: 44px;
+  }
+  
   .service-button {
     border: 1px solid rgba(224, 224, 224, 0.4);
     border-radius: 12px;
@@ -209,6 +217,10 @@
     padding: 80px 0;
   }
   
+  .services-title {
+    font-size: 40px;
+  }
+  
   .service-button {
     min-height: 220px;
     padding: 50px 25px;
@@ -234,6 +246,10 @@
 @media (max-width: 576px) {
   #services {
     padding: 60px 0;
+  }
+  
+  .services-title {
+    font-size: 36px;
   }
   
   .service-button {
@@ -264,6 +280,10 @@
     padding: 50px 0;
   }
   
+  .services-title {
+    font-size: 32px;
+  }
+  
   .service-button {
     min-height: 180px;
     padding: 35px 15px;
@@ -284,10 +304,6 @@
     font-size: 16px;
   }
   
-  .services-title {
-    font-size: clamp(28px, 4vw, 36px);
-  }
-  
   .services-description {
     font-size: 16px;
   }
@@ -295,6 +311,10 @@
 
 /* Very Small Mobile (360px and below) */
 @media (max-width: 360px) {
+  .services-title {
+    font-size: 28px;
+  }
+  
   .service-button {
     min-height: 160px;
     padding: 30px 12px;
@@ -323,6 +343,22 @@
   
   .services-description {
     font-size: 14px;
+  }
+}
+
+/* Extra Small Mobile (320px and below) */
+@media (max-width: 320px) {
+  .services-title {
+    font-size: 24px;
+  }
+  
+  .services-subtitle {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+  
+  .services-description {
+    font-size: 13px;
   }
 }
 

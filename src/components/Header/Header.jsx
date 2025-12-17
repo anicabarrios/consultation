@@ -72,7 +72,7 @@ export default function Header({ language, setLanguage }) {
 
   const activeColorScheme = colorScheme; 
 
-  // Dynamic styles based on scroll position
+  // Dynamic styles based on scroll position - FIXED to prevent zoom issues
   const topBarStyle = {
     backgroundColor: colors.primary,
     color: colors.textLight,
@@ -81,14 +81,18 @@ export default function Header({ language, setLanguage }) {
     minHeight: '40px',
     display: 'flex',
     alignItems: 'center',
-    transform: `translateY(-${isScrolled * 100}%)`
+    opacity: isScrolled > 0.5 ? 0 : 1,
+    pointerEvents: isScrolled > 0.5 ? 'none' : 'auto',
+    visibility: isScrolled > 0.5 ? 'hidden' : 'visible',
+    transition: 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s'
   };
 
   const mainHeaderStyle = {
     backgroundColor: `rgba(255, 255, 255, ${isScrolled * 0.95})`,
     boxShadow: isScrolled > 0.3 ? `0 8px 32px rgba(0, 0, 0, ${isScrolled * 0.1})` : 'none',
-    top: `${40 - (isScrolled * 40)}px`,
-    borderBottom: isScrolled > 0.5 ? `1px solid rgba(224, 224, 224, ${isScrolled * 0.6})` : 'none'
+    top: isScrolled > 0.5 ? '0px' : '40px',
+    borderBottom: isScrolled > 0.5 ? `1px solid rgba(224, 224, 224, ${isScrolled * 0.6})` : 'none',
+    transition: 'top 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
   };
 
   const textColor = `rgb(${26 + (255 - 26) * (1 - isScrolled)}, ${26 + (255 - 26) * (1 - isScrolled)}, ${46 + (255 - 46) * (1 - isScrolled)})`;

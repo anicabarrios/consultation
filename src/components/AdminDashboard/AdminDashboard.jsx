@@ -32,13 +32,13 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
 
   const t = content[language];
 
-  // Inline styles using colors.js
+  // Inline styles using colors.js - NO CLAMP
   const styles = {
     topbar: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '0 clamp(16px, 4vw, 40px) 24px',
+      padding: '0 40px 24px',
       flexWrap: 'wrap',
       gap: '16px'
     },
@@ -62,7 +62,7 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
     container: {
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: '0 clamp(16px, 4vw, 40px) clamp(24px, 4vw, 40px)'
+      padding: '0 40px 40px'
     },
     pageHeader: {
       display: 'flex',
@@ -78,7 +78,7 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
       gap: '16px'
     },
     pageTitleH1: {
-      fontSize: 'clamp(1.5rem, 3vw, 1.75rem)',
+      fontSize: '1.75rem',
       fontWeight: '700',
       color: colors.textLight,
       margin: '0'
@@ -163,7 +163,7 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: 'clamp(60px, 10vw, 100px) 20px',
+      padding: '100px 20px',
       background: 'rgba(255, 255, 255, 0.04)',
       borderRadius: '14px',
       border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -172,7 +172,7 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
     questionCard: (isAnswered, isPublished) => ({
       background: isPublished ? colors.textLight : colors.lightBg,
       borderRadius: '14px',
-      padding: 'clamp(20px, 3vw, 28px)',
+      padding: '28px',
       boxShadow: `0 2px 8px ${colors.shadowLight}`,
       border: `1px solid ${colors.borderDark}`,
       borderLeft: `4px solid ${isAnswered ? '#10b981' : '#64748b'}`,
@@ -206,7 +206,7 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
       color: '#888'
     },
     questionText: {
-      fontSize: 'clamp(15px, 2vw, 16px)',
+      fontSize: '16px',
       lineHeight: '1.6',
       color: colors.primary,
       margin: '0',
@@ -440,7 +440,7 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
   return (
     <>
       {/* Top Bar */}
-      <div style={styles.topbar}>
+      <div style={styles.topbar} className="admin-topbar">
         <button 
           style={sharedStyles.backBtn}
           onClick={() => navigate('/')}
@@ -467,13 +467,13 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
         </div>
       </div>
 
-      <div style={styles.container}>
+      <div style={styles.container} className="admin-container">
         {/* Page Header */}
         <div style={styles.pageHeader}>
           <div style={styles.pageTitle}>
             <MessageCircle size={28} style={{ color: colors.accent }} />
             <div>
-              <h1 style={styles.pageTitleH1}>{t.dashboard.title}</h1>
+              <h1 style={styles.pageTitleH1} className="admin-page-title-h1">{t.dashboard.title}</h1>
               <p style={styles.pageTitleP}>{t.dashboard.subtitle}</p>
             </div>
           </div>
@@ -528,17 +528,17 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
         {/* Questions List */}
         <div style={styles.questionsList}>
           {isLoading ? (
-            <div style={styles.stateContainer}>
+            <div style={styles.stateContainer} className="admin-state">
               <Loader2 size={40} className="spin" style={{ marginBottom: '16px', opacity: 0.5 }} />
               <p style={{ fontSize: '15px', fontWeight: '500', margin: 0 }}>{t.dashboard.loading}</p>
             </div>
           ) : loadError ? (
-            <div style={{ ...styles.stateContainer }}>
+            <div style={{ ...styles.stateContainer }} className="admin-state">
               <AlertCircle size={40} style={{ marginBottom: '16px', opacity: 0.5, color: '#ef4444' }} />
               <p style={{ fontSize: '15px', fontWeight: '500', margin: 0 }}>{t.dashboard.error}</p>
             </div>
           ) : filteredQuestions.length === 0 ? (
-            <div style={styles.stateContainer}>
+            <div style={styles.stateContainer} className="admin-state">
               <MessageCircle size={40} style={{ marginBottom: '16px', opacity: 0.5 }} />
               <p style={{ fontSize: '15px', fontWeight: '500', margin: 0 }}>{t.dashboard.noQuestions}</p>
             </div>
@@ -547,6 +547,7 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
               <div
                 key={q.id}
                 style={styles.questionCard(q.isAnswered, q.isPublished)}
+                className="admin-question-card"
                 onMouseEnter={(e) => handleCardHover(e, true)}
                 onMouseLeave={(e) => handleCardHover(e, false)}
               >
@@ -583,7 +584,7 @@ export default function AdminDashboard({ language, adminName, onLogout, content,
                 </div>
 
                 <div style={{ marginBottom: '16px' }}>
-                  <p style={styles.questionText}>{q.question?.sr || q.question}</p>
+                  <p style={styles.questionText} className="admin-question-text">{q.question?.sr || q.question}</p>
                   {q.question?.en && (
                     <p style={{ fontSize: '14px', color: '#888', fontStyle: 'italic', margin: '8px 0 0' }}>
                       {q.question.en}

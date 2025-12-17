@@ -1,11 +1,25 @@
+/* Reviews Section - Base (Desktop 1200px+) */
 .reviews-section {
-  --section-padding: clamp(40px, 8vw, 120px);
-  --subtitle-size: clamp(10px, 1.2vw, 13px);
-  --title-size: clamp(20px, 3.8vw, 44px);
-  --quote-size: clamp(14px, 2.1vw, 26px);
-  --author-size: clamp(11px, 1.5vw, 17px);
-  --star-size: clamp(20px, 4vw, 48px);
-  --rating-size: clamp(28px, 5vw, 56px);
+  --section-padding: 120px;
+  --subtitle-size: 13px;
+  --title-size: 44px;
+  --quote-size: 26px;
+  --author-size: 17px;
+  --star-size: 48px;
+  --rating-size: 56px;
+  --layout-gap: 80px;
+  --subtitle-spacing: 3px;
+  --title-margin: 50px;
+  --quote-padding: 20px;
+  --quote-margin: 35px;
+  --author-line-width: 45px;
+  --nav-gap: 12px;
+  --nav-margin: 42px;
+  --nav-dot-size: 10px;
+  --stars-padding: 60px;
+  --stars-gap: 14px;
+  --stars-label-size: 16px;
+  --stars-label-spacing: 2px;
   
   position: relative;
   padding: var(--section-padding) 0;
@@ -35,7 +49,7 @@
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: clamp(30px, 6vw, 80px);
+  gap: var(--layout-gap);
 }
 
 .reviews-content {
@@ -48,7 +62,7 @@
   color: var(--accent-color);
   font-size: var(--subtitle-size);
   font-weight: 600;
-  letter-spacing: clamp(2px, 0.3vw, 3px);
+  letter-spacing: var(--subtitle-spacing);
   margin-bottom: 16px;
   text-transform: uppercase;
   opacity: 0;
@@ -59,7 +73,7 @@
   color: #fff;
   font-size: var(--title-size);
   font-weight: 700;
-  margin-bottom: clamp(25px, 5vw, 50px);
+  margin-bottom: var(--title-margin);
   line-height: 1.2;
   font-family: 'Inter', -apple-system, sans-serif;
   letter-spacing: -0.02em;
@@ -70,7 +84,7 @@
 /* Quote */
 .reviews-quote-container {
   position: relative;
-  padding: clamp(5px, 2vw, 20px) 0;
+  padding: var(--quote-padding) 0;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
@@ -79,7 +93,7 @@
   font-size: var(--quote-size);
   color: rgba(255, 255, 255, 0.95);
   line-height: 1.65;
-  margin-bottom: clamp(22px, 4vw, 35px);
+  margin-bottom: var(--quote-margin);
   font-weight: 300;
   font-style: italic;
 }
@@ -92,7 +106,7 @@
 }
 
 .author-line {
-  width: clamp(30px, 4vw, 45px);
+  width: var(--author-line-width);
   height: 1px;
   background: var(--accent-color);
 }
@@ -108,15 +122,15 @@
 /* Navigation */
 .reviews-navigation {
   display: flex;
-  gap: clamp(8px, 1vw, 12px);
-  margin-top: clamp(22px, 4vw, 42px);
+  gap: var(--nav-gap);
+  margin-top: var(--nav-margin);
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.4s forwards;
 }
 
 .nav-dot {
-  width: clamp(6px, 1vw, 10px);
-  height: clamp(6px, 1vw, 10px);
+  width: var(--nav-dot-size);
+  height: var(--nav-dot-size);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.25);
   cursor: pointer;
@@ -152,7 +166,7 @@
 
 .stars-container {
   text-align: center;
-  padding: clamp(15px, 4vw, 60px);
+  padding: var(--stars-padding);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(175, 162, 127, 0.15);
   border-radius: 16px;
@@ -161,7 +175,7 @@
 
 .stars-row {
   display: flex;
-  gap: clamp(6px, 1.2vw, 14px);
+  gap: var(--stars-gap);
   justify-content: center;
   margin-bottom: 20px;
 }
@@ -188,10 +202,10 @@
 }
 
 .stars-label {
-  font-size: clamp(10px, 1.4vw, 16px);
+  font-size: var(--stars-label-size);
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.2vw, 2px);
+  letter-spacing: var(--stars-label-spacing);
   font-weight: 500;
 }
 
@@ -232,8 +246,76 @@
   }
 }
 
-/* Tablet & Below - Stack Layout */
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Large Desktop (1200px - 1399px) */
+@media (max-width: 1399px) {
+  .reviews-section {
+    --section-padding: 110px;
+    --title-size: 42px;
+    --quote-size: 24px;
+    --author-size: 16px;
+    --star-size: 44px;
+    --rating-size: 52px;
+    --layout-gap: 70px;
+    --title-margin: 45px;
+    --quote-margin: 32px;
+    --stars-padding: 50px;
+    --stars-gap: 12px;
+  }
+}
+
+/* Desktop (992px - 1199px) */
+@media (max-width: 1199px) {
+  .reviews-section {
+    --section-padding: 100px;
+    --subtitle-size: 12px;
+    --title-size: 38px;
+    --quote-size: 22px;
+    --author-size: 15px;
+    --star-size: 40px;
+    --rating-size: 48px;
+    --layout-gap: 60px;
+    --subtitle-spacing: 2.5px;
+    --title-margin: 40px;
+    --quote-padding: 16px;
+    --quote-margin: 30px;
+    --author-line-width: 40px;
+    --nav-gap: 10px;
+    --nav-margin: 36px;
+    --nav-dot-size: 9px;
+    --stars-padding: 45px;
+    --stars-gap: 11px;
+    --stars-label-size: 14px;
+    --stars-label-spacing: 1.5px;
+  }
+}
+
+/* Tablet (768px - 991px) */
 @media (max-width: 991px) {
+  .reviews-section {
+    --section-padding: 90px;
+    --subtitle-size: 12px;
+    --title-size: 34px;
+    --quote-size: 20px;
+    --author-size: 14px;
+    --star-size: 36px;
+    --rating-size: 44px;
+    --layout-gap: 50px;
+    --title-margin: 35px;
+    --quote-padding: 14px;
+    --quote-margin: 28px;
+    --author-line-width: 36px;
+    --nav-gap: 10px;
+    --nav-margin: 32px;
+    --nav-dot-size: 8px;
+    --stars-padding: 40px;
+    --stars-gap: 10px;
+    --stars-label-size: 13px;
+  }
+  
   .reviews-layout {
     flex-direction: column;
   }
@@ -256,11 +338,131 @@
   }
 }
 
-/* Small Mobile */
+/* Large Mobile (576px - 767px) */
+@media (max-width: 767px) {
+  .reviews-section {
+    --section-padding: 70px;
+    --subtitle-size: 11px;
+    --title-size: 30px;
+    --quote-size: 18px;
+    --author-size: 13px;
+    --star-size: 32px;
+    --rating-size: 40px;
+    --layout-gap: 40px;
+    --subtitle-spacing: 2px;
+    --title-margin: 30px;
+    --quote-padding: 12px;
+    --quote-margin: 26px;
+    --author-line-width: 34px;
+    --nav-gap: 9px;
+    --nav-margin: 28px;
+    --nav-dot-size: 8px;
+    --stars-padding: 35px;
+    --stars-gap: 9px;
+    --stars-label-size: 12px;
+    --stars-label-spacing: 1.5px;
+  }
+}
+
+/* Mobile (480px - 575px) */
 @media (max-width: 575px) {
+  .reviews-section {
+    --section-padding: 60px;
+    --subtitle-size: 11px;
+    --title-size: 26px;
+    --quote-size: 17px;
+    --author-size: 12px;
+    --star-size: 28px;
+    --rating-size: 36px;
+    --layout-gap: 35px;
+    --title-margin: 28px;
+    --quote-padding: 10px;
+    --quote-margin: 24px;
+    --author-line-width: 32px;
+    --nav-gap: 8px;
+    --nav-margin: 26px;
+    --nav-dot-size: 7px;
+    --stars-padding: 30px;
+    --stars-gap: 8px;
+    --stars-label-size: 11px;
+    --stars-label-spacing: 1px;
+  }
+  
   .review-author {
     flex-direction: column;
     gap: 10px;
+  }
+}
+
+/* Small Mobile (360px - 479px) */
+@media (max-width: 479px) {
+  .reviews-section {
+    --section-padding: 50px;
+    --subtitle-size: 10px;
+    --title-size: 24px;
+    --quote-size: 16px;
+    --author-size: 12px;
+    --star-size: 26px;
+    --rating-size: 34px;
+    --layout-gap: 30px;
+    --title-margin: 26px;
+    --quote-padding: 8px;
+    --quote-margin: 22px;
+    --author-line-width: 30px;
+    --nav-gap: 8px;
+    --nav-margin: 24px;
+    --nav-dot-size: 7px;
+    --stars-padding: 25px;
+    --stars-gap: 7px;
+    --stars-label-size: 11px;
+  }
+}
+
+/* Extra Small Mobile (320px - 359px) */
+@media (max-width: 359px) {
+  .reviews-section {
+    --section-padding: 45px;
+    --subtitle-size: 10px;
+    --title-size: 22px;
+    --quote-size: 15px;
+    --author-size: 11px;
+    --star-size: 24px;
+    --rating-size: 32px;
+    --layout-gap: 28px;
+    --title-margin: 24px;
+    --quote-padding: 6px;
+    --quote-margin: 20px;
+    --author-line-width: 28px;
+    --nav-gap: 7px;
+    --nav-margin: 22px;
+    --nav-dot-size: 6px;
+    --stars-padding: 22px;
+    --stars-gap: 6px;
+    --stars-label-size: 10px;
+  }
+}
+
+/* Very Small Mobile (< 320px) */
+@media (max-width: 319px) {
+  .reviews-section {
+    --section-padding: 40px;
+    --subtitle-size: 10px;
+    --title-size: 20px;
+    --quote-size: 14px;
+    --author-size: 11px;
+    --star-size: 22px;
+    --rating-size: 30px;
+    --layout-gap: 25px;
+    --title-margin: 22px;
+    --quote-padding: 5px;
+    --quote-margin: 18px;
+    --author-line-width: 26px;
+    --nav-gap: 6px;
+    --nav-margin: 20px;
+    --nav-dot-size: 6px;
+    --stars-padding: 18px;
+    --stars-gap: 6px;
+    --stars-label-size: 10px;
   }
 }
 

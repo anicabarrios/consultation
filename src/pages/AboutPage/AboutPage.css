@@ -28,7 +28,7 @@
 /* Lawyer Profile Section */
 .about-lawyer-section {
   position: relative;
-  padding: clamp(60px, 12vw, 140px) 0;
+  padding: clamp(60px, 5vw + 40px, 140px) 0;
   background: linear-gradient(180deg, #ffffff 0%, var(--light-bg) 50%, #ffffff 100%);
   overflow: hidden;
 }
@@ -51,7 +51,7 @@
 .about-lawyer-wrapper {
   display: grid;
   grid-template-columns: minmax(320px, 480px) 1fr;
-  gap: clamp(40px, 6vw, 80px);
+  gap: clamp(40px, 3vw + 30px, 80px);
   align-items: center;
 }
 
@@ -62,8 +62,8 @@
 .about-lawyer-frame {
   position: relative;
   background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
-  border-radius: clamp(16px, 3vw, 24px);
-  padding: clamp(16px, 3vw, 32px);
+  border-radius: clamp(16px, 0.6vw + 14px, 24px);
+  padding: clamp(16px, 1.2vw + 12px, 32px);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08), 0 10px 30px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(224, 224, 224, 0.5);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -79,10 +79,10 @@
   width: 100%;
   aspect-ratio: 3 / 4;
   background: linear-gradient(145deg, rgba(175, 162, 127, 0.06) 0%, rgba(248, 249, 250, 1) 50%, rgba(175, 162, 127, 0.04) 100%);
-  border-radius: clamp(12px, 2vw, 18px);
+  border-radius: clamp(12px, 0.4vw + 10px, 18px);
   overflow: hidden;
   position: relative;
-  min-height: clamp(380px, 65vw, 600px);
+  min-height: clamp(380px, 18vw + 320px, 600px);
 }
 
 /* Profile Photo Image */
@@ -104,8 +104,8 @@
 
 /* Placeholder styles (for fallback if no image) */
 .about-photo-icon {
-  width: clamp(60px, 25vw, 180px);
-  height: clamp(60px, 25vw, 180px);
+  width: clamp(60px, 8vw + 40px, 180px);
+  height: clamp(60px, 8vw + 40px, 180px);
   opacity: 0.35;
   transition: all 0.4s ease;
 }
@@ -116,10 +116,10 @@
 }
 
 .about-photo-text {
-  font-size: clamp(11px, 1.6vw, 15px);
+  font-size: clamp(11px, 0.3vw + 10px, 15px);
   color: var(--accent-color);
   font-weight: 600;
-  letter-spacing: clamp(2px, 0.3vw, 3px);
+  letter-spacing: clamp(2px, 0.08vw + 1.8px, 3px);
   text-transform: uppercase;
   opacity: 0.7;
   transition: all 0.3s ease;
@@ -133,9 +133,9 @@
 .about-lawyer-frame-badge {
   position: absolute;
   bottom: -15px;
-  right: clamp(20px, 5vw, 40px);
-  width: clamp(42px, 8vw, 56px);
-  height: clamp(42px, 8vw, 56px);
+  right: clamp(20px, 1.5vw + 16px, 40px);
+  width: clamp(42px, 1vw + 38px, 56px);
+  height: clamp(42px, 1vw + 38px, 56px);
   background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
   border-radius: 50%;
   display: flex;
@@ -157,12 +157,12 @@
 .about-lawyer-badge {
   display: inline-flex;
   align-items: center;
-  gap: clamp(8px, 1.5vw, 12px);
-  padding: clamp(8px, 1.2vw, 10px) clamp(14px, 1.8vw, 18px);
+  gap: clamp(8px, 0.3vw + 7px, 12px);
+  padding: clamp(8px, 0.15vw + 7.5px, 10px) clamp(14px, 0.3vw + 13px, 18px);
   background: linear-gradient(135deg, rgba(175, 162, 127, 0.12) 0%, rgba(175, 162, 127, 0.04) 100%);
   border: 1px solid rgba(175, 162, 127, 0.2);
   border-radius: 30px;
-  margin-bottom: clamp(10px, 1.5vw, 14px);
+  margin-bottom: clamp(10px, 0.3vw + 9px, 14px);
   transition: all 0.3s ease;
 }
 
@@ -172,16 +172,16 @@
 }
 
 .about-lawyer-badge span {
-  font-size: clamp(9px, 1.3vw, 12px);
+  font-size: clamp(9px, 0.2vw + 8.5px, 12px);
   font-weight: 700;
   color: var(--accent-color);
   letter-spacing: 2px;
 }
 
 .about-lawyer-name {
-  font-size: clamp(32px, 6vw, 58px);
+  font-size: clamp(32px, 1.8vw + 28px, 58px);
   font-weight: 800;
-  margin: 0 0 clamp(4px, 0.8vw, 8px) 0;
+  margin: 0 0 clamp(4px, 0.3vw + 3px, 8px) 0;
   line-height: 1.1;
   font-family: 'Inter', -apple-system, sans-serif;
   letter-spacing: -0.02em;
@@ -189,41 +189,41 @@
 }
 
 .about-lawyer-title {
-  font-size: clamp(16px, 2.2vw, 22px);
+  font-size: clamp(16px, 0.45vw + 15px, 22px);
   color: var(--accent-color);
   font-weight: 600;
-  margin-bottom: clamp(10px, 1.5vw, 16px);
+  margin-bottom: clamp(10px, 0.4vw + 9px, 16px);
   letter-spacing: 1.5px;
 }
 
 .about-lawyer-description {
-  font-size: clamp(14px, 1.8vw, 17px);
+  font-size: clamp(14px, 0.25vw + 13px, 17px);
   color: var(--text-secondary);
   line-height: 1.75;
-  margin-bottom: clamp(20px, 3vw, 32px);
+  margin-bottom: clamp(20px, 0.9vw + 17px, 32px);
 }
 
 /* Credentials */
 .about-credentials {
   display: flex;
   flex-direction: column;
-  gap: clamp(24px, 4vw, 36px);
+  gap: clamp(24px, 0.9vw + 21px, 36px);
 }
 
 .about-credential-group {
   display: flex;
   flex-direction: column;
-  gap: clamp(12px, 2vw, 18px);
+  gap: clamp(12px, 0.4vw + 10px, 18px);
 }
 
 .about-credential-header {
   display: flex;
   align-items: center;
-  gap: clamp(10px, 1.5vw, 14px);
+  gap: clamp(10px, 0.3vw + 9px, 14px);
 }
 
 .about-credential-header h4 {
-  font-size: clamp(14px, 1.8vw, 18px);
+  font-size: clamp(14px, 0.3vw + 13px, 18px);
   font-weight: 700;
   color: var(--primary-color);
   margin: 0;
@@ -233,18 +233,18 @@
 .about-credential-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(8px, 1.5vw, 12px);
+  gap: clamp(8px, 0.3vw + 7px, 12px);
 }
 
 .about-credential-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: clamp(8px, 1.2vw, 12px) clamp(14px, 2vw, 20px);
+  padding: clamp(8px, 1.2vw, 12px) clamp(14px, 0.45vw + 13px, 20px);
   background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
   border: 1px solid rgba(224, 224, 224, 0.6);
   border-radius: 30px;
-  font-size: clamp(12px, 1.5vw, 14px);
+  font-size: clamp(12px, 0.15vw + 11.5px, 14px);
   color: var(--text-secondary);
   font-weight: 500;
   transition: all 0.3s ease;
@@ -271,7 +271,7 @@
 /* Values Section */
 .about-values-section {
   position: relative;
-  padding: clamp(60px, 12vw, 140px) 0;
+  padding: clamp(60px, 5vw + 40px, 140px) 0;
   background: linear-gradient(135deg, var(--primary-color) 0%, #0a0d12 100%);
   overflow: hidden;
 }
@@ -308,11 +308,11 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: clamp(10px, 1.5vw, 12px) clamp(16px, 2vw, 22px);
+  padding: clamp(10px, 0.15vw + 9.5px, 12px) clamp(16px, 0.45vw + 15px, 22px);
   background: linear-gradient(135deg, rgba(175, 162, 127, 0.2) 0%, rgba(175, 162, 127, 0.08) 100%);
   border: 1px solid rgba(175, 162, 127, 0.3);
   border-radius: 30px;
-  margin-bottom: clamp(20px, 3vw, 30px);
+  margin-bottom: clamp(20px, 0.75vw + 18px, 30px);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   animation: fadeInUp 0.6s ease-out both;
@@ -324,17 +324,17 @@
 }
 
 .about-values-badge span {
-  font-size: clamp(9px, 1.3vw, 12px);
+  font-size: clamp(9px, 0.2vw + 8.5px, 12px);
   font-weight: 700;
   color: var(--accent-color);
   letter-spacing: 2.5px;
 }
 
 .about-values-title {
-  font-size: clamp(24px, 4.5vw, 48px);
+  font-size: clamp(24px, 1.8vw + 20px, 48px);
   font-weight: 800;
   color: var(--text-light);
-  margin-bottom: clamp(16px, 3vw, 24px);
+  margin-bottom: clamp(16px, 0.6vw + 14px, 24px);
   line-height: 1.15;
   font-family: 'Inter', -apple-system, sans-serif;
   letter-spacing: -0.025em;
@@ -342,7 +342,7 @@
 }
 
 .about-values-description {
-  font-size: clamp(14px, 1.8vw, 18px);
+  font-size: clamp(14px, 0.3vw + 13px, 18px);
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.7;
   max-width: 600px;
@@ -353,8 +353,8 @@
 .about-value-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(175, 162, 127, 0.15);
-  border-radius: clamp(16px, 3vw, 24px);
-  padding: clamp(28px, 4vw, 40px);
+  border-radius: clamp(16px, 0.6vw + 14px, 24px);
+  padding: clamp(28px, 0.9vw + 25px, 40px);
   text-align: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
@@ -375,15 +375,15 @@
 }
 
 .about-value-icon {
-  width: clamp(56px, 10vw, 72px);
-  height: clamp(56px, 10vw, 72px);
+  width: clamp(56px, 1.2vw + 52px, 72px);
+  height: clamp(56px, 1.2vw + 52px, 72px);
   background: linear-gradient(135deg, rgba(175, 162, 127, 0.15) 0%, rgba(175, 162, 127, 0.05) 100%);
   border: 1px solid rgba(175, 162, 127, 0.25);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto clamp(20px, 3vw, 28px);
+  margin: 0 auto clamp(20px, 0.6vw + 18px, 28px);
   transition: all 0.4s ease;
 }
 
@@ -394,15 +394,15 @@
 }
 
 .about-value-title {
-  font-size: clamp(16px, 2.2vw, 22px);
+  font-size: clamp(16px, 0.45vw + 15px, 22px);
   font-weight: 700;
   color: var(--text-light);
-  margin-bottom: clamp(10px, 1.8vw, 16px);
+  margin-bottom: clamp(10px, 0.45vw + 9px, 16px);
   font-family: 'Inter', -apple-system, sans-serif;
 }
 
 .about-value-description {
-  font-size: clamp(13px, 1.6vw, 16px);
+  font-size: clamp(13px, 0.25vw + 12.5px, 16px);
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
   margin: 0;
@@ -411,7 +411,7 @@
 /* Promise Section */
 .about-promise-section {
   position: relative;
-  padding: clamp(60px, 12vw, 140px) 0;
+  padding: clamp(60px, 5vw + 40px, 140px) 0;
   background: linear-gradient(180deg, #ffffff 0%, var(--light-bg) 50%, #ffffff 100%);
   overflow: hidden;
 }
@@ -439,12 +439,12 @@
 .about-promise-badge {
   display: inline-flex;
   align-items: center;
-  gap: clamp(8px, 1.5vw, 12px);
-  padding: clamp(10px, 1.5vw, 12px) clamp(16px, 2vw, 22px);
+  gap: clamp(8px, 0.3vw + 7px, 12px);
+  padding: clamp(10px, 0.15vw + 9.5px, 12px) clamp(16px, 0.45vw + 15px, 22px);
   background: linear-gradient(135deg, rgba(175, 162, 127, 0.12) 0%, rgba(175, 162, 127, 0.04) 100%);
   border: 1px solid rgba(175, 162, 127, 0.2);
   border-radius: 30px;
-  margin-bottom: clamp(20px, 3vw, 30px);
+  margin-bottom: clamp(20px, 0.75vw + 18px, 30px);
   transition: all 0.3s ease;
 }
 
@@ -454,24 +454,24 @@
 }
 
 .about-promise-badge span {
-  font-size: clamp(9px, 1.3vw, 12px);
+  font-size: clamp(9px, 0.2vw + 8.5px, 12px);
   font-weight: 700;
   color: var(--accent-color);
   letter-spacing: 2px;
 }
 
 .about-promise-title {
-  font-size: clamp(26px, 4.5vw, 48px);
+  font-size: clamp(26px, 1.6vw + 22px, 48px);
   font-weight: 800;
   color: var(--primary-color);
-  margin-bottom: clamp(20px, 3vw, 30px);
+  margin-bottom: clamp(20px, 0.75vw + 18px, 30px);
   line-height: 1.15;
   font-family: 'Inter', -apple-system, sans-serif;
   letter-spacing: -0.025em;
 }
 
 .about-promise-description {
-  font-size: clamp(14px, 1.8vw, 18px);
+  font-size: clamp(14px, 0.3vw + 13px, 18px);
   color: var(--text-secondary);
   line-height: 1.75;
 }
@@ -479,18 +479,18 @@
 .about-promise-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(14px, 2.5vw, 22px);
+  gap: clamp(14px, 0.6vw + 12px, 22px);
   animation: fadeInRight 0.8s ease-out 0.2s both;
 }
 
 .about-promise-item {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 2vw, 18px);
-  padding: clamp(16px, 2.5vw, 24px);
+  gap: clamp(14px, 0.3vw + 13px, 18px);
+  padding: clamp(16px, 0.6vw + 14px, 24px);
   background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
   border: 1px solid rgba(224, 224, 224, 0.5);
-  border-radius: clamp(12px, 2vw, 16px);
+  border-radius: clamp(12px, 0.3vw + 11px, 16px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -501,14 +501,14 @@
 }
 
 .about-promise-number {
-  width: clamp(36px, 5vw, 44px);
-  height: clamp(36px, 5vw, 44px);
+  width: clamp(36px, 0.6vw + 34px, 44px);
+  height: clamp(36px, 0.6vw + 34px, 44px);
   background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(14px, 1.8vw, 18px);
+  font-size: clamp(14px, 0.3vw + 13px, 18px);
   font-weight: 700;
   color: var(--text-light);
   flex-shrink: 0;
@@ -521,7 +521,7 @@
 }
 
 .about-promise-item span {
-  font-size: clamp(13px, 1.7vw, 16px);
+  font-size: clamp(13px, 0.25vw + 12.5px, 16px);
   color: var(--text-secondary);
   font-weight: 500;
   line-height: 1.5;
@@ -531,14 +531,14 @@
 @media (max-width: 1199px) {
   .about-lawyer-wrapper {
     grid-template-columns: minmax(280px, 400px) 1fr;
-    gap: clamp(30px, 5vw, 60px);
+    gap: clamp(30px, 2.5vw + 20px, 60px);
   }
 }
 
 @media (max-width: 991px) {
   .about-lawyer-wrapper {
     grid-template-columns: 1fr;
-    gap: clamp(30px, 6vw, 50px);
+    gap: clamp(30px, 1.5vw + 24px, 50px);
   }
   
   .about-lawyer-visual {
@@ -580,17 +580,17 @@
 
 @media (max-width: 767px) {
   .about-lawyer-photo {
-    min-height: clamp(300px, 70vw, 420px);
+    min-height: clamp(300px, 10vw + 260px, 420px);
   }
 }
 
 @media (max-width: 575px) {
   .about-lawyer-frame {
-    padding: clamp(12px, 4vw, 20px);
+    padding: clamp(12px, 0.6vw + 10px, 20px);
   }
   
   .about-lawyer-photo {
-    min-height: clamp(280px, 80vw, 360px);
+    min-height: clamp(280px, 8vw + 250px, 360px);
   }
   
   .about-credential-tag {
@@ -599,13 +599,13 @@
   }
   
   .about-promise-item {
-    padding: clamp(12px, 3vw, 18px);
+    padding: clamp(12px, 0.45vw + 11px, 18px);
   }
 }
 
 @media (max-width: 375px) {
   .about-lawyer-name {
-    font-size: clamp(26px, 8vw, 32px);
+    font-size: clamp(26px, 0.5vw + 24px, 32px);
   }
 }
 

@@ -5,12 +5,12 @@
   
   /* CSS Custom Properties for responsive values */
   --section-pt: 45px;
-  --section-pb: clamp(60px, 10vw, 100px);
-  --map-py: clamp(50px, 7vw, 90px);
-  --map-iframe-h: clamp(350px, 50vw, 500px);
-  --overlay-pt: clamp(60px, 8vw, 80px);
-  --overlay-px: clamp(20px, 4vw, 40px);
-  --overlay-pb: clamp(20px, 3vw, 30px);
+  --section-pb: clamp(60px, 3vw + 50px, 100px);
+  --map-py: clamp(50px, 3vw + 40px, 90px);
+  --map-iframe-h: clamp(350px, 12vw + 300px, 500px);
+  --overlay-pt: clamp(60px, 1.5vw + 50px, 80px);
+  --overlay-px: clamp(20px, 1.5vw + 16px, 40px);
+  --overlay-pb: clamp(20px, 0.8vw + 16px, 30px);
 }
 
 .contact-page .contact-section {
@@ -45,40 +45,40 @@
 .contact-map-subtitle-wrapper {
   display: inline-flex;
   align-items: center;
-  gap: clamp(12px, 2vw, 16px);
-  margin-bottom: clamp(16px, 2.5vw, 24px);
+  gap: clamp(12px, 0.3vw + 11px, 16px);
+  margin-bottom: clamp(16px, 0.6vw + 14px, 24px);
   justify-content: center;
 }
 
 .contact-map-accent-line {
   width: 4px;
-  height: clamp(20px, 3vw, 24px);
+  height: clamp(20px, 0.3vw + 18px, 24px);
   background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
   border-radius: 2px;
 }
 
 .contact-map-subtitle {
   color: var(--accent-color);
-  font-size: clamp(11px, 1.5vw, 14px);
+  font-size: clamp(11px, 0.2vw + 10px, 14px);
   font-weight: 700;
-  letter-spacing: clamp(2px, 0.5vw, 4px);
+  letter-spacing: clamp(2px, 0.15vw + 1.5px, 4px);
   margin: 0;
   text-transform: uppercase;
 }
 
 .contact-map-description {
-  font-size: clamp(15px, 2vw, 18px);
+  font-size: clamp(15px, 0.25vw + 14px, 18px);
   color: var(--text-secondary);
   line-height: 1.7;
   max-width: 650px;
-  margin: 0 auto clamp(28px, 4vw, 45px);
+  margin: 0 auto clamp(28px, 1.2vw + 24px, 45px);
 }
 
 /* Map Container */
 .contact-map-container {
   position: relative;
   background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
-  border-radius: clamp(12px, 3vw, 24px);
+  border-radius: clamp(12px, 0.9vw + 10px, 24px);
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 8px 25px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(224, 224, 224, 0.5);
@@ -112,7 +112,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(16px, 3vw, 24px);
+  gap: clamp(16px, 0.6vw + 14px, 24px);
   max-width: 900px;
   margin: 0 auto;
 }
@@ -120,17 +120,17 @@
 .contact-map-address {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 2vw, 16px);
-  font-size: clamp(13px, 2.2vw, 20px);
+  gap: clamp(12px, 0.3vw + 11px, 16px);
+  font-size: clamp(13px, 0.5vw + 12px, 20px);
   font-weight: 600;
   color: var(--text-light);
 }
 
 .contact-map-address-icon {
-  width: clamp(30px, 6vw, 48px);
-  height: clamp(30px, 6vw, 48px);
+  width: clamp(30px, 1.5vw + 26px, 48px);
+  height: clamp(30px, 1.5vw + 26px, 48px);
   background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
-  border-radius: clamp(8px, 1.5vw, 12px);
+  border-radius: clamp(8px, 0.3vw + 7px, 12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,12 +149,12 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: clamp(10px, 2vw, 18px) clamp(18px, 3.5vw, 32px);
+  padding: clamp(10px, 0.6vw + 8px, 18px) clamp(18px, 1vw + 16px, 32px);
   background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
   color: var(--text-light);
   border: none;
-  border-radius: clamp(8px, 1.5vw, 12px);
-  font-size: clamp(11px, 1.6vw, 16px);
+  border-radius: clamp(8px, 0.3vw + 7px, 12px);
+  font-size: clamp(11px, 0.35vw + 10px, 16px);
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
@@ -194,12 +194,12 @@
 @media (max-width: 991px) {
   .contact-page {
     --section-pt: 50px;
-    --section-pb: clamp(50px, 8vw, 80px);
-    --map-py: clamp(40px, 6vw, 70px);
-    --map-iframe-h: clamp(320px, 45vw, 420px);
-    --overlay-pt: clamp(50px, 7vw, 70px);
-    --overlay-px: clamp(20px, 3vw, 30px);
-    --overlay-pb: clamp(18px, 2.5vw, 24px);
+    --section-pb: clamp(50px, 2.5vw + 40px, 80px);
+    --map-py: clamp(40px, 2.5vw + 30px, 70px);
+    --map-iframe-h: clamp(320px, 8vw + 280px, 420px);
+    --overlay-pt: clamp(50px, 1.5vw + 42px, 70px);
+    --overlay-px: clamp(20px, 0.8vw + 16px, 30px);
+    --overlay-pb: clamp(18px, 0.5vw + 16px, 24px);
   }
 }
 
@@ -207,12 +207,12 @@
 @media (max-width: 767px) {
   .contact-page {
     --section-pt: 40px;
-    --section-pb: clamp(40px, 7vw, 60px);
-    --map-py: clamp(35px, 5vw, 60px);
-    --map-iframe-h: clamp(280px, 55vw, 350px);
-    --overlay-pt: clamp(45px, 6vw, 60px);
-    --overlay-px: clamp(16px, 3vw, 24px);
-    --overlay-pb: clamp(16px, 2.5vw, 24px);
+    --section-pb: clamp(40px, 1.8vw + 34px, 60px);
+    --map-py: clamp(35px, 2vw + 28px, 60px);
+    --map-iframe-h: clamp(280px, 12vw + 240px, 350px);
+    --overlay-pt: clamp(45px, 1.2vw + 40px, 60px);
+    --overlay-px: clamp(16px, 0.6vw + 14px, 24px);
+    --overlay-pb: clamp(16px, 0.6vw + 14px, 24px);
   }
   
   .contact-map-overlay-content {
@@ -237,9 +237,9 @@
 @media (max-width: 575px) {
   .contact-page {
     --section-pt: 30px;
-    --section-pb: clamp(35px, 6vw, 50px);
-    --map-py: clamp(30px, 5vw, 50px);
-    --map-iframe-h: clamp(250px, 65vw, 300px);
+    --section-pb: clamp(35px, 1.2vw + 30px, 50px);
+    --map-py: clamp(30px, 1.5vw + 24px, 50px);
+    --map-iframe-h: clamp(250px, 10vw + 220px, 300px);
     --overlay-pt: 40px;
     --overlay-px: 16px;
     --overlay-pb: 16px;

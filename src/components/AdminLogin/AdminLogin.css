@@ -1,6 +1,38 @@
-/* Responsive adjustments */
+/* AdminLogin Responsive Styles */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .admin-login-card {
+    padding: 40px !important;
+  }
+  
+  .admin-login-title {
+    font-size: 1.625rem !important;
+  }
+}
+
+/* Mobile (480px and below) */
 @media (max-width: 480px) {
+  .admin-login-card {
+    padding: 32px !important;
+  }
+  
+  .admin-login-title {
+    font-size: 1.5rem !important;
+  }
+  
   .admin-login-wrapper button span {
     display: none;
+  }
+}
+
+/* Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  .admin-login-card {
+    padding: 24px !important;
+  }
+  
+  .admin-login-title {
+    font-size: 1.375rem !important;
   }
 }

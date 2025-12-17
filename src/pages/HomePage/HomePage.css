@@ -4,33 +4,33 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translate3d(0, 40px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translateX(-40px);
+    transform: translate3d(-40px, 0, 0);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes fadeInRight {
   from {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translate3d(40px, 0, 0);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -43,55 +43,47 @@
   }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Animated section wrapper - initial state (hidden) */
+/* ==============================
+   Animated section wrapper
+   🔑 CONTAINED & SAFE
+============================== */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* default vertical motion */
+  transform: translate3d(0, 30px, 0);
+
+  transition:
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
   will-change: opacity, transform;
+
+  /* 🔥 CRITICAL FIXES */
+  overflow-x: hidden;
+  max-width: 100%;
+  contain: paint;
 }
 
-/* Visible state when in viewport */
+/* Visible state */
 .animate-on-scroll.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
-/* Animation variants */
+/* ==============================
+   Animation variants
+============================== */
 .animate-on-scroll.fade-up {
-  transform: translateY(40px);
-}
-
-.animate-on-scroll.fade-up.is-visible {
-  transform: translateY(0);
+  transform: translate3d(0, 40px, 0);
 }
 
 .animate-on-scroll.fade-left {
-  transform: translateX(-40px);
-}
-
-.animate-on-scroll.fade-left.is-visible {
-  transform: translateX(0);
+  transform: translate3d(-40px, 0, 0);
 }
 
 .animate-on-scroll.fade-right {
-  transform: translateX(40px);
-}
-
-.animate-on-scroll.fade-right.is-visible {
-  transform: translateX(0);
+  transform: translate3d(40px, 0, 0);
 }
 
 .animate-on-scroll.fade-in {
@@ -106,41 +98,9 @@
   transform: scale(1);
 }
 
-/* Staggered delays for child elements */
-.animate-on-scroll.is-visible .animate-child:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.animate-on-scroll.is-visible .animate-child:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.animate-on-scroll.is-visible .animate-child:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.animate-on-scroll.is-visible .animate-child:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-/* Delay modifiers */
-.animate-on-scroll.delay-100 {
-  transition-delay: 0.1s;
-}
-
-.animate-on-scroll.delay-200 {
-  transition-delay: 0.2s;
-}
-
-.animate-on-scroll.delay-300 {
-  transition-delay: 0.3s;
-}
-
-.animate-on-scroll.delay-400 {
-  transition-delay: 0.4s;
-}
-
-/* Duration modifiers */
+/* ==============================
+   Duration modifiers
+============================== */
 .animate-on-scroll.duration-fast {
   transition-duration: 0.5s;
 }
@@ -149,41 +109,18 @@
   transition-duration: 1.2s;
 }
 
-/* Easing modifiers */
-.animate-on-scroll.ease-bounce {
-  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.animate-on-scroll.ease-smooth {
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Respect reduced motion preference */
+/* ==============================
+   Accessibility
+============================== */
 @media (prefers-reduced-motion: reduce) {
   .animate-on-scroll {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
-    animation: none !important;
-  }
-  
-  .animate-on-scroll.is-visible {
-    transform: none !important;
-  }
-  
-  .animate-on-scroll .animate-child {
-    animation: none !important;
   }
 }
 
-/* Ensure animations don't break layout */
-.animate-on-scroll,
-.animate-on-scroll.is-visible {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* Print styles - disable animations */
+/* Print styles */
 @media print {
   .animate-on-scroll {
     opacity: 1 !important;
