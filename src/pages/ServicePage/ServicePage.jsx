@@ -5,7 +5,7 @@ import {
   BookOpen, Briefcase, ListChecks, MessageSquare, Layers
 } from 'lucide-react';
 import { colors } from '../../utils/colors.js';
-import { getServiceBySlug, getAllServices } from '../../utils/serviceData.js';
+import { servicesData, getServiceBySlug, getAllServices } from '../../utils/serviceData.js';
 import Button from '../../components/Button.jsx';
 import Card from '../../components/Card.jsx';
 import AnimatedSection from '../../components/AnimatedSection/AnimatedSection';
@@ -14,8 +14,16 @@ import './ServicePage.css';
 export default function ServicePage({ language }) {
   const { serviceSlug } = useParams();
   const navigate = useNavigate();
-  const serviceData = getServiceBySlug(serviceSlug, language);
-  const allServices = getAllServices(language);
+
+  // English slugs are stored as string mappings in servicesData.
+  // If the URL slug is English, render the page in English regardless of the
+  // current UI language state — this is what Googlebot sees when it crawls
+  // /services/criminal-law etc., so EN URLs must serve EN content.
+  const isEnglishSlug = typeof servicesData[serviceSlug] === 'string';
+  const lang = isEnglishSlug ? 'en' : language;
+
+  const serviceData = getServiceBySlug(serviceSlug, lang);
+  const allServices = getAllServices(lang);
 
   if (!serviceData) {
     return <Navigate to="/" replace />;
@@ -68,7 +76,7 @@ export default function ServicePage({ language }) {
     }
   };
 
-  const t = labels[language];
+  const t = labels[lang];
   const contactInfo = {
     phone: '+381 63 108 9990',
     email: 'advsuzanailic@gmail.com',

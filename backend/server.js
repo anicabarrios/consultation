@@ -9,6 +9,14 @@ const routes = require('./routes/index');
 
 const app = express();
 
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  if (host.includes('advokatskakancelarijailicljsuzana.com')) {
+    return res.redirect(301, `https://advsilic.com${req.originalUrl}`);
+  }
+  next();
+});
+
 // CORS configuration
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 

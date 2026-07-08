@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Scale, Phone, Mail, MapPin } from 'lucide-react';
 import { colors } from '../../utils/colors.js';
-import BackToTop from '../Backtotop/Backtotop.jsx';
 import './Footer.css';
 
 export default function Footer({ language = 'sr' }) {
@@ -211,8 +210,6 @@ export default function Footer({ language = 'sr' }) {
           </div>
         </div>
       </div>
-
-      <BackToTop language={language} />
     </>
   );
 }

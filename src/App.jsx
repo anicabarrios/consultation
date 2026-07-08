@@ -22,8 +22,18 @@ function ScrollToTop() {
   return null;
 }
 
+// Reads the initial language from the URL (?lang=en),
+// so hreflang alternate URLs from the sitemap actually render English content
+function getInitialLanguage() {
+  if (typeof window !== 'undefined') {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('lang') === 'en') return 'en';
+  }
+  return 'sr';
+}
+
 export default function App() {
-  const [language, setLanguage] = useState('sr');
+  const [language, setLanguage] = useState(getInitialLanguage);
 
   return (
     <Router>

@@ -1,4 +1,86 @@
+# robots.txt — https://advsilic.com
+# Advokatska kancelarija Ilić Lj. Suzana
+
+# ══════════════════════════════════════════
+# SVI pretraživači — dozvoli sve stranice
+# ══════════════════════════════════════════
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
 
-Sitemap: https://www.advokatskakancelarijailicljsuzana.com/sitemap.xml
+
+# OpenAI — ChatGPT pretraga (prikazivanje sajta u odgovorima)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# OpenAI — trening modela
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# OpenAI — kad korisnik zatraži otvaranje stranice u ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Google — AI Overviews / Gemini
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Anthropic — Claude pretraga u realnom vremenu
+User-agent: Claude-User
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Anthropic — trening modela
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# ByteDance
+User-agent: Bytespider
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# ══════════════════════════════════════════
+# SITEMAP
+# ══════════════════════════════════════════
+Sitemap: https://advsilic.com/sitemap.xml
