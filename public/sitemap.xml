@@ -10,7 +10,8 @@
     <loc>https://advsilic.com/</loc>
     <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/?lang=en"/>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -19,7 +20,8 @@
     <loc>https://advsilic.com/about</loc>
     <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/about"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/about?lang=en"/>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/about"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -28,7 +30,8 @@
     <loc>https://advsilic.com/services</loc>
     <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services?lang=en"/>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -37,7 +40,8 @@
     <loc>https://advsilic.com/contact</loc>
     <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/contact"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/contact?lang=en"/>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/contact"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -46,155 +50,256 @@
     <loc>https://advsilic.com/qa</loc>
     <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/qa"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/qa?lang=en"/>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/qa"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- ═══════════════════════════════════════
-       USLUGE — srpski URL-ovi
+       USLUGE — srpski URL-ovi (sa hreflang parovima)
   ═══════════════════════════════════════ -->
 
   <url>
     <loc>https://advsilic.com/services/gradjansko-obligaciono-pravo</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/gradjansko-obligaciono-pravo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/civil-obligation-law"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/gradjansko-obligaciono-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/krivicno-pravo</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/krivicno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/criminal-law"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/krivicno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/privredno-pravo</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/privredno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/commercial-law"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/privredno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/korporativno-pravo</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/korporativno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/corporate-law"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/korporativno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/radno-pravo</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/radno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/labor-law"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/radno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/bankarsko-finansijsko-pravo</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/bankarsko-finansijsko-pravo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/banking-financial-law"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/bankarsko-finansijsko-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/izvrsni-postupci</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/izvrsni-postupci"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/enforcement-proceedings"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/izvrsni-postupci"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/ugovorno-pravo</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/ugovorno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/contract-law"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/ugovorno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/naknada-stete</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/naknada-stete"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/damage-compensation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/naknada-stete"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/upravni-postupak</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/upravni-postupak"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/administrative-procedure"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/upravni-postupak"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/upravni-spor</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/upravni-spor"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/administrative-dispute"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/upravni-spor"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/uskladjenost-poslovanja</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/uskladjenost-poslovanja"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/business-compliance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/uskladjenost-poslovanja"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- ═══════════════════════════════════════
-       USLUGE — engleski URL-ovi
+       USLUGE — engleski URL-ovi (svih 12, sa hreflang parovima)
   ═══════════════════════════════════════ -->
 
   <url>
     <loc>https://advsilic.com/services/civil-obligation-law</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/civil-obligation-law"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/gradjansko-obligaciono-pravo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/gradjansko-obligaciono-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/criminal-law</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/criminal-law"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/krivicno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/krivicno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/commercial-law</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/commercial-law"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/privredno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/privredno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/corporate-law</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/corporate-law"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/korporativno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/korporativno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/labor-law</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/labor-law"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/radno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/radno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/banking-financial-law</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/banking-financial-law"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/bankarsko-finansijsko-pravo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/bankarsko-finansijsko-pravo"/>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://advsilic.com/services/enforcement-proceedings</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/enforcement-proceedings"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/izvrsni-postupci"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/izvrsni-postupci"/>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://advsilic.com/services/contract-law</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/contract-law"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/ugovorno-pravo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/ugovorno-pravo"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/damage-compensation</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/damage-compensation"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/naknada-stete"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/naknada-stete"/>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://advsilic.com/services/administrative-procedure</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/administrative-procedure"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/upravni-postupak"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/upravni-postupak"/>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://advsilic.com/services/administrative-dispute</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/administrative-dispute"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/upravni-spor"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/upravni-spor"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://advsilic.com/services/business-compliance</loc>
-    <lastmod>2025-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://advsilic.com/services/business-compliance"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://advsilic.com/services/uskladjenost-poslovanja"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://advsilic.com/services/uskladjenost-poslovanja"/>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
