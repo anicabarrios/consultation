@@ -625,8 +625,14 @@ export default function About({ language }) {
                 onMouseEnter={(e) => handleImageHover(e, true)}
                 onMouseLeave={(e) => handleImageHover(e, false)}
               >
+                {/* PERF: responsive srcset + lazy — mobilni skida 800w
+                    verziju umesto originala od 1.7MB (2640x3216) */}
                 <img
-                  src="./images/about-2.webp"
+                  src="./images/about-2-800w.webp"
+                  srcSet="./images/about-2-800w.webp 800w, ./images/about-2-1200w.webp 1200w"
+                  sizes="(max-width: 991px) 100vw, 50vw"
+                  loading="lazy"
+                  decoding="async"
                   alt={language === 'sr' ? 'Advokatska kancelarija' : 'Law Office'}
                   style={styles.mainImage}
                 />
@@ -754,8 +760,13 @@ export default function About({ language }) {
                 onMouseEnter={(e) => handleImageHover(e, true)}
                 onMouseLeave={(e) => handleImageHover(e, false)}
               >
+                {/* PERF: responsive srcset + lazy — umesto originala od 633KB */}
                 <img
-                  src="./images/about-1.webp"
+                  src="./images/about-1-800w.webp"
+                  srcSet="./images/about-1-800w.webp 800w, ./images/about-1-1200w.webp 1200w"
+                  sizes="(max-width: 991px) 100vw, 50vw"
+                  loading="lazy"
+                  decoding="async"
                   alt={language === 'sr' ? 'Profesionalno savetovanje' : 'Professional Consultation'}
                   style={styles.trustImage}
                 />

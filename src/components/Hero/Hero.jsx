@@ -59,7 +59,6 @@ export default function Hero({ language }) {
 
   const slides = content[language].slides;
 
-
   useEffect(() => {
     const load = () => {
       const img = new Image();

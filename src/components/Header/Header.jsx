@@ -226,6 +226,10 @@ export default function Header({ language, setLanguage }) {
             {/* Mobile Menu Button */}
             <button
               className="d-lg-none mobile-menu-btn"
+              aria-label={mobileMenuOpen
+                ? (language === 'sr' ? 'Zatvori meni' : 'Close menu')
+                : (language === 'sr' ? 'Otvori meni' : 'Open menu')}
+              aria-expanded={mobileMenuOpen}
               style={{
                 background: 'transparent',
                 border: 'none',
