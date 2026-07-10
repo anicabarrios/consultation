@@ -8,6 +8,7 @@ export default function Hero({ language }) {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [secondaryLoaded, setSecondaryLoaded] = useState(false);
 
   const content = {
     sr: {
@@ -58,10 +59,27 @@ export default function Hero({ language }) {
 
   const slides = content[language].slides;
 
+
+  useEffect(() => {
+    const load = () => {
+      const img = new Image();
+      img.src = '/images/hero-slide-2.webp';
+      img.onload = () => setSecondaryLoaded(true);
+      img.onerror = () => setSecondaryLoaded(true);
+    };
+
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(load, { timeout: 3000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = setTimeout(load, 2500);
+    return () => clearTimeout(t);
+  }, []);
+
   // Auto-play functionality
   useEffect(() => {
     if (!isAutoPlaying) return;
-    
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
@@ -89,7 +107,12 @@ export default function Hero({ language }) {
             className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
             style={{
               background: index === 0 ? '#1a1a2e' : '#0f1419',
-              backgroundImage: `url(${slide.image})`,
+              // Prva slika odmah (preload-ovana u index.html),
+              // ostale tek kad se učitaju u pozadini
+              backgroundImage:
+                index === 0 || secondaryLoaded
+                  ? `url(${slide.image})`
+                  : 'none',
             }}
           >
             <div className="hero-overlay" />
@@ -99,7 +122,7 @@ export default function Hero({ language }) {
                 <div className="col-12 col-lg-10 col-xl-8 text-center px-3">
                   <div className="hero-content-wrapper">
                     <h1 className="hero-title">{slide.title}</h1>
-                    <p 
+                    <p
                       className="hero-subtitle"
                       style={{ color: colors.accent }}
                     >
@@ -147,7 +170,7 @@ export default function Hero({ language }) {
 
       {/* Progress Bar */}
       <div className="hero-progress">
-        <div 
+        <div
           className="hero-progress-bar"
           style={{
             background: colors.accent,

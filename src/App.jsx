@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import BackToTop from './components/Backtotop/Backtotop';
 import HomePage from './pages/HomePage/HomePage';
-import AboutPage from './pages/AboutPage/AboutPage';
-import ContactPage from './pages/ContactPage/ContactPage';
-import ServicesPage from './pages/ServicesPage/ServicesPage';
-import ServicePage from './pages/ServicePage/ServicePage';
-import QAPage from './pages/QAPage/QAPage';
-import AdminPage from './pages/AdminPage/AdminPage';
 import './App.css';
+
+const AboutPage = lazy(() => import('./pages/AboutPage/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage/ContactPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage/ServicesPage'));
+const ServicePage = lazy(() => import('./pages/ServicePage/ServicePage'));
+const QAPage = lazy(() => import('./pages/QAPage/QAPage'));
+const AdminPage = lazy(() => import('./pages/AdminPage/AdminPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,6 +33,10 @@ function getInitialLanguage() {
   return 'sr';
 }
 
+function PageLoader() {
+  return <div style={{ minHeight: '60vh' }} aria-hidden="true" />;
+}
+
 export default function App() {
   const [language, setLanguage] = useState(getInitialLanguage);
 
@@ -46,43 +51,45 @@ export default function App() {
         />
         
         <main className="main-content">
-          <Routes>
-            <Route 
-              path="/" 
-              element={<HomePage language={language} />} 
-            />
-            
-            <Route 
-              path="/about" 
-              element={<AboutPage language={language} />} 
-            />
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route 
+                path="/" 
+                element={<HomePage language={language} />} 
+              />
+              
+              <Route 
+                path="/about" 
+                element={<AboutPage language={language} />} 
+              />
 
-            <Route 
-              path="/services" 
-              element={<ServicesPage language={language} />} 
-            />
-            
-            <Route 
-              path="/services/:serviceSlug" 
-              element={<ServicePage language={language} />} 
-            />
+              <Route 
+                path="/services" 
+                element={<ServicesPage language={language} />} 
+              />
+              
+              <Route 
+                path="/services/:serviceSlug" 
+                element={<ServicePage language={language} />} 
+              />
 
-             <Route 
-              path="/contact" 
-              element={<ContactPage language={language} />} 
-            />
-            
-            <Route 
-              path="/qa" 
-              element={<QAPage language={language} />} 
-            />
-            <Route path="/admin" element={<AdminPage language={language} />} />
-            
-            <Route 
-              path="*" 
-              element={<HomePage language={language} />} 
-            />
-          </Routes>
+              <Route 
+                path="/contact" 
+                element={<ContactPage language={language} />} 
+              />
+              
+              <Route 
+                path="/qa" 
+                element={<QAPage language={language} />} 
+              />
+              <Route path="/admin" element={<AdminPage language={language} />} />
+              
+              <Route 
+                path="*" 
+                element={<HomePage language={language} />} 
+              />
+            </Routes>
+          </Suspense>
         </main>
 
         <Footer language={language} />
