@@ -13,11 +13,10 @@ import { existsSync } from 'fs';
 const IMAGES_DIR = './public/images'; // prilagodi ako je drugačije
 
 const jobs = [
-  { file: 'about-1.webp', widths: [800, 1200] },
-  { file: 'about-2.webp', widths: [800, 1200] },
-  // hero slike — ako i one nisu optimizovane, otkomentariši:
-  // { file: 'hero-slide-1.webp', widths: [828, 1920] },
-  // { file: 'hero-slide-2.webp', widths: [828, 1920] },
+  // { file: 'about-1.webp', widths: [800, 1200] },    
+  // { file: 'about-2.webp', widths: [800, 1200] },     
+  { file: 'hero-slide-1.webp', widths: [828, 1920] },
+  { file: 'hero-slide-2.webp', widths: [828, 1920] },
 ];
 
 for (const { file, widths } of jobs) {

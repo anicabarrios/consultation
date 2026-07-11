@@ -59,10 +59,11 @@ export default function Hero({ language }) {
 
   const slides = content[language].slides;
 
+
   useEffect(() => {
     const load = () => {
       const img = new Image();
-      img.src = '/images/hero-slide-2.webp';
+      img.src = '/images/hero-slide-2-1920w.webp';
       img.onload = () => setSecondaryLoaded(true);
       img.onerror = () => setSecondaryLoaded(true);
     };
@@ -110,7 +111,7 @@ export default function Hero({ language }) {
               // ostale tek kad se učitaju u pozadini
               backgroundImage:
                 index === 0 || secondaryLoaded
-                  ? `url(${slide.image})`
+                  ? `image-set(url(${slide.image.replace('.webp', '-828w.webp')}) 1x, url(${slide.image.replace('.webp', '-1920w.webp')}) 2x)`
                   : 'none',
             }}
           >
